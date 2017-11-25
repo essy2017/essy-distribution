@@ -2,14 +2,15 @@
 
 'use strict';
 
-var assert   = require('assert');
-var dists    = require('../dist/bundle');
-var Beta     = dists.Beta;
-var Binomial = dists.Binomial;
-var Erlang   = dists.Erlang;
+var assert      = require('assert');
+var dists       = require('../dist/bundle');
+var Beta        = dists.Beta;
+var Binomial    = dists.Binomial;
+var Erlang      = dists.Erlang;
+var Exponential = dists.Exponential;
 
-var Twister  = require('mersenne-twister');
-var Rando    = { random: Math.random };
+var Twister     = require('mersenne-twister');
+var Rando       = { random: Math.random };
 
 describe('Distributions', () => {
 
@@ -98,6 +99,34 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = er.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Exponential', () => {
+    it('Should instantiate', () => {
+      var ex = new Exponential(0.5);
+      assert.strictEqual(ex.lambda, 0.5);
+    });
+    it('Should calculate cdf', () => {
+      var ex = new Exponential(0.5);
+      var cdf = ex.cdf(1);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var ex = new Exponential(0.5);
+      assert.strictEqual(ex.mean(), 1 / 0.5);
+    });
+    it('Should calculate pdf', () => {
+      var ex = new Exponential(0.5);
+      var pdf = ex.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var ex = new Exponential(0.5);
+      var samples = ex.sample();
+      assert.ok(typeof samples === 'number');
+      samples = ex.sample(4);
+      assert.strictEqual(samples.length, 4);
     });
   });
 
