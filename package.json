@@ -4,7 +4,8 @@
   "description": "Distributions and random sampling.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "npm run build && mocha",
+    "build": "webpack --config webpack.config.js --progress"
   },
   "keywords": [
     "statistics",
@@ -14,5 +15,19 @@
     "math"
   ],
   "author": "Spencer Cherry",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "mocha": "^4.0.1",
+    "webpack": "^3.8.1",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "dependencies": {
+    "mersenne-twister": "^1.1.0"
+  }
 }
