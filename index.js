@@ -1,9 +1,9 @@
 import { Beta } from './src/Beta';
 import { Binomial } from './src/Binomial';
+import { Erlang } from './src/Erlang';
 
 export default {
-  dists: {
-    Beta: Beta,
-    Binomial: Binomial
-  }
+  Beta     : Beta,
+  Binomial : Binomial,
+  Erlang   : Erlang
 };

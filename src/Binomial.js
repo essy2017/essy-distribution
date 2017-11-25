@@ -1,6 +1,7 @@
 'use strict';
 
-import { defaultGenerator } from './util';
+import { DistAbstract, factorial } from './util';
+import { incBeta } from 'mathfn';
 
 /*
 Copyright  1999 CERN - European Organization for Nuclear Research.
@@ -62,13 +63,25 @@ function stirlingCorrection (k) {
   }
 }
 
+/**
+ * Returns binomial coefficient.
+ * @method binCoeff
+ * @param n {Number} Number of samples.
+ * @param k {Number} Value.
+ * @return {Number}
+ */
+function binCoeff (n, k) {
+  return factorial(n) / (factorial(k) * factorial(n - k));
+}
+
 /*******************************************************************************
  *
  * Binomial distribution.
  * @class Binomial
+ * @extends DistAbstract
  *
  ******************************************************************************/
-export class Binomial {
+export class Binomial extends DistAbstract {
 
  /**
   * Constructor.
@@ -77,8 +90,19 @@ export class Binomial {
   * @param p {Number} Probability.
   */
   constructor (n, p) {
+    super();
     this.n = n;
     this.p = p;
+  }
+
+ /**
+  * Cumulative density function.
+  * @method cdf
+  * @param x {Number}
+  * @return {Number}
+  */
+  cdf (x) {
+    return incBeta(1 - this.p, this.n - x, x + 1);
   }
 
  /**
@@ -91,14 +115,22 @@ export class Binomial {
   }
 
  /**
+  * Probability density function.
+  * @method pdf
+  * @param x {Number}
+  * @return {Number}
+  */
+  pdf (x) {
+    return binCoeff(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
+  }
+
+ /**
   * Samples value from distribution.
-  * @method sample
+  * @method sampleValue
   * @param generator {RandomEngine} With random() method.
   * @return {Number} Sampled value.
   */
-  sample (generator) {
-
-    generator = defaultGenerator(generator);
+  sampleValue (generator) {
 
     const C1_3 = 0.33333333333333333;
     const C5_8 = 0.62500000000000000;

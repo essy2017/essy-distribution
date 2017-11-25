@@ -4,8 +4,9 @@
   "description": "Distributions and random sampling.",
   "main": "index.js",
   "scripts": {
-    "test": "npm run build && mocha",
-    "build": "webpack --config webpack.config.js --progress"
+    "test": "mocha",
+    "build": "webpack --config webpack.config.js --progress",
+    "webpack:watch": "webpack --config webpack.config.js --progress --watch"
   },
   "keywords": [
     "statistics",
@@ -28,6 +29,8 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
+    "incomplete-gamma": "^1.0.1",
+    "mathfn": "^1.0.1",
     "mersenne-twister": "^1.1.0"
   }
 }

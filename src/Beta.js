@@ -1,6 +1,7 @@
 'use strict';
 
-import { defaultGenerator } from './util';
+import { DistAbstract } from './util';
+import { incBeta, gamma } from 'mathfn';
 
 // From jStat.
 function randn () {
@@ -51,9 +52,10 @@ function randg (shape, generator) {
  *
  * Beta distribution.
  * @class Beta
+ * @extends DistAbstract
  *
  ******************************************************************************/
-export class Beta {
+export class Beta extends DistAbstract {
 
  /**
   * Constructor.
@@ -62,8 +64,19 @@ export class Beta {
   * @param beta {Number} Beta parameter value.
   */
   constructor (alpha, beta) {
+    super();
     this.alpha = alpha;
     this.beta = beta;
+  }
+
+ /**
+  * Cumulative density function.
+  * @method cdf
+  * @param x {Number}
+  * @return {Number}
+  */
+  cdf (x) {
+    return incBeta(x, this.alpha, this.beta);
   }
 
  /**
@@ -76,13 +89,24 @@ export class Beta {
   }
 
  /**
+  * Probability density function.
+  * @method pdf
+  * @param x {Number}
+  * @return {Number}
+  */
+  pdf (x) {
+    const num = Math.pow(x, this.alpha - 1) * Math.pow(1 - x, this.beta - 1);
+    const den = (gamma(this.alpha) * gamma(this.beta)) / gamma(this.alpha + this.beta);
+    return num / den;
+  }
+
+ /**
   * Samples distribution.
-  * @method sample
-  * @param generator {RandomEngine} [optional] With random() method.
+  * @method sampleValue
+  * @param generator {RandomEngine} With random() method.
   * @return {Number} Sampled value.
   */
-  sample (generator) {
-    generator = defaultGenerator(generator);
+  sampleValue (generator) {
     const u = randg(this.alpha, generator);
     return u / (u + randg(this.beta, generator));
   }
