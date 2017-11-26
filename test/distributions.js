@@ -9,6 +9,7 @@ var Binomial    = dists.Binomial;
 var Erlang      = dists.Erlang;
 var Exponential = dists.Exponential;
 var Gamma       = dists.Gamma;
+var Laplace     = dists.Laplace;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -156,6 +157,33 @@ describe('Distributions', () => {
       var samples = g.sample();
       assert.strictEqual(typeof samples, 'number');
       samples = g.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Laplace', () => {
+    it('Should instantiate', () => {
+      var l = new Laplace(5, 1);
+      assert.strictEqual(l.location, 5);
+      assert.strictEqual(l.scale, 1);
+    });
+    it('Should calculate cdf', () => {
+      var l = new Laplace(0, 4);
+      var cdf = l.cdf(-4);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var l = new Laplace(5, 1);
+      assert.strictEqual(l.mean(), 5);
+    });
+    it('Should calculate pdf', () => {
+      var l = new Laplace(0, 4);
+      var pdf = l.pdf(0);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new Laplace(5, 1);
+      var samples = l.sample(3);
       assert.strictEqual(samples.length, 3);
     });
   });
