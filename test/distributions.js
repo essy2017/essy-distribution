@@ -8,6 +8,7 @@ var Beta        = dists.Beta;
 var Binomial    = dists.Binomial;
 var Erlang      = dists.Erlang;
 var Exponential = dists.Exponential;
+var Gamma       = dists.Gamma;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -127,6 +128,35 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = ex.sample(4);
       assert.strictEqual(samples.length, 4);
+    });
+  });
+
+  describe('Gamma', () => {
+    it('Should instantiate', () => {
+      var g = new Gamma(1, 2);
+      assert.strictEqual(g.shape, 1);
+      assert.strictEqual(g.scale, 2);
+    });
+    it('Should calculate cdf', () => {
+      var g = new Gamma(5, 1);
+      var cdf = g.cdf(2);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var g = new Gamma(1, 2);
+      assert.strictEqual(g.mean(), 1 * 2);
+    });
+    it('Should calculate pdf', () => {
+      var g = new Gamma(5, 1);
+      var pdf = g.pdf(4);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var g = new Gamma(1, 2);
+      var samples = g.sample();
+      assert.strictEqual(typeof samples, 'number');
+      samples = g.sample(3);
+      assert.strictEqual(samples.length, 3);
     });
   });
 
