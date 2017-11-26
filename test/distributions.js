@@ -13,6 +13,8 @@ var Laplace     = dists.Laplace;
 var Logarithmic = dists.Logarithmic;
 var Logistic    = dists.Logistic;
 var LogLogistic = dists.LogLogistic;
+// var LogNormal = dists.LogNormal;
+var Normal      = dists.Normal;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -263,6 +265,33 @@ describe('Distributions', () => {
     it('Should sample values', () => {
       var l = new LogLogistic(1, 1);
       var samples = l.sample(2);
+      assert.strictEqual(samples.length, 2);
+    });
+  });
+
+  describe('Normal', () => {
+    it('Should instantiate', () => {
+      var n = new Normal(0, 1);
+      assert.strictEqual(n.m, 0);
+      assert.strictEqual(n.se, 1);
+    });
+    it('Should calculate cdf', () => {
+      var n = new Normal(0, 1);
+      var cdf = n.cdf(0);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var n = new Normal(0, 1);
+      assert.strictEqual(n.mean(), 0);
+    });
+    it('Should calculate pdf', () => {
+      var n = new Normal(0, 1);
+      var pdf = n.pdf(0);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var n = new Normal(0, 1);
+      var samples = n.sample(2);
       assert.strictEqual(samples.length, 2);
     });
   });
