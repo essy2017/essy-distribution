@@ -4,6 +4,7 @@ import { Erlang } from './src/Erlang';
 import { Exponential } from './src/Exponential';
 import { Gamma } from './src/Gamma';
 import { Laplace } from './src/Laplace';
+import { Logarithmic} from './src/Logarithmic';
 
 export default {
   Beta        : Beta,
@@ -11,5 +12,6 @@ export default {
   Erlang      : Erlang,
   Exponential : Exponential,
   Gamma       : Gamma,
-  Laplace     : Laplace
+  Laplace     : Laplace,
+  Logarithmic : Logarithmic
 };

@@ -10,6 +10,7 @@ var Erlang      = dists.Erlang;
 var Exponential = dists.Exponential;
 var Gamma       = dists.Gamma;
 var Laplace     = dists.Laplace;
+var Logarithmic = dists.Logarithmic;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -183,6 +184,28 @@ describe('Distributions', () => {
     });
     it('Should sample values', () => {
       var l = new Laplace(5, 1);
+      var samples = l.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Logarithmic', () => {
+    it('Should instantiate', () => {
+      var l = new Logarithmic(0.5);
+      assert.strictEqual(l.prob, 0.5);
+    });
+    // Couldn't calculate cdf. mathfn incBeta returns 1 when b === 0.
+    it('Should return mean', () => {
+      var l = new Logarithmic(0.5);
+      assert.strictEqual(l.mean(), (-1 / Math.log(1 - 0.5)) * (0.5 / (1 - 0.5)));
+    });
+    it('Should calculate pdf', () => {
+      var l = new Logarithmic(0.33);
+      var pdf = l.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new Logarithmic(0.5);
       var samples = l.sample(3);
       assert.strictEqual(samples.length, 3);
     });
