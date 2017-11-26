@@ -5,6 +5,7 @@ import { Exponential } from './src/Exponential';
 import { Gamma } from './src/Gamma';
 import { Laplace } from './src/Laplace';
 import { Logarithmic} from './src/Logarithmic';
+import { Logistic } from './src/Logistic';
 
 export default {
   Beta        : Beta,
@@ -13,5 +14,6 @@ export default {
   Exponential : Exponential,
   Gamma       : Gamma,
   Laplace     : Laplace,
-  Logarithmic : Logarithmic
+  Logarithmic : Logarithmic,
+  Logistic    : Logistic
 };
