@@ -6,6 +6,7 @@ import { Gamma } from './src/Gamma';
 import { Laplace } from './src/Laplace';
 import { Logarithmic} from './src/Logarithmic';
 import { Logistic } from './src/Logistic';
+import { LogLogistic } from './src/LogLogistic';
 
 export default {
   Beta        : Beta,
@@ -15,5 +16,6 @@ export default {
   Gamma       : Gamma,
   Laplace     : Laplace,
   Logarithmic : Logarithmic,
-  Logistic    : Logistic
+  Logistic    : Logistic,
+  LogLogistic : LogLogistic
 };

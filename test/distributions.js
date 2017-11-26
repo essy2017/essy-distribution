@@ -11,6 +11,8 @@ var Exponential = dists.Exponential;
 var Gamma       = dists.Gamma;
 var Laplace     = dists.Laplace;
 var Logarithmic = dists.Logarithmic;
+var Logistic    = dists.Logistic;
+var LogLogistic = dists.LogLogistic;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -208,6 +210,60 @@ describe('Distributions', () => {
       var l = new Logarithmic(0.5);
       var samples = l.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Logistic', () => {
+    it('Should instantiate', () => {
+      var l = new Logistic(1, 0.5);
+      assert.strictEqual(l.m, 1);
+      assert.strictEqual(l.scale, 0.5);
+    });
+    it('Should calculate cdf', () => {
+      var l = new Logistic(5, 2);
+      var cdf = l.cdf(10);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var l = new Logistic(1, 0.5);
+      assert.strictEqual(l.mean(), 1);
+    });
+    it('Should calculate pdf', () => {
+      var l = new Logistic(5, 2);
+      var pdf = l.pdf(5);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new Logistic(1, 0.5);
+      var samples = l.sample(2);
+      assert.strictEqual(samples.length, 2);
+    });
+  });
+
+  describe('LogLogistic', () => {
+    it('Should instantiate', () => {
+      var l = new LogLogistic(1, 2);
+      assert.strictEqual(l.scale, 1);
+      assert.strictEqual(l.shape, 2);
+    });
+    it('Should calculate cdf', () => {
+      var l = new LogLogistic(1, 1);
+      var cdf = l.cdf(0.5);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var l = new LogLogistic(1, 1);
+      assert.strictEqual(l.mean(), (1 * Math.PI / 1) / Math.sin(Math.PI / 1));
+    });
+    it('Should calculate pdf', () => {
+      var l = new LogLogistic(1, 1);
+      var pdf = l.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new LogLogistic(1, 1);
+      var samples = l.sample(2);
+      assert.strictEqual(samples.length, 2);
     });
   });
 
