@@ -24,7 +24,7 @@ Basic Usage
 Each distribution defines the following methods:
 
 #### cdf(x {Number})
-Cumulative density function.
+Cumulative distribution function.
 
 #### mean()
 Returns distribution mean.
