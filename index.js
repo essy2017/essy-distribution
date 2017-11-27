@@ -13,6 +13,7 @@ import { Poisson } from './src/Poisson';
 import { Rayleigh } from './src/Rayleigh';
 import { Triangular } from './src/Triangular';
 import { Uniform } from './src/Uniform';
+import { Weibull } from './src/Weibull';
 
 export default {
   Beta        : Beta,
@@ -29,5 +30,6 @@ export default {
   Poisson     : Poisson,
   Rayleigh    : Rayleigh,
   Triangular  : Triangular,
-  Uniform     : Uniform
+  Uniform     : Uniform,
+  Weibull     : Weibull
 };

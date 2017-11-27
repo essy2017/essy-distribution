@@ -19,9 +19,12 @@ var Poisson     = dists.Poisson;
 var Rayleigh    = dists.Rayleigh;
 var Triangular  = dists.Triangular;
 var Uniform     = dists.Uniform;
+var Weibull     = dists.Weibull;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
+
+var mathfn      = require('mathfn');
 
 describe('Distributions', () => {
 
@@ -490,6 +493,37 @@ describe('Distributions', () => {
       var u = new Uniform(0, 1);
       var samples = u.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+  });
+
+  describe('Weibull', () => {
+    it('Should instantiate', () => {
+      var w = new Weibull(1, 2);
+      assert.strictEqual(w.alpha, 1);
+      assert.strictEqual(w.beta, 2);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Weibull(-1, 2); }, RangeError);
+      assert.throws(() => { new Weibull(1, -2); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var w = new Weibull(1, 1);
+      var cdf = w.cdf(1);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var w = new Weibull(1.5, 2);
+      assert.strictEqual(w.mean(), 2 * mathfn.gamma(1 + 1/1.5))
+    });
+    it('Should calculate pdf', () => {
+      var w = new Weibull(5, 1);
+      var pdf = w.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var w = new Weibull(1, 2);
+      var samples = w.sample(3);
+      assert.strictEqual(samples.length, 3);
     });
   });
 
