@@ -1,5 +1,6 @@
 import { Beta } from './src/Beta';
 import { Binomial } from './src/Binomial';
+import { Custom } from './src/Custom';
 import { Erlang } from './src/Erlang';
 import { Exponential } from './src/Exponential';
 import { Gamma } from './src/Gamma';
@@ -19,6 +20,7 @@ import { Weibull } from './src/Weibull';
 export default {
   Beta        : Beta,
   Binomial    : Binomial,
+  Custom      : Custom,
   Erlang      : Erlang,
   Exponential : Exponential,
   Gamma       : Gamma,

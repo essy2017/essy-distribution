@@ -6,6 +6,7 @@ var assert      = require('assert');
 var dists       = require('../dist/bundle');
 var Beta        = dists.Beta;
 var Binomial    = dists.Binomial;
+var Custom      = dists.Custom;
 var Erlang      = dists.Erlang;
 var Exponential = dists.Exponential;
 var Gamma       = dists.Gamma;
@@ -648,6 +649,42 @@ describe('Distributions', () => {
       assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
     });
 
+  });
+  
+  describe('Custom', () => {
+    it('Should instantiate', () => {
+      var c = new Custom([4, 3, 1, 2]);
+      assert.deepEqual(c.values, [1, 2, 3, 4]);
+    });
+    it('Should calculate cdf', () => {
+      var c = new Custom([1, 3, 5, 6]);
+      assert.strictEqual(c.cdf(8), 1);
+      assert.strictEqual(c.cdf(3.5), 0.5);
+      assert.strictEqual(c.cdf(1.2), 0.25);
+      assert.strictEqual(c.cdf(0.4), 0);
+    });
+    it('Should return mean', () => {
+      var c = new Custom([1, 3, 2]);
+      assert.strictEqual(c.mean(), 2);
+    });
+    it('Should calculate pdf', () => {
+      var c = new Custom([1, 2, 2, 3, 4]);
+      assert.strictEqual(c.pdf(1), 0.2);
+      assert.strictEqual(c.pdf(2), 0.4);
+      assert.strictEqual(c.pdf(5), 0);
+    });
+    it('Should sample values', () => {
+      var c = new Custom([1, 2, 3, 4]);
+      var samples = c.sample(10);
+      assert.strictEqual(samples.length, 10);
+    });
+    it('Should return variance', () => {
+      var vals = [1, 2, 3];
+      var c = new Custom(vals);
+      var m = c.mean();
+      var sum = vals.reduce( (acc, cur) => acc + Math.pow(cur - m, 2) );
+      assert.strictEqual(c.variance(), sum / (vals.length - 1));
+    });
   });
 
 });

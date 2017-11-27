@@ -52,6 +52,9 @@ See [documentation](https://essytree.com/docs#dist-beta).
 #### Binomial(samples, probability)
 See [documentation](https://essytree.com/docs#dist-binomial).
 
+#### Custom(values)
+A custom distribution. The `values` argument should be an array of numbers.
+
 #### Erlang(shape, rate)
 See [documentation](https://essytree.com/docs#dist-erlang).
 
