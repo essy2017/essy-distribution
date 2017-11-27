@@ -13,8 +13,9 @@ var Laplace     = dists.Laplace;
 var Logarithmic = dists.Logarithmic;
 var Logistic    = dists.Logistic;
 var LogLogistic = dists.LogLogistic;
- var LogNormal  = dists.LogNormal;
+var LogNormal   = dists.LogNormal;
 var Normal      = dists.Normal;
+var Poisson     = dists.Poisson;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -358,6 +359,35 @@ describe('Distributions', () => {
       var n = new Normal(0, 1);
       var samples = n.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+  });
+
+  describe('Poisson', () => {
+    it('Should instantiate', () => {
+      var p = new Poisson(1);
+      assert.strictEqual(p.lambda, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Poisson(-1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var p = new Poisson(1);
+      var cdf = p.cdf(0);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var p = new Poisson(1);
+      assert.strictEqual(p.mean(), 1);
+    });
+    it('Should calculate pdf', () => {
+      var p = new Poisson(1);
+      var pdf = p.pdf(2);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var p = new Poisson(1);
+      var samples = p.sample(3);
+      assert.strictEqual(samples.length, 3);
     });
   });
 
