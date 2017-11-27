@@ -32,15 +32,13 @@ export class Poisson extends DistAbstract {
   * @method cdf
   * @param x {Number}
   * @return {Number}
+  * @throws {RangeError} If x is not 0 or a positive integer.
   */
   cdf (x) {
-    x = Math.floor(x);
-    if (x >= 0) {
-      return incompleteGamma.lower(x + 1, this.lambda) / factorial(x);
+    if (x < 0 || Math.floor(x) !== x) {
+      throw new RangeError('x must be 0 or a positive integer.')
     }
-    else {
-      return NaN;
-    }
+    return incompleteGamma.lower(x + 1, this.lambda) / factorial(x);
   }
 
  /**
@@ -57,8 +55,12 @@ export class Poisson extends DistAbstract {
   * @method pdf
   * @param x {Number}
   * @return {Number}
+  * @throws {RangeError} If x is not 0 or a positive integer.
   */
   pdf (x) {
+    if (x < 0 || Math.floor(x) !== x) {
+      throw new RangeError('x must be 0 or a positive integer.')
+    }
     return (Math.pow(this.lambda, x) * Math.exp(-this.lambda)) / factorial(x);
   }
 

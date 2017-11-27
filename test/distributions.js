@@ -42,6 +42,8 @@ describe('Distributions', () => {
       var beta = new Beta(2, 5);
       var cdf  = beta.cdf(.2);
       assert.ok(true);
+      assert.strictEqual(beta.cdf(-1), 0);
+      assert.strictEqual(beta.cdf(1.5), 0);
     });
     it('Should return mean', () => {
       var beta = new Beta(1, 2);
@@ -52,6 +54,8 @@ describe('Distributions', () => {
       var beta = new Beta(2, 5);
       var pdf = beta.pdf(.2);
       assert.ok(true);
+      assert.strictEqual(beta.pdf(-1), 0);
+      assert.strictEqual(beta.pdf(2), 0);
     });
     it('Should sample values', () => {
       var beta = new Beta(1, 2);
@@ -76,6 +80,7 @@ describe('Distributions', () => {
       var bin = new Binomial(20, 0.5);
       var cdf = bin.cdf(20);
       assert.ok(true);
+      assert.throws(() => { bin.cdf(1.5); }, RangeError);
     });
     it('Should return mean', () => {
       var bin = new Binomial(5, 0.2);
@@ -85,6 +90,7 @@ describe('Distributions', () => {
       var bin = new Binomial(40, 0.5);
       var pdf = bin.pdf(20);
       assert.ok(true);
+      assert.throws(() => { bin.pdf(-1); }, RangeError);
     });
     it('Should sample values', () => {
       var bin = new Binomial(5, 0.2);
@@ -109,6 +115,7 @@ describe('Distributions', () => {
       var er = new Erlang(5, 1);
       var cdf = er.cdf(10);
       assert.ok(true);
+      assert.strictEqual(er.cdf(-1), 0);
     });
     it('Should return mean', () => {
       var er = new Erlang(4, 0.5);
@@ -140,6 +147,7 @@ describe('Distributions', () => {
       var ex = new Exponential(0.5);
       var cdf = ex.cdf(1);
       assert.ok(true);
+      assert.strictEqual(ex.cdf(-1), 0);
     });
     it('Should return mean', () => {
       var ex = new Exponential(0.5);
@@ -149,6 +157,7 @@ describe('Distributions', () => {
       var ex = new Exponential(0.5);
       var pdf = ex.pdf(1);
       assert.ok(true);
+      assert.strictEqual(ex.pdf(-1), 0);
     });
     it('Should sample values', () => {
       var ex = new Exponential(0.5);
@@ -173,6 +182,7 @@ describe('Distributions', () => {
       var g = new Gamma(5, 1);
       var cdf = g.cdf(2);
       assert.ok(true);
+      assert.strictEqual(g.cdf(-1), 0);
     });
     it('Should return mean', () => {
       var g = new Gamma(1, 2);
@@ -182,6 +192,7 @@ describe('Distributions', () => {
       var g = new Gamma(5, 1);
       var pdf = g.pdf(4);
       assert.ok(true);
+      assert.strictEqual(g.pdf(-1), 0);
     });
     it('Should sample values', () => {
       var g = new Gamma(1, 2);
@@ -239,6 +250,7 @@ describe('Distributions', () => {
       var l = new Logarithmic(0.33);
       var pdf = l.pdf(1);
       assert.ok(true);
+      assert.throws(() => { l.pdf(0.5); }, RangeError);
     });
     it('Should sample values', () => {
       var l = new Logarithmic(0.5);
@@ -291,6 +303,7 @@ describe('Distributions', () => {
       var l = new LogLogistic(1, 1);
       var cdf = l.cdf(0.5);
       assert.ok(true);
+      assert.strictEqual(l.cdf(-1), 0);
     });
     it('Should return mean', () => {
       var l = new LogLogistic(1, 1);
@@ -300,6 +313,7 @@ describe('Distributions', () => {
       var l = new LogLogistic(1, 1);
       var pdf = l.pdf(1);
       assert.ok(true);
+      assert.strictEqual(l.pdf(-1), 0);
     });
     it('Should sample values', () => {
       var l = new LogLogistic(1, 1);
@@ -318,6 +332,7 @@ describe('Distributions', () => {
       var l = new LogNormal(0, 0.25);
       var cdf = l.cdf(.75);
       assert.ok(true);
+      assert.strictEqual(l.cdf(-1), 0);
     });
     it('Should enforce range', () => {
       assert.throws(() => { new LogNormal(1, -1); }, RangeError);
@@ -330,6 +345,7 @@ describe('Distributions', () => {
       var l = new LogNormal(0, 0.25);
       var pdf = l.pdf(1.5);
       assert.ok(true);
+      assert.strictEqual(l.pdf(-1), 0);
     });
     it('Should sample values', () => {
       var l = new LogNormal(0, 1);
@@ -380,6 +396,7 @@ describe('Distributions', () => {
       var p = new Poisson(1);
       var cdf = p.cdf(0);
       assert.ok(true);
+      assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should return mean', () => {
       var p = new Poisson(1);
@@ -389,6 +406,7 @@ describe('Distributions', () => {
       var p = new Poisson(1);
       var pdf = p.pdf(2);
       assert.ok(true);
+      assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should sample values', () => {
       var p = new Poisson(1);
@@ -409,6 +427,7 @@ describe('Distributions', () => {
       var r = new Rayleigh(2);
       var cdf = r.cdf(2);
       assert.ok(true);
+      assert.strictEqual(r.cdf(-1), 0);
     });
     it('Should return mean', () => {
       var r = new Rayleigh(2);
@@ -418,6 +437,7 @@ describe('Distributions', () => {
       var r = new Rayleigh(2);
       var pdf = r.pdf(2);
       assert.ok(true);
+      assert.strictEqual(r.pdf(-1), 0);
     });
     it('Should sample values', () => {
       var r = new Rayleigh(2);

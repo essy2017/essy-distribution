@@ -61,8 +61,12 @@ export class Logarithmic extends DistAbstract {
   * @method pdf
   * @param x {Number}
   * @return {Number}
+  * @throws {RangeError} If x is not a positive integer.
   */
   pdf (x) {
+    if (x < 1 || Math.floor(x) !== x) {
+      throw new RangeError('x must be a positive integer.');
+    }
     return (-1 / Math.log(1 - this.prob)) * (Math.pow(this.prob, x) / x);
   }
 

@@ -36,6 +36,7 @@ export class LogNormal extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x <= 0) return 0;
     return 0.5 + 0.5 * erf( (Math.log(x) - this.m) / (this.se * Math.sqrt(2)) );
   }
 
@@ -55,6 +56,7 @@ export class LogNormal extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x <= 0) return 0;
     return (1 / (x * this.se * Math.sqrt(2 * Math.PI))) * Math.exp(- (Math.pow(Math.log(x) - this.m, 2)) / (2 * Math.pow(this.se, 2)));
   }
 

@@ -41,6 +41,7 @@ export class Exponential extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0) return 0;
     return 1 - Math.exp(-x * this.lambda);
   }
 
@@ -60,6 +61,7 @@ export class Exponential extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x < 0) return 0;
     return this.lambda * Math.exp(-x * this.lambda);
   }
 

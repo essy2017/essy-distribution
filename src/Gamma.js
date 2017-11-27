@@ -86,6 +86,7 @@ export class Gamma extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0) return 0;
     return (1 / gamma(this.shape)) * incompleteGamma.lower(this.shape, x / this.scale);
   }
 
@@ -105,6 +106,7 @@ export class Gamma extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x < 0) return 0;
     return (1 / (gamma(this.shape) * Math.pow(this.scale, this.shape))) *
            Math.pow(x, this.shape - 1) *
            Math.exp(-x / this.scale);

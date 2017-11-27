@@ -83,6 +83,7 @@ export class Beta extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0 || x > 1) return 0;
     return incBeta(x, this.alpha, this.beta);
   }
 
@@ -102,6 +103,7 @@ export class Beta extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x < 0 || x > 1) return 0;
     const num = Math.pow(x, this.alpha - 1) * Math.pow(1 - x, this.beta - 1);
     const den = (gamma(this.alpha) * gamma(this.beta)) / gamma(this.alpha + this.beta);
     return num / den;

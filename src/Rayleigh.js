@@ -32,6 +32,7 @@ export class Rayleigh extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0) return 0;
     return 1 - Math.exp(- Math.pow(x, 2) / (2 * Math.pow(this.scale, 2)) );
   }
 
@@ -51,6 +52,7 @@ export class Rayleigh extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x < 0) return 0;
     return (x / Math.pow(this.scale, 2)) * Math.exp(- Math.pow(x, 2) / (2 * Math.pow(this.scale, 2)) );
   }
 

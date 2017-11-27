@@ -39,6 +39,7 @@ export class LogLogistic extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0) return 0;
     return 1 / (1 + Math.pow(x/this.scale, -this.shape));
   }
 
@@ -60,6 +61,7 @@ export class LogLogistic extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x < 0) return 0;
     const num = (this.shape / this.scale) * Math.pow(x / this.scale, this.shape - 1);
     const den = Math.pow(1 + Math.pow(x / this.scale, this.shape), 2);
     return num / den;

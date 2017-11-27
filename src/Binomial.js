@@ -107,8 +107,12 @@ export class Binomial extends DistAbstract {
   * @method cdf
   * @param x {Number}
   * @return {Number}
+  * @throws {RangeError} On invalid x.
   */
   cdf (x) {
+    if (x < 0 || Math.floor(x) !== x) {
+      throw new RangeError('x must be a positive integer.');
+    }
     return incBeta(1 - this.p, this.n - x, x + 1);
   }
 
@@ -126,8 +130,12 @@ export class Binomial extends DistAbstract {
   * @method pdf
   * @param x {Number}
   * @return {Number}
+  * @throws {RangeError} On invalid x.
   */
   pdf (x) {
+    if (x < 0 || Math.floor(x) !== x) {
+      throw new RangeError('x must be a positive integer.');
+    }
     return binCoeff(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
   }
 

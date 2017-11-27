@@ -39,6 +39,9 @@ export class Erlang extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 0) {
+      return 0;
+    }
     const num = incompleteGamma.lower(this.shape, x * this.rate);
     const den = factorial(this.shape - 1);
     return num / den;
