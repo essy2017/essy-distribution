@@ -12,6 +12,9 @@ distribution properties. Sampling functions are largely ported from CERN's
 [cern.jet.random](https://dst.lbl.gov/ACSSoftware/colt/api/cern/jet/random/package-summary.html) Java package.
 See the source code for details.
 
+This package was created during the development of [Essy Tree](https://essytree.com) to 
+support Monte Carlo simulations.
+
 Basic Usage
 -------------------------------------
 
