@@ -25,10 +25,13 @@ export class Logarithmic extends DistAbstract {
  /**
   * Constructor.
   * @method constructor
-  * @param prob {Number} Probability parameter value.
+  * @param prob {Number} Probability parameter value. [0, 1]
   */
   constructor (prob) {
     super();
+    if (prob < 0 || prob > 1) {
+      throw new RangeError('probability parameter must be in range [0, 1].');
+    }
     this.prob = prob;
   }
 
