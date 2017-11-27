@@ -11,6 +11,7 @@ import { LogNormal } from './src/LogNormal';
 import { Normal } from './src/Normal';
 import { Poisson } from './src/Poisson';
 import { Rayleigh } from './src/Rayleigh';
+import { Triangular } from './src/Triangular';
 
 export default {
   Beta        : Beta,
@@ -25,5 +26,6 @@ export default {
   LogNormal   : LogNormal,
   Normal      : Normal,
   Poisson     : Poisson,
-  Rayleigh    : Rayleigh
+  Rayleigh    : Rayleigh,
+  Triangular  : Triangular
 };

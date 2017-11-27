@@ -17,6 +17,7 @@ var LogNormal   = dists.LogNormal;
 var Normal      = dists.Normal;
 var Poisson     = dists.Poisson;
 var Rayleigh    = dists.Rayleigh;
+var Triangular  = dists.Triangular;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -417,6 +418,44 @@ describe('Distributions', () => {
     it('Should sample values', () => {
       var r = new Rayleigh(2);
       var samples = r.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Triangular', () => {
+    it('Should instantiate', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.min, 1);
+      assert.strictEqual(t.mode, 2);
+      assert.strictEqual(t.max, 3);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Triangular(1, 2, 0); }, RangeError);
+      assert.throws(() => { new Triangular(1, 0, 3); }, RangeError);
+      assert.throws(() => { new Triangular(1, 4, 3); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.cdf(0), 0);
+      assert.strictEqual(t.cdf(1.5), Math.pow(1.5-1, 2) / ((3-1)*(2-1)));
+      assert.strictEqual(t.cdf(2.5), 1 - Math.pow(3-2.5, 2) / ((3-1)*(3-2)));
+      assert.strictEqual(t.cdf(4), 1);
+    });
+    it('Should return mean', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.mean(), (1 + 2 + 3) / 3);
+    });
+    it('Should calculate pdf', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.pdf(0), 0);
+      assert.strictEqual(t.pdf(1.5), 2*(1.5-1)/((3-1)*(2-1)));
+      assert.strictEqual(t.pdf(2), 2 / (3 - 1));
+      assert.strictEqual(t.pdf(2.5), 2*(3-2.5)/((3-1)*(3-2)));
+      assert.strictEqual(t.pdf(3.5), 0);
+    });
+    it('Should sample values', () => {
+      var t = new Triangular(1, 2, 3);
+      var samples = t.sample(3);
       assert.strictEqual(samples.length, 3);
     });
   });
