@@ -16,9 +16,13 @@ export class Laplace extends DistAbstract {
   * @method constructor
   * @param location {Number} Location mu, real number.
   * @param scale {Number} Scale s, greater than 0.
+  * @throws {RangeError} On invalid parameter.
   */
   constructor (location, scale) {
     super();
+    if (scale <= 0) {
+      throw new RangeError('scale must be greater than 0.');
+    }
     this.location = location;
     this.scale = scale;
   }

@@ -24,10 +24,13 @@ export class Exponential extends DistAbstract {
  /**
   * Constructor.
   * @method constructor
-  * @param lambda {Number} Scale parameter value.
+  * @param lambda {Number} Scale parameter value. >0
   */
   constructor (lambda) {
     super();
+    if (lambda <= 0) {
+      throw new RangeError('lambda parameter must be greater than 0.');
+    }
     this.lambda = lambda;
   }
 

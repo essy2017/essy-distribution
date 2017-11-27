@@ -26,10 +26,14 @@ export class Normal extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param mean {Number} Mean parameter.
-  * @param se {Number} Standard error parameter.
+  * @param se {Number} Standard error parameter. >0.
+  * @throws {RangeError} If se parameter is not greater than 0.
   */
   constructor (mean, se) {
     super();
+    if (se <= 0) {
+      throw new RangeError('se parameter must be greater than 0.');
+    }
     this.m = mean;
     this.se = se;
   }

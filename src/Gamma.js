@@ -64,11 +64,17 @@ export class Gamma extends DistAbstract {
  /**
   * Constructor.
   * @method constructor
-  * @param shape {Number} Shape parameter value.
-  * @param scale {Number} Scale parameter value.
+  * @param shape {Number} Shape parameter value. >0
+  * @param scale {Number} Scale parameter value. >0
   */
   constructor (shape, scale) {
     super();
+    if (shape <= 0) {
+      throw new RangeError('shape parameter must be greater than 0.');
+    }
+    if (scale <= 0) {
+      throw new RangeError('scale parameter must be greater than 0.');
+    }
     this.shape = shape;
     this.scale = scale;
   }

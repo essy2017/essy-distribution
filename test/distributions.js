@@ -27,6 +27,10 @@ describe('Distributions', () => {
       assert.strictEqual(beta.alpha, 1);
       assert.strictEqual(beta.beta, 2);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Beta(0, 1); }, RangeError);
+      assert.throws(() => { new Beta(1, 0); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var beta = new Beta(2, 5);
       var cdf  = beta.cdf(.2);
@@ -57,6 +61,10 @@ describe('Distributions', () => {
       assert.strictEqual(bin.n, 5);
       assert.strictEqual(bin.p, 0.2);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Binomial(1.2, 0.2); }, RangeError);
+      assert.throws(() => { new Binomial(1, 1.5); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var bin = new Binomial(20, 0.5);
       var cdf = bin.cdf(20);
@@ -86,6 +94,10 @@ describe('Distributions', () => {
       assert.strictEqual(er.shape, 4);
       assert.strictEqual(er.rate, 0.5);
     });
+    it('Should enfore range', () => {
+      assert.throws(() => { new Erlang(-1, 0.5); }, RangeError);
+      assert.throws(() => { new Erlang(1, -2); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var er = new Erlang(5, 1);
       var cdf = er.cdf(10);
@@ -113,6 +125,9 @@ describe('Distributions', () => {
     it('Should instantiate', () => {
       var ex = new Exponential(0.5);
       assert.strictEqual(ex.lambda, 0.5);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Exponential(0); }, RangeError);
     });
     it('Should calculate cdf', () => {
       var ex = new Exponential(0.5);
@@ -143,6 +158,10 @@ describe('Distributions', () => {
       assert.strictEqual(g.shape, 1);
       assert.strictEqual(g.scale, 2);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Gamma(0, 1); }, RangeError);
+      assert.throws(() => { new Gamma(1, 0); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var g = new Gamma(5, 1);
       var cdf = g.cdf(2);
@@ -172,6 +191,9 @@ describe('Distributions', () => {
       assert.strictEqual(l.location, 5);
       assert.strictEqual(l.scale, 1);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Laplace(1, -1); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var l = new Laplace(0, 4);
       var cdf = l.cdf(-4);
@@ -198,6 +220,9 @@ describe('Distributions', () => {
       var l = new Logarithmic(0.5);
       assert.strictEqual(l.prob, 0.5);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Logarithmic(-1); }, RangeError);
+    });
     // Couldn't calculate cdf. mathfn incBeta returns 1 when b === 0.
     it('Should return mean', () => {
       var l = new Logarithmic(0.5);
@@ -220,6 +245,9 @@ describe('Distributions', () => {
       var l = new Logistic(1, 0.5);
       assert.strictEqual(l.m, 1);
       assert.strictEqual(l.scale, 0.5);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Logistic(1, -1); }, RangeError);
     });
     it('Should calculate cdf', () => {
       var l = new Logistic(5, 2);
@@ -248,6 +276,10 @@ describe('Distributions', () => {
       assert.strictEqual(l.scale, 1);
       assert.strictEqual(l.shape, 2);
     });
+    it('Should enforce range', () => {
+      assert.throws(() => { new LogLogistic(-1, 2); }, RangeError);
+      assert.throws(() => { new LogLogistic(1, -2); }, RangeError);
+    });
     it('Should calculate cdf', () => {
       var l = new LogLogistic(1, 1);
       var cdf = l.cdf(0.5);
@@ -274,6 +306,9 @@ describe('Distributions', () => {
       var n = new Normal(0, 1);
       assert.strictEqual(n.m, 0);
       assert.strictEqual(n.se, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Normal(0, -1); }, RangeError);
     });
     it('Should calculate cdf', () => {
       var n = new Normal(0, 1);

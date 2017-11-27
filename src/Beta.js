@@ -60,11 +60,18 @@ export class Beta extends DistAbstract {
  /**
   * Constructor.
   * @method constructor
-  * @param alpha {Number} Alpha parameter value.
-  * @param beta {Number} Beta parameter value.
+  * @param alpha {Number} Alpha parameter value. >0
+  * @param beta {Number} Beta parameter value. >0
+  * @throws {RangeError} If alpha or beta out of range.
   */
   constructor (alpha, beta) {
     super();
+    if (alpha <= 0) {
+      throw new RangeError('alpha parameter must be greater than 0.');
+    }
+    if (beta <= 0) {
+      throw new RangeError('beta parameter must be greater than 0.');
+    }
     this.alpha = alpha;
     this.beta = beta;
   }

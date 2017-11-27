@@ -18,10 +18,16 @@ export class Erlang extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param shape {Number} Shape k, a positive integer.
-  * @param rate {Number} Rate lambda.
+  * @param rate {Number} Rate lambda. >0
   */
   constructor (shape, rate) {
     super();
+    if (shape < 1 || Math.floor(shape) !== shape) {
+      throw new RangeError('shape parameter must be positive integer.');
+    }
+    if (rate <= 0) {
+      throw new RangeError('rate parameter must be positive.');
+    }
     this.shape = shape;
     this.rate = rate;
   }

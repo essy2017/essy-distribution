@@ -15,10 +15,14 @@ export class Logistic extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param mean {Number}
-  * @param scale {Number}
+  * @param scale {Number} > 0.
+  * @throws {RangeError} If scale is <= 0.
   */
   constructor (mean, scale) {
     super();
+    if (scale <= 0) {
+      throw new RangeError('scale parameter must be greater than 0.');
+    }
     this.m = mean;
     this.scale = scale;
   }

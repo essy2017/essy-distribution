@@ -22,6 +22,12 @@ export class LogLogistic extends DistAbstract {
   */
   constructor (scale, shape) {
     super();
+    if (scale <= 0) {
+      throw new RangeError('scale parameter must be greater than 0.');
+    }
+    if (shape <= 0) {
+      throw new RangeError('shape parameter must be greater than 0.');
+    }
     this.scale = scale;
     this.shape = shape;
   }
