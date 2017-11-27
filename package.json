@@ -1,6 +1,6 @@
 {
   "name": "essy-distribution",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Distributions and random sampling.",
   "main": "index.js",
   "scripts": {

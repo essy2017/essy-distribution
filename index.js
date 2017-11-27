@@ -11,6 +11,7 @@ import { LogNormal } from './src/LogNormal';
 import { Normal } from './src/Normal';
 import { Poisson } from './src/Poisson';
 import { Rayleigh } from './src/Rayleigh';
+import { StudentT } from './src/StudentT';
 import { Triangular } from './src/Triangular';
 import { Uniform } from './src/Uniform';
 import { Weibull } from './src/Weibull';
@@ -29,6 +30,7 @@ export default {
   Normal      : Normal,
   Poisson     : Poisson,
   Rayleigh    : Rayleigh,
+  StudentT    : StudentT,
   Triangular  : Triangular,
   Uniform     : Uniform,
   Weibull     : Weibull

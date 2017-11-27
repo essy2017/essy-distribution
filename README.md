@@ -82,6 +82,9 @@ See [documentation](https://essytree.com/docs#dist-poisson).
 #### Rayleigh(scale)
 See [documentation](https://essytree.com/docs#dist-rayleigh).
 
+#### StudentT(degreesOfFreedom)
+See [article](https://en.wikipedia.org/wiki/Student%27s_t-distribution).
+
 #### Triangular(min, mode, max)
 See [documentation](https://essytree.com/docs#dist-triangular).
 

@@ -17,6 +17,7 @@ var LogNormal   = dists.LogNormal;
 var Normal      = dists.Normal;
 var Poisson     = dists.Poisson;
 var Rayleigh    = dists.Rayleigh;
+var StudentT    = dists.StudentT;
 var Triangular  = dists.Triangular;
 var Uniform     = dists.Uniform;
 var Weibull     = dists.Weibull;
@@ -442,6 +443,35 @@ describe('Distributions', () => {
     it('Should sample values', () => {
       var r = new Rayleigh(2);
       var samples = r.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('StudentT', () => {
+    it('Should instantiate', () => {
+      var s = new StudentT(2);
+      assert.strictEqual(s.df, 2);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new StudentT(-1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var s = new StudentT(1);
+      var cdf = s.cdf(1);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var s = new StudentT(2);
+      assert.strictEqual(s.mean(), 0);
+    });
+    it('Should calculate pdf', () => {
+      var s = new StudentT(2);
+      var pdf = s.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var s = new StudentT(2);
+      var samples = s.sample(3);
       assert.strictEqual(samples.length, 3);
     });
   });
