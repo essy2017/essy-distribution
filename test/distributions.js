@@ -13,7 +13,7 @@ var Laplace     = dists.Laplace;
 var Logarithmic = dists.Logarithmic;
 var Logistic    = dists.Logistic;
 var LogLogistic = dists.LogLogistic;
-// var LogNormal = dists.LogNormal;
+ var LogNormal  = dists.LogNormal;
 var Normal      = dists.Normal;
 
 var Twister     = require('mersenne-twister');
@@ -296,6 +296,36 @@ describe('Distributions', () => {
     });
     it('Should sample values', () => {
       var l = new LogLogistic(1, 1);
+      var samples = l.sample(2);
+      assert.strictEqual(samples.length, 2);
+    });
+  });
+
+  describe('LogNormal', () => {
+    it('Should instantiate', () => {
+      var l = new LogNormal(0, 1);
+      assert.strictEqual(l.m, 0);
+      assert.strictEqual(l.se, 1);
+    });
+    it('Should calculate cdf', () => {
+      var l = new LogNormal(0, 0.25);
+      var cdf = l.cdf(.75);
+      assert.ok(true);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new LogNormal(1, -1); }, RangeError);
+    });
+    it('Should return mean', () => {
+      var l = new LogNormal(0, 1);
+      assert.strictEqual(l.mean(), Math.exp(0 + Math.pow(1, 2)/2))
+    });
+    it('Should calculate pdf', () => {
+      var l = new LogNormal(0, 0.25);
+      var pdf = l.pdf(1.5);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new LogNormal(0, 1);
       var samples = l.sample(2);
       assert.strictEqual(samples.length, 2);
     });

@@ -7,6 +7,7 @@ import { Laplace } from './src/Laplace';
 import { Logarithmic} from './src/Logarithmic';
 import { Logistic } from './src/Logistic';
 import { LogLogistic } from './src/LogLogistic';
+import { LogNormal } from './src/LogNormal';
 import { Normal } from './src/Normal';
 
 export default {
@@ -19,5 +20,6 @@ export default {
   Logarithmic : Logarithmic,
   Logistic    : Logistic,
   LogLogistic : LogLogistic,
+  LogNormal   : LogNormal,
   Normal      : Normal
 };
