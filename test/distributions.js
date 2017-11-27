@@ -16,6 +16,7 @@ var LogLogistic = dists.LogLogistic;
 var LogNormal   = dists.LogNormal;
 var Normal      = dists.Normal;
 var Poisson     = dists.Poisson;
+var Rayleigh    = dists.Rayleigh;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -387,6 +388,35 @@ describe('Distributions', () => {
     it('Should sample values', () => {
       var p = new Poisson(1);
       var samples = p.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Rayleigh', () => {
+    it('Should instantiate', () => {
+      var r = new Rayleigh(1);
+      assert.strictEqual(r.scale, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Rayleigh(-1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var r = new Rayleigh(2);
+      var cdf = r.cdf(2);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var r = new Rayleigh(2);
+      assert.strictEqual(r.mean(), 2 * Math.sqrt(Math.PI / 2));
+    });
+    it('Should calculate pdf', () => {
+      var r = new Rayleigh(2);
+      var pdf = r.pdf(2);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var r = new Rayleigh(2);
+      var samples = r.sample(3);
       assert.strictEqual(samples.length, 3);
     });
   });

@@ -10,6 +10,7 @@ import { LogLogistic } from './src/LogLogistic';
 import { LogNormal } from './src/LogNormal';
 import { Normal } from './src/Normal';
 import { Poisson } from './src/Poisson';
+import { Rayleigh } from './src/Rayleigh';
 
 export default {
   Beta        : Beta,
@@ -23,5 +24,6 @@ export default {
   LogLogistic : LogLogistic,
   LogNormal   : LogNormal,
   Normal      : Normal,
-  Poisson     : Poisson
+  Poisson     : Poisson,
+  Rayleigh    : Rayleigh
 };
