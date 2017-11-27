@@ -16,7 +16,7 @@
     "math"
   ],
   "author": "Spencer Cherry",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.0",
@@ -32,5 +32,10 @@
     "incomplete-gamma": "^1.0.1",
     "mathfn": "^1.0.1",
     "mersenne-twister": "^1.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/essy2017/essy-distribution.git"
+  },
+  "homepage": "https://github.com/essy2017/essy-distribution.git#readme"
 }
