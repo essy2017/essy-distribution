@@ -18,6 +18,7 @@ var Normal      = dists.Normal;
 var Poisson     = dists.Poisson;
 var Rayleigh    = dists.Rayleigh;
 var Triangular  = dists.Triangular;
+var Uniform     = dists.Uniform;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -457,6 +458,38 @@ describe('Distributions', () => {
       var t = new Triangular(1, 2, 3);
       var samples = t.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+  });
+
+  describe('Uniform', () => {
+    it('Should instantiate', () => {
+      var u = new Uniform(0, 1);
+      assert.strictEqual(u.min, 0);
+      assert.strictEqual(u.max, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Uniform(0, 0); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var u = new Uniform(0, 1);
+      assert.strictEqual(u.cdf(-1), 0);
+      assert.strictEqual(u.cdf(0.3), (0.3-0)/(1-0));
+      assert.strictEqual(u.cdf(2), 1);
+    });
+    it('Should return mean', () => {
+      var u = new Uniform(0, 1);
+      assert.strictEqual(u.mean(), (1-0)/2);
+    });
+    it('Should calculate pdf', () => {
+      var u = new Uniform(0, 1);
+      assert.strictEqual(u.pdf(-1), 0);
+      assert.strictEqual(u.pdf(0.3), 1 / (1-0));
+      assert.strictEqual(u.pdf(1.3), 0);
+    });
+    it('Should sample values', () => {
+      var u = new Uniform(0, 1);
+      var samples = u.sample(2);
+      assert.strictEqual(samples.length, 2);
     });
   });
 

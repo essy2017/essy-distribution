@@ -12,6 +12,7 @@ import { Normal } from './src/Normal';
 import { Poisson } from './src/Poisson';
 import { Rayleigh } from './src/Rayleigh';
 import { Triangular } from './src/Triangular';
+import { Uniform } from './src/Uniform';
 
 export default {
   Beta        : Beta,
@@ -27,5 +28,6 @@ export default {
   Normal      : Normal,
   Poisson     : Poisson,
   Rayleigh    : Rayleigh,
-  Triangular  : Triangular
+  Triangular  : Triangular,
+  Uniform     : Uniform
 };
