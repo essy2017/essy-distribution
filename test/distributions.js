@@ -645,8 +645,9 @@ describe('Distributions', () => {
     });
     it('Should return variance', () => {
       var w = new Weibull(2, 3);
-      assert.strictEqual(w.variance(), 2*2 * (mathfn.gamma(1+2/3) - Math.pow(mathfn.gamma(1+1/3), 2)));
+      assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
     });
+
   });
 
 });

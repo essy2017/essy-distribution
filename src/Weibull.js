@@ -84,6 +84,6 @@ export class Weibull extends DistAbstract {
   * @return {Number}
   */
   variance () {
-    return this.alpha*this.alpha * (gamma(1 + 2/this.beta) - Math.pow(gamma(1 + 1/this.beta), 2));
+    return this.beta*this.beta * (gamma(1 + 2/this.alpha) - Math.pow(gamma(1 + 1/this.alpha), 2));
   }
 }
