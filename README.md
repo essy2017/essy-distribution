@@ -1,6 +1,10 @@
 Javascript Distributions and Sampling
 =====================================
 
+Installation
+-------------------------------------
+    npm install essy-distribution
+
 Description
 -------------------------------------
 Defines multiple distributions with methods for random sampling and calculating
@@ -25,7 +29,7 @@ Cumulative density function.
 #### mean()
 Returns distribution mean.
 
-#### pdf(x)
+#### pdf(x {Number})
 Probability density function.
 
 #### sample([n {Number}] [,generator {Object}])
