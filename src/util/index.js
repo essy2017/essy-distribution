@@ -39,6 +39,15 @@ export class DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    throw new Error('median() not implemented.');
+  }
+
+ /**
   * Probability density function. Must be implemented by subclasses.
   * @method pdf
   * @param x {Number}

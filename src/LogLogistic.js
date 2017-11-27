@@ -55,6 +55,15 @@ export class LogLogistic extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return this.scale;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

@@ -53,6 +53,15 @@ export class Uniform extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return (this.min + this.max) / 2;
+  }
+  
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

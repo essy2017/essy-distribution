@@ -54,6 +54,15 @@ export class Weibull extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return this.beta * Math.pow(Math.log(2), 1 / this.alpha);
+  }
+  
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

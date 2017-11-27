@@ -1,7 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
-import { incBeta, gamma } from 'mathfn';
+import { incBeta, invIncBeta, gamma } from 'mathfn';
 
 // From jStat.
 function randn () {
@@ -94,6 +94,15 @@ export class Beta extends DistAbstract {
   */
   mean () {
     return this.alpha / (this.alpha + this.beta);
+  }
+
+ /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return invIncBeta(0.5, this.alpha, this.beta);
   }
 
  /**

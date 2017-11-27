@@ -126,6 +126,15 @@ export class Binomial extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return Math.floor(this.n * this.p);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

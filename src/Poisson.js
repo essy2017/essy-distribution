@@ -51,6 +51,15 @@ export class Poisson extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return Math.floor(this.lambda + 1/3 - 0.02/this.lambda);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

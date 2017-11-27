@@ -59,6 +59,19 @@ export class Custom extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    const n = this.values.length;
+    if (n % 2 === 0) {
+      return (this.values[n/2 - 1] + this.values[n/2]) / 2;
+    }
+    return this.values[(n - 1) / 2];
+  }
+
+ /**
   * Probability density function.
   * @method pdf 
   * @param x {Number}

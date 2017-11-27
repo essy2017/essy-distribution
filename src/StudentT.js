@@ -55,6 +55,15 @@ export class StudentT extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    return 0;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

@@ -52,6 +52,10 @@ describe('Distributions', () => {
       var mean = beta.mean();
       assert.strictEqual(mean, 1/3);
     });
+    it('Should return median', () => {
+      var b = new Beta(2, 2);
+      assert.strictEqual(b.median(), mathfn.invIncBeta(0.5, 2, 2));
+    });
     it('Should calculate pdf', () => {
       var beta = new Beta(2, 5);
       var pdf = beta.pdf(.2);
@@ -92,6 +96,10 @@ describe('Distributions', () => {
       var bin = new Binomial(5, 0.2);
       assert.strictEqual(bin.mean(), 5 * 0.2);
     });
+    it('Should return median', () => {
+      var bin = new Binomial(10, 0.3);
+      assert.strictEqual(bin.median(), Math.floor(10 * 0.3));
+    });
     it('Should calculate pdf', () => {
       var bin = new Binomial(40, 0.5);
       var pdf = bin.pdf(20);
@@ -108,6 +116,48 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var bin = new Binomial(10, 0.5);
       assert.strictEqual(bin.variance(), 10 * 0.5 * (1 - 0.5));
+    });
+  });
+
+  describe('Custom', () => {
+    it('Should instantiate', () => {
+      var c = new Custom([4, 3, 1, 2]);
+      assert.deepEqual(c.values, [1, 2, 3, 4]);
+    });
+    it('Should calculate cdf', () => {
+      var c = new Custom([1, 3, 5, 6]);
+      assert.strictEqual(c.cdf(8), 1);
+      assert.strictEqual(c.cdf(3.5), 0.5);
+      assert.strictEqual(c.cdf(1.2), 0.25);
+      assert.strictEqual(c.cdf(0.4), 0);
+    });
+    it('Should return mean', () => {
+      var c = new Custom([1, 3, 2]);
+      assert.strictEqual(c.mean(), 2);
+    });
+    it('Should return median', () => {
+      var c = new Custom([1, 2, 3, 4]);
+      assert.strictEqual(c.median(), 2.5);
+      c = new Custom([1, 2, 3]);
+      assert.strictEqual(c.median(), 2);
+    });
+    it('Should calculate pdf', () => {
+      var c = new Custom([1, 2, 2, 3, 4]);
+      assert.strictEqual(c.pdf(1), 0.2);
+      assert.strictEqual(c.pdf(2), 0.4);
+      assert.strictEqual(c.pdf(5), 0);
+    });
+    it('Should sample values', () => {
+      var c = new Custom([1, 2, 3, 4]);
+      var samples = c.sample(10);
+      assert.strictEqual(samples.length, 10);
+    });
+    it('Should return variance', () => {
+      var vals = [1, 2, 3];
+      var c = new Custom(vals);
+      var m = c.mean();
+      var sum = vals.reduce( (acc, cur) => acc + Math.pow(cur - m, 2) );
+      assert.strictEqual(c.variance(), sum / (vals.length - 1));
     });
   });
 
@@ -166,6 +216,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var ex = new Exponential(0.5);
       assert.strictEqual(ex.mean(), 1 / 0.5);
+    });
+    it('Should return median', () => {
+      var ex = new Exponential(0.3);
+      assert.strictEqual(ex.median(), Math.pow(0.3, -1) * Math.log(2));
     });
     it('Should calculate pdf', () => {
       var ex = new Exponential(0.5);
@@ -243,6 +297,10 @@ describe('Distributions', () => {
       var l = new Laplace(5, 1);
       assert.strictEqual(l.mean(), 5);
     });
+    it('Should return median', () => {
+      var l = new Laplace(5, 1);
+      assert.strictEqual(l.median(), 5);
+    });
     it('Should calculate pdf', () => {
       var l = new Laplace(0, 4);
       var pdf = l.pdf(0);
@@ -307,6 +365,10 @@ describe('Distributions', () => {
       var l = new Logistic(1, 0.5);
       assert.strictEqual(l.mean(), 1);
     });
+    it('Should return median', () => {
+      var l = new Logistic(10, 0.5);
+      assert.strictEqual(l.median(), 10);
+    });
     it('Should calculate pdf', () => {
       var l = new Logistic(5, 2);
       var pdf = l.pdf(5);
@@ -342,6 +404,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var l = new LogLogistic(1, 1);
       assert.strictEqual(l.mean(), (1 * Math.PI / 1) / Math.sin(Math.PI / 1));
+    });
+    it('Should return median', () => {
+      var l = new LogLogistic(2, 1);
+      assert.strictEqual(l.median(), 2);
     });
     it('Should calculate pdf', () => {
       var l = new LogLogistic(1, 1);
@@ -379,6 +445,10 @@ describe('Distributions', () => {
       var l = new LogNormal(0, 1);
       assert.strictEqual(l.mean(), Math.exp(0 + Math.pow(1, 2)/2))
     });
+    it('Should return median', () => {
+      var l = new LogNormal(0, 1);
+      assert.strictEqual(l.median(), Math.exp(0));
+    });
     it('Should calculate pdf', () => {
       var l = new LogNormal(0, 0.25);
       var pdf = l.pdf(1.5);
@@ -414,6 +484,10 @@ describe('Distributions', () => {
       var n = new Normal(0, 1);
       assert.strictEqual(n.mean(), 0);
     });
+    it('Should return median', () => {
+      var n = new Normal(10, 2);
+      assert.strictEqual(n.median(), 10);
+    });
     it('Should calculate pdf', () => {
       var n = new Normal(0, 1);
       var pdf = n.pdf(0);
@@ -447,6 +521,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var p = new Poisson(1);
       assert.strictEqual(p.mean(), 1);
+    });
+    it('Should return median', () => {
+      var p = new Poisson(2);
+      assert.strictEqual(p.median(), Math.floor(2 + 1/3 - 0.02/2));
     });
     it('Should calculate pdf', () => {
       var p = new Poisson(1);
@@ -483,6 +561,10 @@ describe('Distributions', () => {
       var r = new Rayleigh(2);
       assert.strictEqual(r.mean(), 2 * Math.sqrt(Math.PI / 2));
     });
+    it('Should return median', () => {
+      var r = new Rayleigh(2);
+      assert.strictEqual(r.median(), 2 * Math.sqrt(2 * Math.log(2)));
+    });
     it('Should calculate pdf', () => {
       var r = new Rayleigh(2);
       var pdf = r.pdf(2);
@@ -516,6 +598,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var s = new StudentT(2);
       assert.strictEqual(s.mean(), 0);
+    });
+    it('Should return median', () => {
+      var s = new StudentT(4);
+      assert.strictEqual(s.median(), 0);
     });
     it('Should calculate pdf', () => {
       var s = new StudentT(2);
@@ -560,6 +646,12 @@ describe('Distributions', () => {
       var t = new Triangular(1, 2, 3);
       assert.strictEqual(t.mean(), (1 + 2 + 3) / 3);
     });
+    it('Should return median', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.median(), 3 - Math.sqrt(((3-1)*(3-2))/2));
+      t = new Triangular(1, 5, 6);
+      assert.strictEqual(t.median(), 1 + Math.sqrt(((6-1)*(5-1))/2));
+    });
     it('Should calculate pdf', () => {
       var t = new Triangular(1, 2, 3);
       assert.strictEqual(t.pdf(0), 0);
@@ -596,7 +688,11 @@ describe('Distributions', () => {
     });
     it('Should return mean', () => {
       var u = new Uniform(0, 1);
-      assert.strictEqual(u.mean(), (1-0)/2);
+      assert.strictEqual(u.mean(), (0+1)/2);
+    });
+    it('Should return median', () => {
+      var u = new Uniform(10, 15);
+      assert.strictEqual(u.median(), (10+15)/2);
     });
     it('Should calculate pdf', () => {
       var u = new Uniform(0, 1);
@@ -634,6 +730,10 @@ describe('Distributions', () => {
       var w = new Weibull(1.5, 2);
       assert.strictEqual(w.mean(), 2 * mathfn.gamma(1 + 1/1.5))
     });
+    it('Should return median', () => {
+      var w = new Weibull(3, 4);
+      assert.strictEqual(w.median(), 4 * Math.pow(Math.log(2), 1 / 3));
+    });
     it('Should calculate pdf', () => {
       var w = new Weibull(5, 1);
       var pdf = w.pdf(1);
@@ -649,42 +749,6 @@ describe('Distributions', () => {
       assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
     });
 
-  });
-  
-  describe('Custom', () => {
-    it('Should instantiate', () => {
-      var c = new Custom([4, 3, 1, 2]);
-      assert.deepEqual(c.values, [1, 2, 3, 4]);
-    });
-    it('Should calculate cdf', () => {
-      var c = new Custom([1, 3, 5, 6]);
-      assert.strictEqual(c.cdf(8), 1);
-      assert.strictEqual(c.cdf(3.5), 0.5);
-      assert.strictEqual(c.cdf(1.2), 0.25);
-      assert.strictEqual(c.cdf(0.4), 0);
-    });
-    it('Should return mean', () => {
-      var c = new Custom([1, 3, 2]);
-      assert.strictEqual(c.mean(), 2);
-    });
-    it('Should calculate pdf', () => {
-      var c = new Custom([1, 2, 2, 3, 4]);
-      assert.strictEqual(c.pdf(1), 0.2);
-      assert.strictEqual(c.pdf(2), 0.4);
-      assert.strictEqual(c.pdf(5), 0);
-    });
-    it('Should sample values', () => {
-      var c = new Custom([1, 2, 3, 4]);
-      var samples = c.sample(10);
-      assert.strictEqual(samples.length, 10);
-    });
-    it('Should return variance', () => {
-      var vals = [1, 2, 3];
-      var c = new Custom(vals);
-      var m = c.mean();
-      var sum = vals.reduce( (acc, cur) => acc + Math.pow(cur - m, 2) );
-      assert.strictEqual(c.variance(), sum / (vals.length - 1));
-    });
   });
 
 });

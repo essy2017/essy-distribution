@@ -32,6 +32,9 @@ Cumulative distribution function.
 #### mean()
 Returns distribution mean.
 
+#### median()
+Returns distribution median.
+
 #### pdf(x {Number})
 Probability density function.
 
@@ -59,19 +62,19 @@ See [documentation](https://essytree.com/docs#dist-binomial).
 A custom distribution. The `values` argument should be an array of numbers.
 
 #### Erlang(shape, rate)
-See [documentation](https://essytree.com/docs#dist-erlang).
+See [documentation](https://essytree.com/docs#dist-erlang). Does not define `median()`.
 
 #### Exponential(lambda)
 See [documentation](https://essytree.com/docs#dist-exponential).
 
 #### Gamma(shape, scale)
-See [documentation](https://essytree.com/docs#dist-gamma).
+See [documentation](https://essytree.com/docs#dist-gamma). Does not define `median()`.
 
 #### Laplace(location, scale)
 See [documentation](https://essytree.com/docs#dist-laplace).
 
 #### Logarithmic(probability)
-See [documentation](https://essytree.com/docs#dist-logarithmic).
+See [documentation](https://essytree.com/docs#dist-logarithmic). Does not define `median()`.
 
 #### Logistic(mean, scale)
 See [documentation](https://essytree.com/docs#dist-logistic).

@@ -64,6 +64,20 @@ export class Triangular extends DistAbstract {
   }
 
  /**
+  * Returns distribution median.
+  * @method median 
+  * @return {Number}
+  */  
+  median () {
+    if (this.mode >= ((this.min + this.max) / 2)) {
+      return this.min + Math.sqrt(((this.max - this.min)*(this.mode - this.min)) / 2);
+    }
+    else {
+      return this.max - Math.sqrt(((this.max - this.min)*(this.max - this.mode)) / 2);
+    }
+  }
+  
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
