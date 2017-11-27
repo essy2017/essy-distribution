@@ -72,4 +72,12 @@ export class LogNormal extends DistAbstract {
     return Math.exp(this.m + s * this.se);
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return (Math.exp(this.se*this.se) - 1) * Math.exp(2*this.m + this.se*this.se);
+  }
 }

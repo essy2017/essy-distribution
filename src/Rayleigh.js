@@ -66,4 +66,13 @@ export class Rayleigh extends DistAbstract {
     return this.scale * Math.sqrt(-2 * Math.log(1 - generator.random()));
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return ((4 - Math.PI) / 2) * this.scale * this.scale;
+  }
+
 }

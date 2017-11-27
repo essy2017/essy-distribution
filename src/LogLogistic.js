@@ -79,4 +79,13 @@ export class LogLogistic extends DistAbstract {
     return Math.exp(s);
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return Math.pow(this.scale, 2) * ((2*this.shape / Math.sin(2*this.shape)) - (Math.pow(this.shape, 2) / Math.pow(Math.sin(this.shape), 2)));
+  }
+
 }

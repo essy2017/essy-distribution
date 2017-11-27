@@ -246,4 +246,13 @@ export class Gamma extends DistAbstract {
 	  }
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return this.shape * (this.scale * this.scale);
+  }
+
 }

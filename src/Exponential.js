@@ -75,4 +75,13 @@ export class Exponential extends DistAbstract {
     return -Math.log(generator.random()) / this.lambda;
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return Math.pow(this.lambda, -2);
+  }
+
 }

@@ -86,4 +86,18 @@ export class StudentT extends DistAbstract {
     return u * Math.sqrt(this.df * (Math.exp(- 2 / this.df * Math.log(w)) - 1) / w);
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    if (this.df > 2) {
+      return this.df / (this.df - 2);
+    }
+    if (this.df > 1) {
+      return Number.POSITIVE_INFINITY;
+    }
+    return NaN;
+  }
 }

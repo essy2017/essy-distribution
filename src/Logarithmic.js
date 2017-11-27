@@ -118,4 +118,13 @@ export class Logarithmic extends DistAbstract {
 
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return -this.prob * ((this.prob + Math.log(1 - this.prob)) / (Math.pow(1 - this.prob, 2) * Math.pow(Math.log(1 - this.prob), 2)));
+  }
+
 }

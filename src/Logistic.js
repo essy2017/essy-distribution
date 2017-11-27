@@ -68,4 +68,13 @@ export class Logistic extends DistAbstract {
     return this.m + this.scale * Math.log(x / (1 - x));
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return (this.scale*this.scale * Math.PI*Math.PI) / 3;
+  }
+
 }

@@ -107,4 +107,13 @@ export class Triangular extends DistAbstract {
     }
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return (this.min*this.min + this.mode*this.mode + this.max*this.max - this.min*this.max - this.min*this.mode - this.max*this.mode) / 18;
+  }
+
 }

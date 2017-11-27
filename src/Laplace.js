@@ -73,4 +73,13 @@ export class Laplace extends DistAbstract {
     return this.location - this.scale * sgn * Math.log(1 - 2*Math.abs(u));
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return 2 * this.scale * this.scale;
+  }
+
 }

@@ -278,4 +278,12 @@ export class Binomial extends DistAbstract {
     	return (p>0.5) ? (n-K) : K;
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return this.n * this.p * (1 - this.p);
+  }
 }

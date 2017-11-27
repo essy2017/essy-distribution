@@ -120,4 +120,12 @@ export class Beta extends DistAbstract {
     return u / (u + randg(this.beta, generator));
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return (this.alpha * this.beta) / (Math.pow(this.alpha + this.beta, 2) * (this.alpha + this.beta + 1));
+  }
 }

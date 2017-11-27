@@ -75,4 +75,12 @@ export class Uniform extends DistAbstract {
     return this.min + (this.max - this.min) * generator.random();
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return (1/12) * Math.pow(this.max - this.min, 2);
+  }
 }

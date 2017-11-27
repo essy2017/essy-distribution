@@ -88,4 +88,13 @@ export class Normal extends DistAbstract {
     return this.m + this.se * y * z;
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return this.se * this.se;
+  }
+
 }

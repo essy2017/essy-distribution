@@ -81,4 +81,13 @@ export class Poisson extends DistAbstract {
     return k - 1;
   }
 
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return this.lambda;
+  }
+
 }

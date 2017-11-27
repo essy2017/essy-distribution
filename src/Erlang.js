@@ -84,4 +84,13 @@ export class Erlang extends DistAbstract {
     }
     return -Math.log(prod)/this.rate;
   }
+
+ /**
+  * Returns variance.
+  * @method variance
+  * @return {Number}
+  */
+  variance () {
+    return this.shape / Math.pow(this.rate, 2);
+  }
 }

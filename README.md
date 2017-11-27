@@ -40,6 +40,9 @@ values is returned.
 The method accepts an optional `generator` object that defines a method `random()`.
 If no generator is provided a [mersenne-twister](https://www.npmjs.com/package/mersenne-twister) is used.
 
+#### variance()
+Returns variance.
+
 Distributions
 -------------------------------------
 

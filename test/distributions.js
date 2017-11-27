@@ -65,6 +65,10 @@ describe('Distributions', () => {
       samples = beta.sample(4);
       assert.strictEqual(samples.length, 4);
     });
+    it('Should return variance', () => {
+      var beta = new Beta(2, 5);
+      assert.strictEqual(beta.variance(), (2*5)/(Math.pow(2+5,2)*(2+5+1)));
+    });
   });
 
   describe('Binomial', () => {
@@ -100,6 +104,10 @@ describe('Distributions', () => {
       samples = bin.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var bin = new Binomial(10, 0.5);
+      assert.strictEqual(bin.variance(), 10 * 0.5 * (1 - 0.5));
+    });
   });
 
   describe('Erlang', () => {
@@ -134,6 +142,10 @@ describe('Distributions', () => {
       samples = er.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var er = new Erlang(4, 0.5);
+      assert.strictEqual(er.variance(), 4 / Math.pow(0.5, 2));
+    });
   });
 
   describe('Exponential', () => {
@@ -166,6 +178,10 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = ex.sample(4);
       assert.strictEqual(samples.length, 4);
+    });
+    it('Should return variance', () => {
+      var ex = new Exponential(0.5);
+      assert.strictEqual(ex.variance(), Math.pow(0.5, -2));
     });
   });
 
@@ -202,6 +218,10 @@ describe('Distributions', () => {
       samples = g.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var g = new Gamma(1, 2);
+      assert.strictEqual(g.variance(), 1 * 2 * 2);
+    });
   });
 
   describe('Laplace', () => {
@@ -232,6 +252,10 @@ describe('Distributions', () => {
       var samples = l.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var l = new Laplace(5, 3);
+      assert.strictEqual(l.variance(), 2 * 3 * 3);
+    });
   });
 
   describe('Logarithmic', () => {
@@ -257,6 +281,10 @@ describe('Distributions', () => {
       var l = new Logarithmic(0.5);
       var samples = l.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var l = new Logarithmic(0.5);
+      assert.strictEqual(l.variance(), -0.5*((0.5+Math.log(1-0.5)) / (Math.pow(1-0.5, 2) * Math.pow(Math.log(1-0.5), 2))));
     });
   });
 
@@ -287,6 +315,10 @@ describe('Distributions', () => {
       var l = new Logistic(1, 0.5);
       var samples = l.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+    it('Should return variance', () => {
+      var l = new Logistic(1, 0.3);
+      assert.strictEqual(l.variance(), (0.3*0.3 * Math.PI*Math.PI)/3);
     });
   });
 
@@ -321,6 +353,10 @@ describe('Distributions', () => {
       var samples = l.sample(2);
       assert.strictEqual(samples.length, 2);
     });
+    it('Should return variance', () => {
+      var l = new LogLogistic(1, 3);
+      assert.strictEqual(l.variance(), 1*1*((2*3/Math.sin(2*3)) - 3*3/Math.pow(Math.sin(3), 2)));
+    });
   });
 
   describe('LogNormal', () => {
@@ -353,6 +389,10 @@ describe('Distributions', () => {
       var samples = l.sample(2);
       assert.strictEqual(samples.length, 2);
     });
+    it('Should return variance', () => {
+      var l = new LogNormal(1, 2);
+      assert.strictEqual(l.variance(), (Math.exp(2*2) - 1)*Math.exp(2*1*1 + 2*2));
+    });
   });
 
   describe('Normal', () => {
@@ -382,6 +422,10 @@ describe('Distributions', () => {
       var n = new Normal(0, 1);
       var samples = n.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+    it('Should return variance', () => {
+      var n = new Normal(10, 3);
+      assert.strictEqual(n.variance(), 3*3);
     });
   });
 
@@ -414,6 +458,10 @@ describe('Distributions', () => {
       var samples = p.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var p = new Poisson(2);
+      assert.strictEqual(p.variance(), 2);
+    });
   });
 
   describe('Rayleigh', () => {
@@ -445,6 +493,10 @@ describe('Distributions', () => {
       var samples = r.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var r = new Rayleigh(2);
+      assert.strictEqual(r.variance(), ((4-Math.PI)/2) * 2*2);
+    });
   });
 
   describe('StudentT', () => {
@@ -473,6 +525,14 @@ describe('Distributions', () => {
       var s = new StudentT(2);
       var samples = s.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var s = new StudentT(3);
+      assert.strictEqual(s.variance(), 3/(3-2));
+      s.df = 1.5;
+      assert.strictEqual(s.variance(), Number.POSITIVE_INFINITY);
+      s.df = 0.5;
+      assert.ok(isNaN(s.variance()));
     });
   });
 
@@ -512,6 +572,10 @@ describe('Distributions', () => {
       var samples = t.sample(3);
       assert.strictEqual(samples.length, 3);
     });
+    it('Should return variance', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.variance(), (1*1 + 2*2 + 3*3 - 1*2 - 2*3 - 1*3)/18);
+    });
   });
 
   describe('Uniform', () => {
@@ -544,6 +608,10 @@ describe('Distributions', () => {
       var samples = u.sample(2);
       assert.strictEqual(samples.length, 2);
     });
+    it('Should return variance', () => {
+      var u = new Uniform(1, 2);
+      assert.strictEqual(u.variance(), (1/12)*Math.pow(2-1, 2));
+    });
   });
 
   describe('Weibull', () => {
@@ -574,6 +642,10 @@ describe('Distributions', () => {
       var w = new Weibull(1, 2);
       var samples = w.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var w = new Weibull(2, 3);
+      assert.strictEqual(w.variance(), 2*2 * (mathfn.gamma(1+2/3) - Math.pow(mathfn.gamma(1+1/3), 2)));
     });
   });
 
