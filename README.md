@@ -100,6 +100,9 @@ See [documentation](https://essytree.com/docs#dist-lognormal).
 #### Normal(mean, se)
 See [documentation](https://essytree.com/docs#dist-normal).
 
+#### Pareto(scale, shape)
+See [article](https://en.wikipedia.org/wiki/Pareto_distribution).
+
 #### Poisson(lambda)
 See [documentation](https://essytree.com/docs#dist-poisson).
 

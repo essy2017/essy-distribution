@@ -20,6 +20,7 @@ var Logistic        = dists.Logistic;
 var LogLogistic     = dists.LogLogistic;
 var LogNormal       = dists.LogNormal;
 var Normal          = dists.Normal;
+var Pareto          = dists.Pareto;
 var Poisson         = dists.Poisson;
 var Rayleigh        = dists.Rayleigh;
 var StudentT        = dists.StudentT;
@@ -657,6 +658,49 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var n = new Normal(10, 3);
       assert.strictEqual(n.variance(), 3*3);
+    });
+  });
+
+  describe('Pareto', () => {
+    it('Should instantiate', () => {
+      var p = new Pareto(1, 2);
+      assert.strictEqual(p.scale, 1);
+      assert.strictEqual(p.shape, 2);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Pareto(-1, 1); }, RangeError);
+      assert.throws(() => { new Pareto(1, -1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var p = new Pareto(2, 3);
+      var cdf = p.cdf(3);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var p = new Pareto(1, 2);
+      assert.strictEqual(p.mean(), (1*2)/(2-1));
+      p = new Pareto(1, 1);
+      assert.strictEqual(p.mean(), Number.POSITIVE_INFINITY);
+    });
+    it('Should return median', () => {
+      var p = new Pareto(1, 3);
+      assert.strictEqual(p.median(), 1 * Math.pow(2, 1/3));
+    });
+    it('Should calculate pdf', () => {
+      var p = new Pareto(1, 3);
+      assert.strictEqual(p.pdf(1), 3);
+      assert.strictEqual(p.pdf(0), 0);
+    });
+    it('Should sample values', () => {
+      var p = new Pareto(1, 3);
+      var samples = p.sample(2);
+      assert.strictEqual(samples.length, 2);
+    });
+    it('Should return variance', () => {
+      var p = new Pareto(2, 3);
+      assert.strictEqual(p.variance(), (Math.pow(2,2)*3)/(Math.pow(3-1, 2)*(3-2)));
+      p = new Pareto(2, 2);
+      assert.strictEqual(p.variance(), Number.POSITIVE_INFINITY);
     });
   });
 

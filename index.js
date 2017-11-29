@@ -14,6 +14,7 @@ import { Logistic } from './src/Logistic';
 import { LogLogistic } from './src/LogLogistic';
 import { LogNormal } from './src/LogNormal';
 import { Normal } from './src/Normal';
+import { Pareto } from './src/Pareto';
 import { Poisson } from './src/Poisson';
 import { Rayleigh } from './src/Rayleigh';
 import { StudentT } from './src/StudentT';
@@ -38,6 +39,7 @@ export default {
   LogLogistic     : LogLogistic,
   LogNormal       : LogNormal,
   Normal          : Normal,
+  Pareto          : Pareto,
   Poisson         : Poisson,
   Rayleigh        : Rayleigh,
   StudentT        : StudentT,
