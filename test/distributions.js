@@ -34,6 +34,10 @@ var Rando       = { random: Math.random };
 var mathfn      = require('mathfn');
 
 
+function roundIt (n, dec) {
+  return Math.round(n * Math.pow(10, dec)) / Math.pow(10, dec);
+}
+
 describe('Distributions', () => {
 
   describe('Beta', () => {
@@ -48,8 +52,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var beta = new Beta(2, 5);
-      var cdf  = beta.cdf(.2);
-      assert.ok(true);
+
+      // Test against Excel values. BETA.DIST(0.4, 2, 5, true).
+      assert.strictEqual(beta.cdf(0.4), 0.76672);
+
+      // Out of range.
       assert.strictEqual(beta.cdf(-1), 0);
       assert.strictEqual(beta.cdf(1.5), 0);
     });
@@ -64,8 +71,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var beta = new Beta(2, 5);
-      var pdf = beta.pdf(.2);
-      assert.ok(true);
+
+      // Test against Excel values. BETA.DIST(0.4, 2, 5, false).
+      assert.strictEqual(beta.pdf(0.4), 1.5552);
+
+      // Out of range.
       assert.strictEqual(beta.pdf(-1), 0);
       assert.strictEqual(beta.pdf(2), 0);
     });
@@ -94,8 +104,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var bin = new Binomial(20, 0.5);
-      var cdf = bin.cdf(20);
-      assert.ok(true);
+
+      // Test against Excel. BINOM.DIST(15, 20, 0.5, true).
+      assert.strictEqual(roundIt(bin.cdf(15), 5), 0.99409);
+
+      // Out of bounds.
       assert.throws(() => { bin.cdf(1.5); }, RangeError);
     });
     it('Should return mean', () => {
@@ -107,9 +120,12 @@ describe('Distributions', () => {
       assert.strictEqual(bin.median(), Math.floor(10 * 0.3));
     });
     it('Should calculate pdf', () => {
-      var bin = new Binomial(40, 0.5);
-      var pdf = bin.pdf(20);
-      assert.ok(true);
+      var bin = new Binomial(20, 0.5);
+
+      // Test against Excel. BINOM.DIST(15, 20, 0.5, false).
+      assert.strictEqual(roundIt(bin.pdf(15), 5), 0.01479);
+
+      // Out of bounds.
       assert.throws(() => { bin.pdf(-1); }, RangeError);
     });
     it('Should sample values', () => {
@@ -172,8 +188,9 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var c = new ChiSquared(2);
-      var cdf = c.cdf(8);
-      assert.ok(true);
+
+      // Test against Excel. CHISQ.DIST(8, 2, true).
+      assert.strictEqual(roundIt(c.cdf(8), 5), 0.98168);
     });
     it('Should return mean', () => {
       var c = new ChiSquared(2);
@@ -185,8 +202,9 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var c = new ChiSquared(2);
-      var pdf = c.pdf(1);
-      assert.ok(true);
+
+      // Test against Excel. CHISQ.DIST(8, 2, false).
+      assert.strictEqual(roundIt(c.pdf(8), 5), 0.00916);
     });
     it('Should sample values', () => {
       var c = new ChiSquared(2);
@@ -289,8 +307,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var ex = new Exponential(0.5);
-      var cdf = ex.cdf(1);
-      assert.ok(true);
+
+      // Test against Excel. EXPON.DIST(1, 0.5, true).
+      assert.strictEqual(roundIt(ex.cdf(1), 5), 0.39347);
+
+      // Out of range.
       assert.strictEqual(ex.cdf(-1), 0);
     });
     it('Should return mean', () => {
@@ -303,8 +324,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var ex = new Exponential(0.5);
-      var pdf = ex.pdf(1);
-      assert.ok(true);
+
+      // Test against Excel. EXPON.DIST(1, 0.5, false).
+      assert.strictEqual(roundIt(ex.pdf(1), 5), 0.30327);
+
+      // Out of range.
       assert.strictEqual(ex.pdf(-1), 0);
     });
     it('Should sample values', () => {
@@ -332,8 +356,9 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var f = new F(5, 2);
-      var cdf = f.cdf(1);
-      assert.ok(true);
+
+      // Test against Excel. F.DIST(1, 5, 2, true).
+      assert.strictEqual(roundIt(f.cdf(1), 5), 0.43120);
     });
     it('Should return mean', () => {
       var f = new F(2, 3);
@@ -347,8 +372,9 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var f = new F(5, 2);
-      var pdf = f.pdf(1);
-      assert.ok(true);
+
+      // Test against Excel. F.DIST(1, 5, 2, false).
+      assert.strictEqual(roundIt(f.pdf(1), 5), 0.30800);
     });
     it('Should sample values', () => {
       var f = new F(100, 200);
@@ -375,8 +401,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var g = new Gamma(5, 1);
-      var cdf = g.cdf(2);
-      assert.ok(true);
+
+      // Test against Excel. GAMMA.DIST(2, 5, 1, true).
+      assert.strictEqual(roundIt(g.cdf(2), 5), 0.05265);
+
+      // Out of range.
       assert.strictEqual(g.cdf(-1), 0);
     });
     it('Should return mean', () => {
@@ -385,8 +414,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var g = new Gamma(5, 1);
-      var pdf = g.pdf(4);
-      assert.ok(true);
+
+      // Test against Excel. GAMMA.DIST(2, 5, 1, false).
+      assert.strictEqual(roundIt(g.pdf(2), 5), 0.09022);
+
+      // Out of range.
       assert.strictEqual(g.pdf(-1), 0);
     });
     it('Should sample values', () => {
@@ -422,8 +454,9 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var h = new Hypergeometric(500, 60, 200);
-      var pdf = h.pdf(25);
-      assert.ok(true);
+
+      // Test against Excel. HYPGEOM.DIST(25, 200, 60, 500, false).
+      assert.strictEqual(roundIt(h.pdf(25), 5), 0.10670);
     });
     it('Should sample values', () => {
       var h = new Hypergeometric(500, 60, 200);
@@ -591,8 +624,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var l = new LogNormal(0, 0.25);
-      var cdf = l.cdf(.75);
-      assert.ok(true);
+
+      // Test against Excel. LOGNORM.DIST(0.75, 0, 0.25, true).
+      assert.strictEqual(roundIt(l.cdf(0.75), 5), 0.12492);
+
+      // Out of range.
       assert.strictEqual(l.cdf(-1), 0);
     });
     it('Should enforce range', () => {
@@ -608,8 +644,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var l = new LogNormal(0, 0.25);
-      var pdf = l.pdf(1.5);
-      assert.ok(true);
+
+      // Test against Excel. LOGNORM.DIST(0.75, 0, 0.25, false).
+      assert.strictEqual(roundIt(l.pdf(0.75), 5), 1.09741);
+
+      // Out of range.
       assert.strictEqual(l.pdf(-1), 0);
     });
     it('Should sample values', () => {
@@ -634,8 +673,9 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var n = new Normal(0, 1);
-      var cdf = n.cdf(0);
-      assert.ok(true);
+
+      // Test against Excel. NORM.DIST(0.5, 0, 1, true).
+      assert.strictEqual(roundIt(n.cdf(0.5), 5), 0.69146);
     });
     it('Should return mean', () => {
       var n = new Normal(0, 1);
@@ -647,8 +687,9 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var n = new Normal(0, 1);
-      var pdf = n.pdf(0);
-      assert.ok(true);
+
+      // Test against Excel. NORM.DIST(0.5, 0, 1, false).
+      assert.strictEqual(roundIt(n.pdf(0.5), 5), 0.35207);
     });
     it('Should sample values', () => {
       var n = new Normal(0, 1);
@@ -714,8 +755,11 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var p = new Poisson(1);
-      var cdf = p.cdf(0);
-      assert.ok(true);
+
+      // Test against Excel. POISSON.DIST(0, 1, true).
+      assert.strictEqual(roundIt(p.cdf(0), 5), 0.36788);
+
+      // Out of range.
       assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should return mean', () => {
@@ -728,8 +772,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var p = new Poisson(1);
-      var pdf = p.pdf(2);
-      assert.ok(true);
+
+      // Test against Excel. POISSON.DIST(0, 1, false).
+      assert.strictEqual(roundIt(p.pdf(0), 5), 0.36788);
+
+      // Out of range.
       assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should sample values', () => {
@@ -792,8 +839,9 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var s = new StudentT(1);
-      var cdf = s.cdf(1);
-      assert.ok(true);
+
+      // Test against Excel. T.DIST(0.5, 1, true).
+      assert.strictEqual(roundIt(s.cdf(0.5), 5), 0.64758);
     });
     it('Should return mean', () => {
       var s = new StudentT(2);
@@ -804,9 +852,10 @@ describe('Distributions', () => {
       assert.strictEqual(s.median(), 0);
     });
     it('Should calculate pdf', () => {
-      var s = new StudentT(2);
-      var pdf = s.pdf(1);
-      assert.ok(true);
+      var s = new StudentT(1);
+
+      // Test against Excel. T.DIST(0.5, 1, false).
+      assert.strictEqual(roundIt(s.pdf(0.5), 5), 0.25465);
     });
     it('Should sample values', () => {
       var s = new StudentT(2);
@@ -923,8 +972,9 @@ describe('Distributions', () => {
     });
     it('Should calculate cdf', () => {
       var w = new Weibull(1, 1);
-      var cdf = w.cdf(1);
-      assert.ok(true);
+
+      // Test against Excel. WEIBULL.DIST(1, 1, 1, true).
+      assert.strictEqual(roundIt(w.cdf(1), 5), 0.63212);
     });
     it('Should return mean', () => {
       var w = new Weibull(1.5, 2);
@@ -935,9 +985,10 @@ describe('Distributions', () => {
       assert.strictEqual(w.median(), 4 * Math.pow(Math.log(2), 1 / 3));
     });
     it('Should calculate pdf', () => {
-      var w = new Weibull(5, 1);
-      var pdf = w.pdf(1);
-      assert.ok(true);
+      var w = new Weibull(1, 1);
+
+      // Test against Excel. WEIBULL.DIST(1, 1, 1, false).
+      assert.strictEqual(roundIt(w.pdf(1), 5), 0.36788);
     });
     it('Should sample values', () => {
       var w = new Weibull(1, 2);
