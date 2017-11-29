@@ -58,6 +58,9 @@ See [documentation](https://essytree.com/docs#dist-beta).
 #### Binomial(samples, probability)
 See [documentation](https://essytree.com/docs#dist-binomial).
 
+#### Cauchy(location, scale)
+See [article](https://en.wikipedia.org/wiki/Cauchy_distribution).
+
 #### ChiSquared(degreesOfFreedom)
 See [article](https://en.wikipedia.org/wiki/Chi-squared_distribution).
 

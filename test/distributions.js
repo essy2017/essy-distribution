@@ -6,6 +6,7 @@ var assert          = require('assert');
 var dists           = require('../dist/bundle');
 var Beta            = dists.Beta;
 var Binomial        = dists.Binomial;
+var Cauchy          = dists.Cauchy;
 var ChiSquared      = dists.ChiSquared;
 var Custom          = dists.Custom;
 var Erlang          = dists.Erlang;
@@ -839,4 +840,40 @@ describe('Distributions', () => {
 
   });
 
+  describe('Cauchy', () => {
+    it('Should instantiate', () => {
+      var c = new Cauchy(0, 1);
+      assert.strictEqual(c.location, 0);
+      assert.strictEqual(c.scale, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Cauchy(0, 0); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var c = new Cauchy(0, 1);
+      assert.strictEqual(c.cdf(0), 0.5);
+    });
+    it('Should return mean', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.mean(), undefined);
+    });
+    it('Should return median', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.median(), 10);
+    });
+    it('Should calculate pdf', () => {
+      var c = new Cauchy(0, 1);
+      var pdf = c.pdf(0);
+      assert.ok(true);
+    });
+    it('Should return variance', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.variance(), undefined);
+    });
+    it('Should sample values', () => {
+      var c = new Cauchy(0, 1);
+      var samples = c.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+  });
 });

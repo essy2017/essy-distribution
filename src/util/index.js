@@ -26,7 +26,7 @@ export class DistAbstract {
   * @return {Number}
   */
   cdf (x) {
-    throw new Error('cdf() not implemented.');
+    return undefined;
   }
 
  /**
@@ -35,16 +35,16 @@ export class DistAbstract {
   * @return {Number}
   */
   mean () {
-    throw new Error('mean() not implemented.');
+    return undefined;
   }
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
-    throw new Error('median() not implemented.');
+    return undefined;
   }
 
  /**
@@ -54,7 +54,7 @@ export class DistAbstract {
   * @return {Number}
   */
   pdf (x) {
-    throw new Error('pdf() not implemented.');
+    return undefined;
   }
 
  /**
