@@ -5,6 +5,7 @@ import { ChiSquared } from './src/ChiSquared';
 import { Custom } from './src/Custom';
 import { Erlang } from './src/Erlang';
 import { Exponential } from './src/Exponential';
+import { F } from './src/F';
 import { Gamma } from './src/Gamma';
 import { Hypergeometric } from './src/Hypergeometric';
 import { Laplace } from './src/Laplace';
@@ -28,6 +29,7 @@ export default {
   Custom          : Custom,
   Erlang          : Erlang,
   Exponential     : Exponential,
+  F               : F,
   Gamma           : Gamma,
   Hypergeometric  : Hypergeometric,
   Laplace         : Laplace,

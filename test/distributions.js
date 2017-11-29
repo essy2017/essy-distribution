@@ -11,6 +11,7 @@ var ChiSquared      = dists.ChiSquared;
 var Custom          = dists.Custom;
 var Erlang          = dists.Erlang;
 var Exponential     = dists.Exponential;
+var F               = dists.F;
 var Gamma           = dists.Gamma;
 var Hypergeometric  = dists.Hypergeometric;
 var Laplace         = dists.Laplace;
@@ -31,20 +32,6 @@ var Rando       = { random: Math.random };
 
 var mathfn      = require('mathfn');
 
-function choose (n, k) {
-  if (k < 0) return 0;
-  if (k === 0) return 1;
-  if (k === 1) return n;
-
-  // binomial(n,k) = (n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )
-  var a = n - k + 1,
-      b = 1,
-      bin = 1;
-  for (var i = k; i-- > 0; ) {
-    bin *= (a++) / (b++);
-  }
-  return bin;
-}
 
 describe('Distributions', () => {
 
@@ -134,6 +121,43 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var bin = new Binomial(10, 0.5);
       assert.strictEqual(bin.variance(), 10 * 0.5 * (1 - 0.5));
+    });
+  });
+
+  describe('Cauchy', () => {
+    it('Should instantiate', () => {
+      var c = new Cauchy(0, 1);
+      assert.strictEqual(c.location, 0);
+      assert.strictEqual(c.scale, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Cauchy(0, 0); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var c = new Cauchy(0, 1);
+      assert.strictEqual(c.cdf(0), 0.5);
+    });
+    it('Should return mean', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.mean(), undefined);
+    });
+    it('Should return median', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.median(), 10);
+    });
+    it('Should calculate pdf', () => {
+      var c = new Cauchy(0, 1);
+      var pdf = c.pdf(0);
+      assert.ok(true);
+    });
+    it('Should return variance', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.variance(), undefined);
+    });
+    it('Should sample values', () => {
+      var c = new Cauchy(0, 1);
+      var samples = c.sample(3);
+      assert.strictEqual(samples.length, 3);
     });
   });
 
@@ -292,6 +316,49 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var ex = new Exponential(0.5);
       assert.strictEqual(ex.variance(), Math.pow(0.5, -2));
+    });
+  });
+
+  describe('F', () => {
+    it('Should instantiate', () => {
+      var f = new F(2, 1);
+      assert.strictEqual(f.df1, 2);
+      assert.strictEqual(f.df2, 1);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new F(-1, 1); }, RangeError);
+      assert.throws(() => { new F(1, -1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var f = new F(5, 2);
+      var cdf = f.cdf(1);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var f = new F(2, 3);
+      assert.strictEqual(f.mean(), 3 / (3 - 2));
+      f = new F(2, 1);
+      assert.strictEqual(f.mean(), undefined);
+    });
+    it('Should return median', () => {
+      var f = new F(2, 4);
+      assert.strictEqual(f.median(), undefined);
+    });
+    it('Should calculate pdf', () => {
+      var f = new F(5, 2);
+      var pdf = f.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var f = new F(100, 200);
+      var samples = f.sample(3)
+      assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var f = new F(2, 5);
+      assert.strictEqual(f.variance(), (2 * Math.pow(5, 2) * (2 + 5 - 2)) / (2*Math.pow(5-2, 2)*(5-4)));
+      f = new F(2, 4);
+      assert.strictEqual(f.variance(), undefined);
     });
   });
 
@@ -840,40 +907,4 @@ describe('Distributions', () => {
 
   });
 
-  describe('Cauchy', () => {
-    it('Should instantiate', () => {
-      var c = new Cauchy(0, 1);
-      assert.strictEqual(c.location, 0);
-      assert.strictEqual(c.scale, 1);
-    });
-    it('Should enforce range', () => {
-      assert.throws(() => { new Cauchy(0, 0); }, RangeError);
-    });
-    it('Should calculate cdf', () => {
-      var c = new Cauchy(0, 1);
-      assert.strictEqual(c.cdf(0), 0.5);
-    });
-    it('Should return mean', () => {
-      var c = new Cauchy(10, 2);
-      assert.strictEqual(c.mean(), undefined);
-    });
-    it('Should return median', () => {
-      var c = new Cauchy(10, 2);
-      assert.strictEqual(c.median(), 10);
-    });
-    it('Should calculate pdf', () => {
-      var c = new Cauchy(0, 1);
-      var pdf = c.pdf(0);
-      assert.ok(true);
-    });
-    it('Should return variance', () => {
-      var c = new Cauchy(10, 2);
-      assert.strictEqual(c.variance(), undefined);
-    });
-    it('Should sample values', () => {
-      var c = new Cauchy(0, 1);
-      var samples = c.sample(3);
-      assert.strictEqual(samples.length, 3);
-    });
-  });
 });

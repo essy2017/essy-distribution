@@ -73,6 +73,9 @@ See [documentation](https://essytree.com/docs#dist-erlang). Does not define `med
 #### Exponential(lambda)
 See [documentation](https://essytree.com/docs#dist-exponential).
 
+#### F(degreesOfFreedom1, degreesOfFreedom2)
+See [article](https://en.wikipedia.org/wiki/F-distribution).
+
 #### Gamma(shape, scale)
 See [documentation](https://essytree.com/docs#dist-gamma). Does not define `median()`.
 
