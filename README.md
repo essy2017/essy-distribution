@@ -12,7 +12,7 @@ distribution properties. Sampling functions are largely ported from CERN's
 [cern.jet.random](https://dst.lbl.gov/ACSSoftware/colt/api/cern/jet/random/package-summary.html) Java package.
 See the source code for details.
 
-This package was created during the development of [Essy Tree](https://essytree.com) to 
+This package was created during the development of [Essy Tree](https://essytree.com) to
 support Monte Carlo simulations.
 
 Basic Usage
@@ -57,6 +57,9 @@ See [documentation](https://essytree.com/docs#dist-beta).
 
 #### Binomial(samples, probability)
 See [documentation](https://essytree.com/docs#dist-binomial).
+
+#### ChiSquared(degreesOfFreedom)
+See [article](https://en.wikipedia.org/wiki/Chi-squared_distribution).
 
 #### Custom(values)
 A custom distribution. The `values` argument should be an array of numbers.

@@ -6,6 +6,7 @@ var assert      = require('assert');
 var dists       = require('../dist/bundle');
 var Beta        = dists.Beta;
 var Binomial    = dists.Binomial;
+var ChiSquared  = dists.ChiSquared;
 var Custom      = dists.Custom;
 var Erlang      = dists.Erlang;
 var Exponential = dists.Exponential;
@@ -749,6 +750,43 @@ describe('Distributions', () => {
       assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
     });
 
+  });
+
+  describe('ChiSquared', () => {
+    it('Should instantiate', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.df, 2);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new ChiSquared(-1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var c = new ChiSquared(2);
+      var cdf = c.cdf(8);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.mean(), 2);
+    });
+    it('Should return median', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.median(), 2 * Math.pow(1 - 2/(9*2), 3));
+    });
+    it('Should calculate pdf', () => {
+      var c = new ChiSquared(2);
+      var pdf = c.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var c = new ChiSquared(2);
+      var samples = c.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.variance(), 2 * 2);
+    });
   });
 
 });

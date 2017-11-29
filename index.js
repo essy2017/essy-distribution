@@ -1,5 +1,6 @@
 import { Beta } from './src/Beta';
 import { Binomial } from './src/Binomial';
+import { ChiSquared } from './src/ChiSquared';
 import { Custom } from './src/Custom';
 import { Erlang } from './src/Erlang';
 import { Exponential } from './src/Exponential';
@@ -20,6 +21,7 @@ import { Weibull } from './src/Weibull';
 export default {
   Beta        : Beta,
   Binomial    : Binomial,
+  ChiSquared  : ChiSquared,
   Custom      : Custom,
   Erlang      : Erlang,
   Exponential : Exponential,
