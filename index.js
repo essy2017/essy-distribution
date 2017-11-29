@@ -5,6 +5,7 @@ import { Custom } from './src/Custom';
 import { Erlang } from './src/Erlang';
 import { Exponential } from './src/Exponential';
 import { Gamma } from './src/Gamma';
+import { Hypergeometric } from './src/Hypergeometric';
 import { Laplace } from './src/Laplace';
 import { Logarithmic} from './src/Logarithmic';
 import { Logistic } from './src/Logistic';
@@ -19,23 +20,24 @@ import { Uniform } from './src/Uniform';
 import { Weibull } from './src/Weibull';
 
 export default {
-  Beta        : Beta,
-  Binomial    : Binomial,
-  ChiSquared  : ChiSquared,
-  Custom      : Custom,
-  Erlang      : Erlang,
-  Exponential : Exponential,
-  Gamma       : Gamma,
-  Laplace     : Laplace,
-  Logarithmic : Logarithmic,
-  Logistic    : Logistic,
-  LogLogistic : LogLogistic,
-  LogNormal   : LogNormal,
-  Normal      : Normal,
-  Poisson     : Poisson,
-  Rayleigh    : Rayleigh,
-  StudentT    : StudentT,
-  Triangular  : Triangular,
-  Uniform     : Uniform,
-  Weibull     : Weibull
+  Beta            : Beta,
+  Binomial        : Binomial,
+  ChiSquared      : ChiSquared,
+  Custom          : Custom,
+  Erlang          : Erlang,
+  Exponential     : Exponential,
+  Gamma           : Gamma,
+  Hypergeometric  : Hypergeometric,
+  Laplace         : Laplace,
+  Logarithmic     : Logarithmic,
+  Logistic        : Logistic,
+  LogLogistic     : LogLogistic,
+  LogNormal       : LogNormal,
+  Normal          : Normal,
+  Poisson         : Poisson,
+  Rayleigh        : Rayleigh,
+  StudentT        : StudentT,
+  Triangular      : Triangular,
+  Uniform         : Uniform,
+  Weibull         : Weibull
 };

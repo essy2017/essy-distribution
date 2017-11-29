@@ -2,32 +2,48 @@
 
 'use strict';
 
-var assert      = require('assert');
-var dists       = require('../dist/bundle');
-var Beta        = dists.Beta;
-var Binomial    = dists.Binomial;
-var ChiSquared  = dists.ChiSquared;
-var Custom      = dists.Custom;
-var Erlang      = dists.Erlang;
-var Exponential = dists.Exponential;
-var Gamma       = dists.Gamma;
-var Laplace     = dists.Laplace;
-var Logarithmic = dists.Logarithmic;
-var Logistic    = dists.Logistic;
-var LogLogistic = dists.LogLogistic;
-var LogNormal   = dists.LogNormal;
-var Normal      = dists.Normal;
-var Poisson     = dists.Poisson;
-var Rayleigh    = dists.Rayleigh;
-var StudentT    = dists.StudentT;
-var Triangular  = dists.Triangular;
-var Uniform     = dists.Uniform;
-var Weibull     = dists.Weibull;
+var assert          = require('assert');
+var dists           = require('../dist/bundle');
+var Beta            = dists.Beta;
+var Binomial        = dists.Binomial;
+var ChiSquared      = dists.ChiSquared;
+var Custom          = dists.Custom;
+var Erlang          = dists.Erlang;
+var Exponential     = dists.Exponential;
+var Gamma           = dists.Gamma;
+var Hypergeometric  = dists.Hypergeometric;
+var Laplace         = dists.Laplace;
+var Logarithmic     = dists.Logarithmic;
+var Logistic        = dists.Logistic;
+var LogLogistic     = dists.LogLogistic;
+var LogNormal       = dists.LogNormal;
+var Normal          = dists.Normal;
+var Poisson         = dists.Poisson;
+var Rayleigh        = dists.Rayleigh;
+var StudentT        = dists.StudentT;
+var Triangular      = dists.Triangular;
+var Uniform         = dists.Uniform;
+var Weibull         = dists.Weibull;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
 
 var mathfn      = require('mathfn');
+
+function choose (n, k) {
+  if (k < 0) return 0;
+  if (k === 0) return 1;
+  if (k === 1) return n;
+
+  // binomial(n,k) = (n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )
+  var a = n - k + 1,
+      b = 1,
+      bin = 1;
+  for (var i = k; i-- > 0; ) {
+    bin *= (a++) / (b++);
+  }
+  return bin;
+}
 
 describe('Distributions', () => {
 
@@ -117,6 +133,43 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var bin = new Binomial(10, 0.5);
       assert.strictEqual(bin.variance(), 10 * 0.5 * (1 - 0.5));
+    });
+  });
+
+  describe('ChiSquared', () => {
+    it('Should instantiate', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.df, 2);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new ChiSquared(-1); }, RangeError);
+    });
+    it('Should calculate cdf', () => {
+      var c = new ChiSquared(2);
+      var cdf = c.cdf(8);
+      assert.ok(true);
+    });
+    it('Should return mean', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.mean(), 2);
+    });
+    it('Should return median', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.median(), 2 * Math.pow(1 - 2/(9*2), 3));
+    });
+    it('Should calculate pdf', () => {
+      var c = new ChiSquared(2);
+      var pdf = c.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var c = new ChiSquared(2);
+      var samples = c.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.variance(), 2 * 2);
     });
   });
 
@@ -277,6 +330,40 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var g = new Gamma(1, 2);
       assert.strictEqual(g.variance(), 1 * 2 * 2);
+    });
+  });
+
+  describe('Hypergeometric', () => {
+    it('Should instantiate', () => {
+      var h = new Hypergeometric(5, 3, 4);
+      assert.strictEqual(h.N, 5);
+      assert.strictEqual(h.M, 3);
+      assert.strictEqual(h.n, 4);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Hypergeometric(1.3, 3, 4); }, RangeError);
+      assert.throws(() => { new Hypergeometric(5, 3.2, 4); }, RangeError);
+      assert.throws(() => { new Hypergeometric(5, 3, 4.1); }, RangeError);
+      assert.throws(() => { new Hypergeometric(5, 6, 4); }, RangeError);
+      assert.throws(() => { new Hypergeometric(5, 3, 6); }, RangeError);
+    });
+    it('Should return mean', () => {
+      var h = new Hypergeometric(500, 60, 200);
+      assert.strictEqual(h.mean(), 200*(60/500));
+    });
+    it('Should calculate pdf', () => {
+      var h = new Hypergeometric(500, 60, 200);
+      var pdf = h.pdf(25);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var h = new Hypergeometric(500, 60, 200);
+      var samples = h.sample(3);
+      assert.strictEqual(samples.length, 3);
+    });
+    it('Should return variance', () => {
+      var h = new Hypergeometric(500, 60, 200);
+      assert.strictEqual(h.variance(), 200 * (60/500) * ((500-60)/500) * ((500-200)/(500-1)));
     });
   });
 
@@ -750,43 +837,6 @@ describe('Distributions', () => {
       assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
     });
 
-  });
-
-  describe('ChiSquared', () => {
-    it('Should instantiate', () => {
-      var c = new ChiSquared(2);
-      assert.strictEqual(c.df, 2);
-    });
-    it('Should enforce range', () => {
-      assert.throws(() => { new ChiSquared(-1); }, RangeError);
-    });
-    it('Should calculate cdf', () => {
-      var c = new ChiSquared(2);
-      var cdf = c.cdf(8);
-      assert.ok(true);
-    });
-    it('Should return mean', () => {
-      var c = new ChiSquared(2);
-      assert.strictEqual(c.mean(), 2);
-    });
-    it('Should return median', () => {
-      var c = new ChiSquared(2);
-      assert.strictEqual(c.median(), 2 * Math.pow(1 - 2/(9*2), 3));
-    });
-    it('Should calculate pdf', () => {
-      var c = new ChiSquared(2);
-      var pdf = c.pdf(1);
-      assert.ok(true);
-    });
-    it('Should sample values', () => {
-      var c = new ChiSquared(2);
-      var samples = c.sample(3);
-      assert.strictEqual(samples.length, 3);
-    });
-    it('Should return variance', () => {
-      var c = new ChiSquared(2);
-      assert.strictEqual(c.variance(), 2 * 2);
-    });
   });
 
 });

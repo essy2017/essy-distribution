@@ -73,6 +73,9 @@ See [documentation](https://essytree.com/docs#dist-exponential).
 #### Gamma(shape, scale)
 See [documentation](https://essytree.com/docs#dist-gamma). Does not define `median()`.
 
+#### Hypergeometric(N, K, n)
+See [article](https://en.wikipedia.org/wiki/Hypergeometric_distribution).
+
 #### Laplace(location, scale)
 See [documentation](https://essytree.com/docs#dist-laplace).
 
