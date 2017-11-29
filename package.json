@@ -1,8 +1,8 @@
 {
   "name": "essy-distribution",
-  "version": "1.0.13",
+  "version": "1.0.15",
   "description": "Distributions and random sampling.",
-  "main": "index.js",
+  "main": "dist/bundle.js",
   "scripts": {
     "test": "mocha",
     "build": "webpack --config webpack.config.js --progress",
