@@ -38,7 +38,7 @@ export class Poisson extends DistAbstract {
     if (x < 0 || Math.floor(x) !== x) {
       throw new RangeError('x must be 0 or a positive integer.')
     }
-    return incompleteGamma.lower(x + 1, this.lambda) / factorial(x);
+    return incompleteGamma.upper(x + 1, this.lambda) / factorial(x);
   }
 
  /**
@@ -52,9 +52,9 @@ export class Poisson extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return Math.floor(this.lambda + 1/3 - 0.02/this.lambda);
   }
