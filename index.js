@@ -22,6 +22,8 @@ import { Triangular } from './src/Triangular';
 import { Uniform } from './src/Uniform';
 import { Weibull } from './src/Weibull';
 
+import { SampleStat } from './src/SampleStat';
+
 export default {
   Beta            : Beta,
   Binomial        : Binomial,
@@ -45,5 +47,7 @@ export default {
   StudentT        : StudentT,
   Triangular      : Triangular,
   Uniform         : Uniform,
-  Weibull         : Weibull
+  Weibull         : Weibull,
+
+  SampleStat      : SampleStat
 };
