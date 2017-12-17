@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { erf } from 'mathfn';
 
 /*
@@ -27,12 +28,12 @@ export class Normal extends DistAbstract {
   * @method constructor
   * @param mean {Number} Mean parameter.
   * @param se {Number} Standard error parameter. >0.
-  * @throws {RangeError} If se parameter is not greater than 0.
+  * @throws {ParamError} If se parameter is not greater than 0.
   */
   constructor (mean, se) {
     super();
     if (se <= 0) {
-      throw new RangeError('se parameter must be greater than 0.');
+      throw new ParamError(1, 'se', 'se parameter must be greater than 0.');
     }
     this.m = mean;
     this.se = se;

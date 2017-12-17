@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { Uniform } from './Uniform';
 
 /*******************************************************************************
@@ -17,15 +18,15 @@ export class Pareto extends DistAbstract {
   * @method constructor
   * @param scale {Number} > 0.
   * @param shape {Number} > 0.
-  * @throws {RangeError} On invalid parameter value.
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (scale, shape) {
     super();
     if (scale <= 0) {
-      throw new RangeError('scale parameter must be greater than 0.');
+      throw new ParamError(0, 'scale', 'scale parameter must be greater than 0.');
     }
     if (shape <= 0) {
-      throw new RangeError('shape parameter must be greater than 0.');
+      throw new ParamError(1, 'shape', 'shape parameter must be greater than 0.');
     }
     this.scale = scale;
     this.shape = shape;

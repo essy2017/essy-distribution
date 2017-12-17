@@ -9,6 +9,7 @@ It is provided "as is" without expressed or implied warranty.
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { gamma } from 'mathfn';
 const incompleteGamma = require('incomplete-gamma');
 
@@ -25,11 +26,12 @@ export class ChiSquared extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param freedom {Number} Degrees of freedom.
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (freedom) {
     super();
     if (freedom < 0) {
-      throw new RangeError('freedom parameter must be greater than or equal to 0.');
+      throw new ParamError(0, 'df', 'freedom parameter must be greater than or equal to 0.');
     }
     this.df = freedom;
 

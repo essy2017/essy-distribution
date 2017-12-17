@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /*******************************************************************************
  *
@@ -16,13 +17,13 @@ export class Cauchy extends DistAbstract {
   * @method constructor
   * @param location {Number} Real number.
   * @param scale {Number} > 0.
-  * @throws {RangeError} On invalid scale.
+  * @throws {ParamError} On invalid scale.
   */
   constructor (location, scale) {
     super();
     this.location = location;
     if (scale <= 0) {
-      throw new RangeError('scale parameter must be greater than 0.');
+      throw new ParamError(1, 'scale', 'scale parameter must be greater than 0.');
     }
     this.scale = scale;
   }

@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /*
 Copyright 1999 CERN - European Organization for Nuclear Research.
@@ -25,11 +26,12 @@ export class Exponential extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param lambda {Number} Scale parameter value. >0
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (lambda) {
     super();
     if (lambda <= 0) {
-      throw new RangeError('lambda parameter must be greater than 0.');
+      throw new ParamError(0, 'lambda', 'lambda parameter must be greater than 0.');
     }
     this.lambda = lambda;
   }

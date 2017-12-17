@@ -9,6 +9,7 @@ It is provided "as is" without expressed or implied warranty.
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /**
  * Validates integer.
@@ -104,18 +105,18 @@ export class Hypergeometric extends DistAbstract {
   * @param N {Number} Integer >= 0.
   * @param M {Number} Integer >= 0 and <= N.
   * @param n {Number} Integer >= 0 and <= N.
-  * @throws {RangeError} On invalid parameter value.
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (N, M, n) {
     super();
     if (!checkInt(N)) {
-      throw new RangeError('N parameter must be integer greater than or equal to 0.');
+      throw new ParamError(0, 'N', 'N parameter must be integer greater than or equal to 0.');
     }
     if (!checkInt(M, N)) {
-      throw new RangeError('M parameter must be integer greater than or equal to 0 and less than or equal to N.');
+      throw new ParamError(1, 'M', 'M parameter must be integer greater than or equal to 0 and less than or equal to N.');
     }
     if (!checkInt(n, N)) {
-      throw new RangeError('n parameter must be integer greater than or equal to 0 and less than or equal to N.');
+      throw new ParamError(2, 'n', 'n parameter must be integer greater than or equal to 0 and less than or equal to N.');
     }
     this.N = N;
     this.M = M;

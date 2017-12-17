@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { beta, incBeta } from 'mathfn';
 
 /*
@@ -26,11 +27,12 @@ export class Logarithmic extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param prob {Number} Probability parameter value. [0, 1]
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (prob) {
     super();
     if (prob < 0 || prob > 1) {
-      throw new RangeError('probability parameter must be in range [0, 1].');
+      throw new ParamError(0, 'probability', 'probability parameter must be in range [0, 1].');
     }
     this.prob = prob;
   }

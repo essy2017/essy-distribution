@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /*******************************************************************************
  *
@@ -15,12 +16,12 @@ export class Rayleigh extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param scale {Number} Scale, > 0.
-  * @throws {RangeError} If scale is out of range.
+  * @throws {ParamError} If scale is out of range.
   */
   constructor (scale) {
     super();
     if (scale <= 0) {
-      throw new RangeError('scale parameter must be greater than 0.');
+      throw new ParamError(0, 'scale', 'scale parameter must be greater than 0.');
     }
     this.scale = scale;
   }

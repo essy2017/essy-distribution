@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /*******************************************************************************
  *
@@ -17,18 +18,18 @@ export class Triangular extends DistAbstract {
   * @param min {Number} Minimum value.
   * @param mode {Number} Mode value. >= min and <= max.
   * @param max {Number} Maximum value. > max.
-  * @throws {RangeError} On invalid parameters.
+  * @throws {ParamError} On invalid parameters.
   */
   constructor (min, mode, max) {
     super();
     if (max <= min) {
-      throw new RangeError('max parameter must be greater than min.');
+      throw new ParamError(2, 'max', 'max parameter must be greater than min.');
     }
     if (mode < min) {
-      throw new RangeError('mode parameter must be greater than or equal to min.');
+      throw new ParamError(1, 'mode', 'mode parameter must be greater than or equal to min.');
     }
     if (mode > max) {
-      throw new RangeError('mode parameter must be less than or equal to min.');
+      throw new ParamError(1, 'mode', 'mode parameter must be less than or equal to min.');
     }
     this.min = min;
     this.mode = mode;

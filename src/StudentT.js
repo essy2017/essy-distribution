@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { gamma, incBeta } from 'mathfn';
 
 /*
@@ -17,12 +18,12 @@ export class StudentT extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param freedom {Number} Degrees of freedom. >0
-  * @throws {RangeError} On invalid freedom.
+  * @throws {ParamError} On invalid freedom.
   */
   constructor (freedom) {
     super();
     if (freedom <= 0) {
-      throw new RangeError('freedom parameter must be greater than 0.');
+      throw new ParamError(0, 'df', 'freedom parameter must be greater than 0.');
     }
     this.df = freedom;
   }

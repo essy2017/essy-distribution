@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract, factorial } from './util';
+import ParamError from './ParamError';
 
 const incompleteGamma = require('incomplete-gamma');
 
@@ -19,14 +20,15 @@ export class Erlang extends DistAbstract {
   * @method constructor
   * @param shape {Number} Shape k, a positive integer.
   * @param rate {Number} Rate lambda. >0
+  * @throws {ParamError} On invalid parameter value.
   */
   constructor (shape, rate) {
     super();
     if (shape < 1 || Math.floor(shape) !== shape) {
-      throw new RangeError('shape parameter must be positive integer.');
+      throw new ParamError(0, 'shape', 'shape parameter must be positive integer.');
     }
     if (rate <= 0) {
-      throw new RangeError('rate parameter must be positive.');
+      throw new ParamError(1, 'rate', 'rate parameter must be positive.');
     }
     this.shape = shape;
     this.rate = rate;

@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 
 /*******************************************************************************
  *
@@ -16,12 +17,12 @@ export class Uniform extends DistAbstract {
   * @method constructor
   * @param min {Number} Minimum value.
   * @param max {Number} Maximum value.
-  * @throws {RangeError} If max <= min.
+  * @throws {ParamError} If max <= min.
   */
   constructor (min, max) {
     super();
     if (max <= min) {
-      throw new RangeError('max parameter must be greater than min.');
+      throw new ParamError(1, 'max', 'max parameter must be greater than min.');
     }
     this.min = min;
     this.max = max;

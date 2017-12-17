@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract, factorial } from './util';
+import ParamError from './ParamError';
 
 const incompleteGamma = require('incomplete-gamma');
 
@@ -17,12 +18,12 @@ export class Poisson extends DistAbstract {
   * Constructor.
   * @method constructor
   * @param lambda {Number} Greater than 0.
-  * @throws {RangeError} On invalid lambda.
+  * @throws {ParamError} On invalid lambda.
   */
   constructor (lambda) {
     super();
     if (lambda <= 0) {
-      throw new RangeError('lambda parameter must be greater than 0.');
+      throw new ParamError(0, 'lambda', 'lambda parameter must be greater than 0.');
     }
     this.lambda = lambda;
   }

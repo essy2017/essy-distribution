@@ -22,6 +22,7 @@ import { Triangular } from './src/Triangular';
 import { Uniform } from './src/Uniform';
 import { Weibull } from './src/Weibull';
 
+import { ParamError } from './src/ParamError';
 import { SampleStat } from './src/SampleStat';
 
 export default {
@@ -49,5 +50,6 @@ export default {
   Uniform         : Uniform,
   Weibull         : Weibull,
 
+  ParamError      : ParamError,
   SampleStat      : SampleStat
 };

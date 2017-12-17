@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract, factorial } from './util';
+import ParamError from './ParamError';
 import { incBeta } from 'mathfn';
 
 /*
@@ -88,15 +89,15 @@ export class Binomial extends DistAbstract {
   * @method constructor
   * @param n {Number} Trials. Positive integer.
   * @param p {Number} Probability. [0, 1]
-  * @throws {RangeError} If parameters are invalid.
+  * @throws {ParamError} If parameters are invalid.
   */
   constructor (n, p) {
     super();
     if (n < 1 || Math.floor(n) !== n) {
-      throw new RangeError('n parameter must be positive integer.');
+      throw new ParamError(0, 'n', 'n parameter must be positive integer.');
     }
     if (p < 0 || p > 1) {
-      throw new RangeError('p parameter must be between 0 and 1.');
+      throw new ParamError(1, 'p', 'p parameter must be between 0 and 1.');
     }
     this.n = n;
     this.p = p;

@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { Logistic } from './Logistic';
 
 // TODO: Confirm sampling...
@@ -19,14 +20,15 @@ export class LogLogistic extends DistAbstract {
   * @method constructor
   * @param scale {Number} Scale parameter value.
   * @param shape {Number} Shape parameter value.
+  * @throws {ParamError} On invalid parameter.
   */
   constructor (scale, shape) {
     super();
     if (scale <= 0) {
-      throw new RangeError('scale parameter must be greater than 0.');
+      throw new ParamError(0, 'scale', 'scale parameter must be greater than 0.');
     }
     if (shape <= 0) {
-      throw new RangeError('shape parameter must be greater than 0.');
+      throw new ParamError(1, 'shape', 'shape parameter must be greater than 0.');
     }
     this.scale = scale;
     this.shape = shape;

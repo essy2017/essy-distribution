@@ -1,6 +1,7 @@
 'use strict';
 
 import { DistAbstract } from './util';
+import ParamError from './ParamError';
 import { gamma } from 'mathfn';
 
 /*******************************************************************************
@@ -17,15 +18,15 @@ export class Weibull extends DistAbstract {
   * @method constructor
   * @param shape {Number} Shape parameter value. >0
   * @param scale {Number} Scale parameter value. >0
-  * @throws {RangeError} On invalid parameter.
+  * @throws {ParamError} On invalid parameter.
   */
   constructor (shape, scale) {
     super();
     if (shape <= 0) {
-      throw new RangeError('shape parameter must be greater than 0.');
+      throw new ParamError(0, 'shape', 'shape parameter must be greater than 0.');
     }
     if (scale <= 0) {
-      throw new RangeError('scale parameter must be greater than 0.');
+      throw new ParamError(1, 'scale', 'scale parameter must be greater than 0.');
     }
     this.alpha = shape;
     this.beta = scale;

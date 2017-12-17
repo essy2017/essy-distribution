@@ -2,6 +2,7 @@
 
 import { DistAbstract } from './util';
 import { ChiSquared } from './ChiSquared';
+import ParamError from './ParamError';
 import { beta, incBeta } from 'mathfn';
 
 /*******************************************************************************
@@ -18,15 +19,15 @@ export class F extends DistAbstract {
   * @method constructor
   * @param df1 {Number} > 0
   * @param df2 {Number} > 0
-  * @throws {RangeError} If parameters are out of range.
+  * @throws {ParamError} If parameters are out of range.
   */
   constructor (df1, df2) {
     super();
     if (df1 <= 0) {
-      throw new RangeError('df1 parameter must be greater than 0.');
+      throw new ParamError(0, 'df1', 'df1 parameter must be greater than 0.');
     }
     if (df2 <= 0) {
-      throw new RangeError('df2 parameter must be greater than 0.');
+      throw new ParamError(1, 'df2', 'df2 parameter must be greater than 0.');
     }
     this.df1 = df1;
     this.df2 = df2;
