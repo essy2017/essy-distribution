@@ -71,6 +71,21 @@ export class Logarithmic extends DistAbstract {
     }
     return (-1 / Math.log(1 - this.prob)) * (Math.pow(this.prob, x) / x);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min      : 1,
+      discrete : true
+    };
+  }
 
  /**
   * Returns sampled value.

@@ -164,6 +164,22 @@ export class Hypergeometric extends DistAbstract {
 
     return (choose(this.M, x) * choose(this.N - this.M, this.n - x)) / choose(this.N, this.n);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min      : Math.max(0, this.n + this.M - this.N),
+      max      : Math.min(this.n, this.M),
+      discrete : true
+    };
+  }
 
  /**
   * Samples random value. From cern.jet.random.HyperGeometric.

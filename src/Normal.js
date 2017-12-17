@@ -77,7 +77,19 @@ export class Normal extends DistAbstract {
     return (1 / Math.sqrt(2 * Math.pow(this.se, 2) * Math.PI)) *
            Math.exp(- (Math.pow(x - this.m, 2) / (2 * Math.pow(this.se, 2)) ) );
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }
+  
  /**
   * Returns sample from distribution.
   * @method sampleValue

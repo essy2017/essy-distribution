@@ -73,6 +73,21 @@ export class Poisson extends DistAbstract {
     }
     return (Math.pow(this.lambda, x) * Math.exp(-this.lambda)) / factorial(x);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      discrete : true,
+      min      : 0
+    };
+  }  
 
  /**
   * Returns sample from distribution.

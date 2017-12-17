@@ -77,7 +77,21 @@ export class LogLogistic extends DistAbstract {
     const den = Math.pow(1 + Math.pow(x / this.scale, this.shape), 2);
     return num / den;
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: 0
+    };
+  }
+  
  /**
   * Samples distribution.
   * @method sampleValue

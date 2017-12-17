@@ -75,6 +75,18 @@ export class F extends DistAbstract {
         den = Math.pow(x * this.df1 + this.df2, this.df1 + this.df2);
     return Math.sqrt(num / den) / (x * beta(this.df1 / 2, this.df2 / 2));
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }  
 
  /**
   * Samples random value.

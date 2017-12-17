@@ -100,6 +100,21 @@ export class Triangular extends DistAbstract {
     return 0;
   }
 
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min : this.min,
+      max : this.max
+    };
+  }
+
  /**
   * Returns sampled value.
   * @method sampleValue

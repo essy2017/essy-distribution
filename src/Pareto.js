@@ -72,6 +72,20 @@ export class Pareto extends DistAbstract {
   pdf (x) {
     return x < this.scale ? 0 : (this.shape * Math.pow(this.scale, this.shape)) / Math.pow(x, this.shape + 1);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: this.scale
+    };
+  }  
 
  /**
   * Samples random value.

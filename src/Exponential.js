@@ -75,6 +75,20 @@ export class Exponential extends DistAbstract {
     if (x < 0) return 0;
     return this.lambda * Math.exp(-x * this.lambda);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: 0
+    };
+  }
 
  /**
   * Returns sample value.

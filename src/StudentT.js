@@ -77,6 +77,18 @@ export class StudentT extends DistAbstract {
     return (a / b) * c;
   }
 
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }
+
  /**
   * Returns sampled value.
   * @method sampleValue

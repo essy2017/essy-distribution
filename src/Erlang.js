@@ -72,7 +72,21 @@ export class Erlang extends DistAbstract {
     const den = factorial(this.shape - 1);
     return num / den;
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: 0
+    };
+  }
+  
  /**
   * Samples distribution.
   * @method sampleValue

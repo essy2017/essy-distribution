@@ -148,6 +148,21 @@ export class Binomial extends DistAbstract {
     }
     return binCoeff(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min      : 0,
+      discrete : true
+    };
+  }  
 
  /**
   * Samples value from distribution.

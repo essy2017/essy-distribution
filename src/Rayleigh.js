@@ -65,7 +65,21 @@ export class Rayleigh extends DistAbstract {
     if (x < 0) return 0;
     return (x / Math.pow(this.scale, 2)) * Math.exp(- Math.pow(x, 2) / (2 * Math.pow(this.scale, 2)) );
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: 0
+    };
+  }
+  
  /**
   * Returns sample from distribution.
   * @method sampleValue

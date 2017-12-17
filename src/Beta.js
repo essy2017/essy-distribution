@@ -118,6 +118,21 @@ export class Beta extends DistAbstract {
     const den = (gamma(this.alpha) * gamma(this.beta)) / gamma(this.alpha + this.beta);
     return num / den;
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {
+      min: 0,
+      max: 1
+    };
+  }
 
  /**
   * Samples distribution.

@@ -70,6 +70,20 @@ export class LogNormal extends DistAbstract {
     return (1 / (x * this.se * Math.sqrt(2 * Math.PI))) * Math.exp(- (Math.pow(Math.log(x) - this.m, 2)) / (2 * Math.pow(this.se, 2)));
   }
 
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */    
+  range () {
+    return {
+      min: 0.001
+    };
+  }
+
  /**
   * Samples value from distribution.
   * @method sampleValue

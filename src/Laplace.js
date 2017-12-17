@@ -70,7 +70,19 @@ export class Laplace extends DistAbstract {
   pdf (x) {
     return (1 / (2*this.scale)) * Math.exp(- (Math.abs(x - this.location) / this.scale));
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }
+  
  /**
   * Generates sample.
   * @method sampleValue

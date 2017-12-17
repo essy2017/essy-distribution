@@ -81,7 +81,19 @@ export class ChiSquared extends DistAbstract {
     return (1 / (Math.pow(2, this.df / 2) * gamma(this.df / 2))) *
       Math.pow(x, this.df / 2 - 1) * Math.exp(-(x / 2));
   }
-
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }
+  
  /**
   * Samples random value from distribution.
   * @method sampleValue

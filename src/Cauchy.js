@@ -65,6 +65,18 @@ export class Cauchy extends DistAbstract {
   pdf (x) {
     return 1 / (Math.PI * this.scale * (1 + Math.pow((x - this.location)/this.scale, 2)));
   }
+  
+ /** 
+  * Returns distribution range.
+  * @method range 
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   min {Number} [optional] Defined if min value.
+  */  
+  range () {
+    return {};
+  }
 
  /**
   * Samples random value.
