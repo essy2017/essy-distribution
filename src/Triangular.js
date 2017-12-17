@@ -131,3 +131,16 @@ export class Triangular extends DistAbstract {
   }
 
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Triangular.params = {
+  min  : 'Real number less than or equal to mode.',
+  mode : 'Real number.',
+  max  : 'Real number greater than or equal to mode.'
+};

@@ -107,3 +107,14 @@ export class Normal extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Normal.params = {
+  mean : 'Real number.',
+  se   : 'Real number greater than 0.'
+};

@@ -110,3 +110,13 @@ export class StudentT extends DistAbstract {
     return NaN;
   }
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+StudentT.params = {
+  df : 'Real number greater than 0.'  
+};

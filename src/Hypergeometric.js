@@ -408,3 +408,15 @@ export class Hypergeometric extends DistAbstract {
   	}
   }
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Hypergeometric.params = {
+  N : 'Integer greater than or equal to 0.',
+  M : 'Integer greater than or equal to 0 and less than or equal to N.',
+  n : 'Integer greater than or equal to 0 and less than or equal to N.'
+};

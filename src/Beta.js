@@ -138,3 +138,14 @@ export class Beta extends DistAbstract {
     return (this.alpha * this.beta) / (Math.pow(this.alpha + this.beta, 2) * (this.alpha + this.beta + 1));
   }
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Beta.params = {
+  alpha : 'Real number greater than 0.',
+  beta  : 'Real number greater than 0.'
+};

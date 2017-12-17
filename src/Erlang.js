@@ -94,3 +94,15 @@ export class Erlang extends DistAbstract {
     return this.shape / Math.pow(this.rate, 2);
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Erlang.params = {
+  shape : 'Positive integer.', 
+  rate  : 'Real number greater than 0.'
+};

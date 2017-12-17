@@ -100,3 +100,14 @@ export class Poisson extends DistAbstract {
   }
 
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Poisson.params = {
+  lambda : 'An integer greater than or equal to 0.'
+};

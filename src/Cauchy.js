@@ -85,3 +85,14 @@ export class Cauchy extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Cauchy.params = {
+  location : 'Real number.',
+  scale    : 'Real number greater than 0.'
+};

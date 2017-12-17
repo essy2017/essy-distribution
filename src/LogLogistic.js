@@ -98,3 +98,14 @@ export class LogLogistic extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+LogLogistic.params = {
+  scale : 'Real number greater than 0.',
+  shape : 'Real number greater than 0.'
+};

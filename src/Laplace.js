@@ -92,3 +92,14 @@ export class Laplace extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Laplace.params = {
+  location : 'Real number.',
+  scale    : 'Real number greater than 0.'
+};

@@ -128,3 +128,13 @@ export class Logarithmic extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Logarithmic.params = {
+  probability : 'Real number in range [0, 1].'  
+};

@@ -96,3 +96,15 @@ export class Weibull extends DistAbstract {
     return this.beta*this.beta * (gamma(1 + 2/this.alpha) - Math.pow(gamma(1 + 1/this.alpha), 2));
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Weibull.params = {
+  shape : 'Real number greater than 0.',
+  scale : 'Real number greater than 0.'
+};

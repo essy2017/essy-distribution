@@ -90,3 +90,14 @@ export class LogNormal extends DistAbstract {
     return (Math.exp(this.se*this.se) - 1) * Math.exp(2*this.m + this.se*this.se);
   }
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+LogNormal.params = {
+  mean : 'Real number.',
+  se   : 'Real number greater than 0.'
+};

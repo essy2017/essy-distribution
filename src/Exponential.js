@@ -94,3 +94,14 @@ export class Exponential extends DistAbstract {
   }
 
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Exponential.params = {
+  lamba: 'Real number greater than 0.'  
+};

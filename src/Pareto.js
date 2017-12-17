@@ -100,3 +100,14 @@ export class Pareto extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Pareto.params = {
+  scale : 'Real number greater than 0.',
+  shape : 'Real number greater than 0.'
+};

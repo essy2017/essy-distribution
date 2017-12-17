@@ -100,3 +100,15 @@ export class F extends DistAbstract {
     return (2 * Math.pow(this.df2, 2) * (this.df1 + this.df2 - 2)) / (this.df1 * Math.pow(this.df2 - 2, 2) * (this.df2 - 4));
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+F.params = {
+  df1 : 'Real number greater than 0.',
+  df2 : 'Real number greater than 0.'
+};

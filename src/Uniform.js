@@ -93,3 +93,15 @@ export class Uniform extends DistAbstract {
     return (1/12) * Math.pow(this.max - this.min, 2);
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Uniform.params = {
+  min : 'Real number less than max.',
+  max : 'Real number greater than min.'
+};

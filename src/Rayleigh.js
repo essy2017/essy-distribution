@@ -85,3 +85,14 @@ export class Rayleigh extends DistAbstract {
   }
 
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Rayleigh.params = {
+  scale : 'Real number greater than 0.'  
+};

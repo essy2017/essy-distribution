@@ -296,3 +296,15 @@ export class Binomial extends DistAbstract {
     return this.n * this.p * (1 - this.p);
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Binomial.params = {
+  n : 'Integer greater than 0.',
+  p : 'Real number in the range [0, 1].'
+};

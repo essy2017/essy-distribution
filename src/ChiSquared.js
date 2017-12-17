@@ -29,7 +29,7 @@ export class ChiSquared extends DistAbstract {
   constructor (freedom) {
     super();
     if (freedom < 0) {
-      throw new RangeError('freedom parameter must be greater than 0.');
+      throw new RangeError('freedom parameter must be greater than or equal to 0.');
     }
     this.df = freedom;
 
@@ -137,3 +137,14 @@ export class ChiSquared extends DistAbstract {
     return 2 * this.df;
   }
 }
+
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+ChiSquared.params = {
+  df : 'Integer greater than 0.'
+};

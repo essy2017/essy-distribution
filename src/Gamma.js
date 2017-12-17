@@ -256,3 +256,14 @@ export class Gamma extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params 
+ * @type Object 
+ * @static
+ */
+Gamma.params = {
+  shape : 'Real number greater than 0.',
+  scale : 'Real number greater than 0.'
+};
