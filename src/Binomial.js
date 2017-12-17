@@ -65,14 +65,26 @@ function stirlingCorrection (k) {
 }
 
 /**
- * Returns binomial coefficient.
- * @method binCoeff
- * @param n {Number} Number of samples.
- * @param k {Number} Value.
+ * Performs n choose k.
+ * @method choose
+ * @param n {Number}
+ * @param k {Number}
  * @return {Number}
  */
-function binCoeff (n, k) {
-  return factorial(n) / (factorial(k) * factorial(n - k));
+function choose (n, k) {
+
+  if (k < 0) return 0;
+	if (k === 0) return 1;
+	if (k === 1) return n;
+
+	// binomial(n,k) = (n * n-1 * ... * n-k+1 ) / ( 1 * 2 * ... * k )
+	var a = n - k + 1,
+	    b = 1,
+	    bin = 1;
+	for (var i = k; i-- > 0; ) {
+		bin *= (a++) / (b++);
+	}
+	return bin;
 }
 
 /*******************************************************************************
@@ -146,7 +158,7 @@ export class Binomial extends DistAbstract {
     if (x < 0 || Math.floor(x) !== x) {
       throw new RangeError('x must be a positive integer.');
     }
-    return binCoeff(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
+    return choose(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
   }
   
  /** 
