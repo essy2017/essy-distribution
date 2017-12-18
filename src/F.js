@@ -63,6 +63,15 @@ export class F extends DistAbstract {
   median () {
     return undefined;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'F';
+  }
 
  /**
   * Probability density function.

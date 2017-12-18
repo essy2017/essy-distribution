@@ -63,6 +63,15 @@ export class StudentT extends DistAbstract {
   median () {
     return 0;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Student\'s T';
+  }
 
  /**
   * Probability density function.

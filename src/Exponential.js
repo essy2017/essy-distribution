@@ -64,6 +64,15 @@ export class Exponential extends DistAbstract {
   median () {
     return (1 / this.lambda) * Math.log(2);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Exponential';
+  }
 
  /**
   * Probability density function.

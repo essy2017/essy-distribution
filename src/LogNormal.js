@@ -58,6 +58,15 @@ export class LogNormal extends DistAbstract {
   median () {
     return Math.exp(this.m);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Log-normal';
+  }
 
  /**
   * Probability density function.

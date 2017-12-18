@@ -25,9 +25,6 @@ export class DistAbstract {
   * @param x {Number}
   * @return {Number}
   */
-  cdf (x) {
-    return undefined;
-  }
 
  /**
   * Returns distribution mean. Must be implemented by subclasses.
@@ -53,9 +50,6 @@ export class DistAbstract {
   * @param x {Number}
   * @return {Number}
   */
-  pdf (x) {
-    return undefined;
-  }
 
  /**
   * Samples distribution.

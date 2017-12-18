@@ -63,6 +63,15 @@ export class Weibull extends DistAbstract {
     return this.beta * Math.pow(Math.log(2), 1 / this.alpha);
   }
   
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Weibull';
+  }
+  
  /**
   * Probability density function.
   * @method pdf

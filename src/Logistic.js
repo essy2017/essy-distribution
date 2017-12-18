@@ -55,6 +55,15 @@ export class Logistic extends DistAbstract {
   median () {
     return this.m;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Logistic';
+  }
 
  /**
   * Probability density function.

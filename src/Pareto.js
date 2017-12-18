@@ -62,6 +62,15 @@ export class Pareto extends DistAbstract {
   median () {
     return this.scale * Math.pow(2, 1 / this.shape);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Pareto';
+  }
 
  /**
   * Probability density function.

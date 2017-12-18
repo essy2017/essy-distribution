@@ -57,6 +57,15 @@ export class Logarithmic extends DistAbstract {
   mean () {
     return (-1 / Math.log(1 - this.prob)) * (this.prob / (1 - this.prob));
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Logarithmic';
+  }
 
  /**
   * Probability density function.

@@ -70,6 +70,15 @@ export class ChiSquared extends DistAbstract {
   median () {
     return this.df * Math.pow(1 - 2 / (9 * this.df), 3);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Chi-squared';
+  }
 
  /**
   * Probability density function.

@@ -78,6 +78,15 @@ export class Triangular extends DistAbstract {
     }
   }
   
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Triangular';
+  }
+  
  /**
   * Probability density function.
   * @method pdf

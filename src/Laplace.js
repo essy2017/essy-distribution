@@ -60,6 +60,15 @@ export class Laplace extends DistAbstract {
   median () {
     return this.location;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Laplace';
+  }
 
  /**
   * Probability density function.

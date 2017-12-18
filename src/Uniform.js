@@ -62,6 +62,15 @@ export class Uniform extends DistAbstract {
     return (this.min + this.max) / 2;
   }
   
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Uniform';
+  }
+  
  /**
   * Probability density function.
   * @method pdf

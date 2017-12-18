@@ -54,6 +54,15 @@ export class Rayleigh extends DistAbstract {
   median () {
     return this.scale * Math.sqrt(2 * Math.log(2));
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Rayleigh';
+  }
 
  /**
   * Probability density function.

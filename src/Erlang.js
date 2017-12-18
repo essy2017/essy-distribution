@@ -57,6 +57,15 @@ export class Erlang extends DistAbstract {
   mean () {
     return this.shape / this.rate;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Erlang';
+  }
 
  /**
   * Probability density function.

@@ -66,6 +66,15 @@ export class Normal extends DistAbstract {
   median () {
     return this.m;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Normal';
+  }
 
  /**
   * Probability density function.

@@ -105,6 +105,15 @@ export class Beta extends DistAbstract {
   median () {
     return invIncBeta(0.5, this.alpha, this.beta);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Beta';
+  }
 
  /**
   * Probability density function.

@@ -100,6 +100,15 @@ export class Gamma extends DistAbstract {
   mean () {
     return this.shape * this.scale;
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Gamma';
+  }
 
  /**
   * Probability density function.

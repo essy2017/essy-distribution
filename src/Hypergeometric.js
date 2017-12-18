@@ -143,6 +143,15 @@ export class Hypergeometric extends DistAbstract {
   mean () {
     return this.n * (this.M / this.N);
   }
+  
+ /** 
+  * Returns distribution name.
+  * @method name 
+  * @return {String} Distribution name.
+  */  
+  name () {
+    return 'Hypergeometric';
+  }
 
  /**
   * Probability density function.
