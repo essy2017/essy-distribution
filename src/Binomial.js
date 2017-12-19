@@ -181,6 +181,7 @@ export class Binomial extends DistAbstract {
   range () {
     return {
       min      : 0,
+      max      : this.n,
       discrete : true
     };
   }  
