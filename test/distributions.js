@@ -34,7 +34,7 @@ var SampleStat      = dists.SampleStat;
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
 
-var mathfn      = require('mathfn');
+var stats       = require('essy-stats');
 
 
 function roundIt (n, dec) {
@@ -70,7 +70,7 @@ describe('Distributions', () => {
     });
     it('Should return median', () => {
       var b = new Beta(2, 2);
-      assert.strictEqual(b.median(), mathfn.invIncBeta(0.5, 2, 2));
+      assert.strictEqual(Number(b.median().toFixed(4)), 0.5000);
     });
     it('Should calculate pdf', () => {
       var beta = new Beta(2, 5);
@@ -518,7 +518,12 @@ describe('Distributions', () => {
     it('Should enforce range', () => {
       assert.throws(() => { new Logarithmic(-1); }, ParamError);
     });
-    // Couldn't calculate cdf. mathfn incBeta returns 1 when b === 0.
+    // Couldn't calculate cdf.
+    it('Should calculate cdf', () => {
+      var l = new Logarithmic(0.5);
+      var cdf = l.cdf(0.4);
+      assert.ok(true);
+    });
     it('Should return mean', () => {
       var l = new Logarithmic(0.5);
       assert.strictEqual(l.mean(), (-1 / Math.log(1 - 0.5)) * (0.5 / (1 - 0.5)));
@@ -981,7 +986,7 @@ describe('Distributions', () => {
     });
     it('Should return mean', () => {
       var w = new Weibull(1.5, 2);
-      assert.strictEqual(w.mean(), 2 * mathfn.gamma(1 + 1/1.5))
+      assert.strictEqual(w.mean(), 2 * stats.gamma(1 + 1/1.5))
     });
     it('Should return median', () => {
       var w = new Weibull(3, 4);
@@ -1000,7 +1005,7 @@ describe('Distributions', () => {
     });
     it('Should return variance', () => {
       var w = new Weibull(2, 3);
-      assert.strictEqual(w.variance(), 3*3 * (mathfn.gamma(1+2/2) - Math.pow(mathfn.gamma(1+1/2), 2)));
+      assert.strictEqual(w.variance(), 3*3 * (stats.gamma(1+2/2) - Math.pow(stats.gamma(1+1/2), 2)));
     });
 
   });

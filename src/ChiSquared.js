@@ -10,7 +10,7 @@ It is provided "as is" without expressed or implied warranty.
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { gamma } from 'mathfn';
+import { gamma } from 'essy-stats';
 const incompleteGamma = require('incomplete-gamma');
 
 /*******************************************************************************

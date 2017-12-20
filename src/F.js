@@ -3,7 +3,7 @@
 import { DistAbstract } from './util';
 import { ChiSquared } from './ChiSquared';
 import ParamError from './ParamError';
-import { beta, incBeta } from 'mathfn';
+import { beta, regIncBeta } from 'essy-stats';
 
 /*******************************************************************************
  *
@@ -40,7 +40,7 @@ export class F extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
-    return incBeta( (x * this.df1) / (x * this.df1 + this.df2), this.df1 / 2, this.df2 / 2);
+    return regIncBeta( this.df1 / 2, this.df2 / 2, (x * this.df1) / (x * this.df1 + this.df2 ));
   }
 
  /**

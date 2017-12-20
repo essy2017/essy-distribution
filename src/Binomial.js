@@ -2,7 +2,7 @@
 
 import { DistAbstract, factorial } from './util';
 import ParamError from './ParamError';
-import { incBeta } from 'mathfn';
+import { regIncBeta } from 'essy-stats';
 
 /*
 Copyright  1999 CERN - European Organization for Nuclear Research.
@@ -126,7 +126,7 @@ export class Binomial extends DistAbstract {
     if (x < 0 || Math.floor(x) !== x) {
       throw new RangeError('x must be a positive integer.');
     }
-    return incBeta(1 - this.p, this.n - x, x + 1);
+    return regIncBeta(this.n - x, 1 + x, 1 - this.p);
   }
 
  /**

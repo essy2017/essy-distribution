@@ -2,7 +2,8 @@
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { incBeta, invIncBeta, gamma } from 'mathfn';
+
+import { regIncBeta, regInvIncBeta, gamma } from 'essy-stats';
 
 // From jStat.
 function randn () {
@@ -85,7 +86,7 @@ export class Beta extends DistAbstract {
   */
   cdf (x) {
     if (x < 0 || x > 1) return 0;
-    return incBeta(x, this.alpha, this.beta);
+    return regIncBeta(this.alpha, this.beta, x);
   }
 
  /**
@@ -103,7 +104,7 @@ export class Beta extends DistAbstract {
   * @return {Number}
   */  
   median () {
-    return invIncBeta(0.5, this.alpha, this.beta);
+    return regInvIncBeta(0.5, this.alpha, this.beta);
   }
   
  /** 

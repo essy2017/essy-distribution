@@ -3,7 +3,7 @@
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
 import { Normal } from './Normal';
-import { erf } from 'mathfn';
+import { erf } from 'essy-stats';
 
 /*******************************************************************************
  *

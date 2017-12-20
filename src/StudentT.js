@@ -2,7 +2,7 @@
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { gamma, incBeta } from 'mathfn';
+import { gamma, regIncBeta } from 'essy-stats';
 
 /*
 Copyright � 1999 CERN - European Organization for Nuclear Research.
@@ -35,8 +35,7 @@ export class StudentT extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
-
-    let c = 0.5 * incBeta(this.df / (this.df + x * x), 0.5 * this.df, 0.5);
+    let c = 0.5 * regIncBeta(0.5 * this.df, 0.5, this.df / (this.df + x * x));
     if (x >= 0) {
       c = 1 - c;
     }

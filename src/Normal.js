@@ -2,7 +2,7 @@
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { erf } from 'mathfn';
+import { erf } from 'essy-stats';
 
 /*
 Copyright 1999 CERN - European Organization for Nuclear Research.

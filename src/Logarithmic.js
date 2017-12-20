@@ -2,7 +2,7 @@
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { beta, incBeta } from 'mathfn';
+import { incBeta } from 'essy-stats';
 
 /*
 Copyright 1999 CERN - European Organization for Nuclear Research.
@@ -43,11 +43,9 @@ export class Logarithmic extends DistAbstract {
   * @param x {Number}
   * @return {Number}
   */
-  //cdf (x) {
-    //const b = incBeta(this.prob, x + 1, 0) / beta(x + 1, 0);
-    //return 1 + (incBeta(this.prob, x + 1, 0) / Math.log(1 - this.prob));
-    //return incBeta(this.prob, x + 1, 0);
-  //}
+  cdf (x) {
+    return 1 + incBeta(x + 1, 0.0000000000000000001, this.prob) / Math.log(1 - this.prob);
+  }
 
  /**
   * Returns distribution mean.
