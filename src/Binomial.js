@@ -126,7 +126,7 @@ export class Binomial extends DistAbstract {
     if (x < 0 || Math.floor(x) !== x) {
       throw new RangeError('x must be a positive integer.');
     }
-    return regIncBeta(this.n - x, 1 + x, 1 - this.p);
+    return this.n === x ? 1 : regIncBeta(this.n - x, 1 + x, 1 - this.p);
   }
 
  /**
