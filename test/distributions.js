@@ -157,6 +157,7 @@ describe('Distributions', () => {
     it('Should calculate cdf', () => {
       var c = new Cauchy(0, 1);
       assert.strictEqual(c.cdf(0), 0.5);
+      assert.strictEqual(c.cdf(1), 0.75);
     });
     it('Should return mean', () => {
       var c = new Cauchy(10, 2);
@@ -168,7 +169,11 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var c = new Cauchy(0, 1);
-      var pdf = c.pdf(0);
+
+      // Test against keisan.casio.com.
+      assert.strictEqual(roundIt(c.pdf(0), 5), 0.31831);
+      assert.strictEqual(roundIt(c.pdf(1), 5), 0.15915);
+
       assert.ok(true);
     });
     it('Should return variance', () => {

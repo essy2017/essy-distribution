@@ -63,12 +63,12 @@ export class F extends DistAbstract {
   median () {
     return undefined;
   }
-  
- /** 
+
+ /**
   * Returns distribution name.
-  * @method name 
+  * @method name
   * @return {String} Distribution name.
-  */  
+  */
   name () {
     return 'F';
   }
@@ -84,18 +84,20 @@ export class F extends DistAbstract {
         den = Math.pow(x * this.df1 + this.df2, this.df1 + this.df2);
     return Math.sqrt(num / den) / (x * beta(this.df1 / 2, this.df2 / 2));
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
-    return {};
-  }  
+    return {
+      min: 0
+    };
+  }
 
  /**
   * Samples random value.
@@ -126,8 +128,8 @@ export class F extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 F.params = {
