@@ -2,8 +2,8 @@
 
 import { DistAbstract, factorial } from './util';
 import ParamError from './ParamError';
+import { lowerIncGamma } from 'essy-stats';
 
-const incompleteGamma = require('incomplete-gamma');
 
 /*******************************************************************************
  *
@@ -44,7 +44,7 @@ export class Erlang extends DistAbstract {
     if (x < 0) {
       return 0;
     }
-    const num = incompleteGamma.lower(this.shape, x * this.rate);
+    const num = lowerIncGamma(this.shape, x * this.rate);
     const den = factorial(this.shape - 1);
     return num / den;
   }
@@ -57,12 +57,12 @@ export class Erlang extends DistAbstract {
   mean () {
     return this.shape / this.rate;
   }
-  
- /** 
+
+ /**
   * Returns distribution name.
-  * @method name 
+  * @method name
   * @return {String} Distribution name.
-  */  
+  */
   name () {
     return 'Erlang';
   }
@@ -81,21 +81,21 @@ export class Erlang extends DistAbstract {
     const den = factorial(this.shape - 1);
     return num / den;
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: 0
     };
   }
-  
+
  /**
   * Samples distribution.
   * @method sampleValue
@@ -123,11 +123,11 @@ export class Erlang extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Erlang.params = {
-  shape : 'Positive integer.', 
+  shape : 'Positive integer.',
   rate  : 'Real number greater than 0.'
 };

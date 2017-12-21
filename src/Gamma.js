@@ -2,9 +2,8 @@
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { gamma } from 'essy-stats';
+import { gamma, lowerIncGamma  } from 'essy-stats';
 
-const incompleteGamma = require('incomplete-gamma');
 
 /*
 Copyright 1999 CERN - European Organization for Nuclear Research.
@@ -89,7 +88,7 @@ export class Gamma extends DistAbstract {
   */
   cdf (x) {
     if (x < 0) return 0;
-    return (1 / gamma(this.shape)) * incompleteGamma.lower(this.shape, x / this.scale);
+    return lowerIncGamma(this.shape, x * this.scale);
   }
 
  /**
@@ -100,12 +99,12 @@ export class Gamma extends DistAbstract {
   mean () {
     return this.shape * this.scale;
   }
-  
- /** 
+
+ /**
   * Returns distribution name.
-  * @method name 
+  * @method name
   * @return {String} Distribution name.
-  */  
+  */
   name () {
     return 'Gamma';
   }
@@ -123,14 +122,14 @@ export class Gamma extends DistAbstract {
            Math.exp(-x / this.scale);
   }
 
- /** 
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: 0
@@ -284,8 +283,8 @@ export class Gamma extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Gamma.params = {

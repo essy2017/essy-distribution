@@ -2,8 +2,7 @@
 
 import { DistAbstract, factorial } from './util';
 import ParamError from './ParamError';
-
-const incompleteGamma = require('incomplete-gamma');
+import { upperIncGamma } from 'essy-stats';
 
 /*******************************************************************************
  *
@@ -39,7 +38,7 @@ export class Poisson extends DistAbstract {
     if (x < 0 || Math.floor(x) !== x) {
       throw new RangeError('x must be 0 or a positive integer.')
     }
-    return incompleteGamma.upper(x + 1, this.lambda) / factorial(x);
+    return upperIncGamma(x + 1, this.lambda) / factorial(x);
   }
 
  /**
@@ -59,12 +58,12 @@ export class Poisson extends DistAbstract {
   median () {
     return Math.floor(this.lambda + 1/3 - 0.02/this.lambda);
   }
-  
- /** 
+
+ /**
   * Returns distribution name.
-  * @method name 
+  * @method name
   * @return {String} Distribution name.
-  */  
+  */
   name () {
     return 'Poisson';
   }
@@ -82,21 +81,21 @@ export class Poisson extends DistAbstract {
     }
     return (Math.pow(this.lambda, x) * Math.exp(-this.lambda)) / factorial(x);
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       discrete : true,
       min      : 0
     };
-  }  
+  }
 
  /**
   * Returns sample from distribution.
@@ -129,8 +128,8 @@ export class Poisson extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Poisson.params = {

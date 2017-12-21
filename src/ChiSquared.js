@@ -10,8 +10,8 @@ It is provided "as is" without expressed or implied warranty.
 
 import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { gamma } from 'essy-stats';
-const incompleteGamma = require('incomplete-gamma');
+import { gamma, lowerIncGamma } from 'essy-stats';
+
 
 /*******************************************************************************
  *
@@ -50,7 +50,7 @@ export class ChiSquared extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
-    return (1 / gamma(this.df/2)) * incompleteGamma.lower(this.df/2, x/2);
+    return (1 / gamma(this.df/2)) * lowerIncGamma(this.df/2, x/2);
   }
 
  /**

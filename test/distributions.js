@@ -409,6 +409,7 @@ describe('Distributions', () => {
       assert.throws(() => { new Gamma(1, 0); }, ParamError);
     });
     it('Should calculate cdf', () => {
+
       var g = new Gamma(5, 1);
 
       // Test against Excel. GAMMA.DIST(2, 5, 1, true).
@@ -488,9 +489,11 @@ describe('Distributions', () => {
       assert.throws(() => { new Laplace(1, -1); }, ParamError);
     });
     it('Should calculate cdf', () => {
-      var l = new Laplace(0, 4);
-      var cdf = l.cdf(-4);
-      assert.ok(true);
+      var l = new Laplace(0, 2);
+
+      // Test against keisan.casio.com.
+      assert.strictEqual(roundIt(l.cdf(0.5), 5), 0.61060);
+
     });
     it('Should return mean', () => {
       var l = new Laplace(5, 1);
@@ -501,9 +504,10 @@ describe('Distributions', () => {
       assert.strictEqual(l.median(), 5);
     });
     it('Should calculate pdf', () => {
-      var l = new Laplace(0, 4);
-      var pdf = l.pdf(0);
-      assert.ok(true);
+      var l = new Laplace(0, 2);
+
+      // Test against keisan.casio.com.
+      assert.strictEqual(roundIt(l.pdf(0.5), 5), 0.19470);
     });
     it('Should sample values', () => {
       var l = new Laplace(5, 1);
@@ -561,9 +565,10 @@ describe('Distributions', () => {
       assert.throws(() => { new Logistic(1, -1); }, ParamError);
     });
     it('Should calculate cdf', () => {
-      var l = new Logistic(5, 2);
-      var cdf = l.cdf(10);
-      assert.ok(true);
+      var l = new Logistic(0, 1);
+
+      // Test against keisan.casio.com.
+      assert.strictEqual(roundIt(l.cdf(1), 5), 0.73106);
     });
     it('Should return mean', () => {
       var l = new Logistic(1, 0.5);
@@ -575,8 +580,9 @@ describe('Distributions', () => {
     });
     it('Should calculate pdf', () => {
       var l = new Logistic(5, 2);
-      var pdf = l.pdf(5);
-      assert.ok(true);
+
+      // Test against keisan.casio.com.
+      assert.strictEqual(roundIt(l.pdf(1), 5), 0.052500);
     });
     it('Should sample values', () => {
       var l = new Logistic(1, 0.5);
