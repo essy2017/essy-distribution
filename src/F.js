@@ -80,7 +80,7 @@ export class F extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
-    if (x === 0) x = 0.000001;
+    if (x < 0.01) x = 0.01;
     var num = Math.pow(x * this.df1, this.df1) * Math.pow(this.df2, this.df2),
         den = Math.pow(x * this.df1 + this.df2, this.df1 + this.df2);
     return Math.sqrt(num / den) / (x * beta(this.df1 / 2, this.df2 / 2));
