@@ -62,15 +62,6 @@ export class Pareto extends DistAbstract {
   median () {
     return this.scale * Math.pow(2, 1 / this.shape);
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Pareto';
-  }
 
  /**
   * Probability density function.
@@ -81,20 +72,20 @@ export class Pareto extends DistAbstract {
   pdf (x) {
     return x < this.scale ? 0 : (this.shape * Math.pow(this.scale, this.shape)) / Math.pow(x, this.shape + 1);
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: this.scale
     };
-  }  
+  }
 
  /**
   * Samples random value.
@@ -127,11 +118,19 @@ export class Pareto extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Pareto.params = {
   scale : 'Real number greater than 0.',
   shape : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Pareto.distName = 'Pareto';

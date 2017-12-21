@@ -49,20 +49,11 @@ export class Logistic extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.m;
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Logistic';
   }
 
  /**
@@ -75,19 +66,19 @@ export class Logistic extends DistAbstract {
     const e = Math.exp(- ((x - this.m) / this.scale));
     return e / (this.scale * Math.pow(1 + e, 2));
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {};
   }
-  
+
  /**
   * Samples distribution.
   * @method sampleValue
@@ -112,11 +103,19 @@ export class Logistic extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Logistic.params = {
   mean  : 'Real number.',
   scale : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Logistic.distName = 'Logistic';

@@ -66,9 +66,9 @@ export class Triangular extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     if (this.mode >= ((this.min + this.max) / 2)) {
       return this.min + Math.sqrt(((this.max - this.min)*(this.mode - this.min)) / 2);
@@ -77,16 +77,7 @@ export class Triangular extends DistAbstract {
       return this.max - Math.sqrt(((this.max - this.min)*(this.max - this.mode)) / 2);
     }
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Triangular';
-  }
-  
+
  /**
   * Probability density function.
   * @method pdf
@@ -109,14 +100,14 @@ export class Triangular extends DistAbstract {
     return 0;
   }
 
- /** 
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min : this.min,
@@ -160,8 +151,8 @@ export class Triangular extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Triangular.params = {
@@ -169,3 +160,11 @@ Triangular.params = {
   mode : 'Real number.',
   max  : 'Real number greater than or equal to mode.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Triangular.distName = 'Triangular';

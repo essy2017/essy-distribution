@@ -140,20 +140,11 @@ export class Binomial extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return Math.floor(this.n * this.p);
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Binomial';
   }
 
  /**
@@ -169,22 +160,22 @@ export class Binomial extends DistAbstract {
     }
     return choose(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min      : 0,
       max      : this.n,
       discrete : true
     };
-  }  
+  }
 
  /**
   * Samples value from distribution.
@@ -338,11 +329,27 @@ export class Binomial extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Binomial.params = {
   n : 'Integer greater than 0.',
   p : 'Real number in the range [0, 1].'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Binomial.distName = 'Binomial';
+
+/**
+ * Indication that distribution is discrete.
+ * @property discrete
+ * @type Boolean
+ * @static
+ */
+Binomial.discrete = true;

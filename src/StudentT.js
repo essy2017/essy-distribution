@@ -56,20 +56,11 @@ export class StudentT extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return 0;
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Student\'s T';
   }
 
  /**
@@ -85,14 +76,14 @@ export class StudentT extends DistAbstract {
     return (a / b) * c;
   }
 
- /** 
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {};
   }
@@ -134,10 +125,18 @@ export class StudentT extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 StudentT.params = {
-  df : 'Real number greater than 0.'  
+  df : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+StudentT.distName = "Student's T";

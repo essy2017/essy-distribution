@@ -55,15 +55,6 @@ export class Logarithmic extends DistAbstract {
   mean () {
     return (-1 / Math.log(1 - this.prob)) * (this.prob / (1 - this.prob));
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Logarithmic';
-  }
 
  /**
   * Probability density function.
@@ -78,15 +69,15 @@ export class Logarithmic extends DistAbstract {
     }
     return (-1 / Math.log(1 - this.prob)) * (Math.pow(this.prob, x) / x);
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min      : 1,
@@ -155,10 +146,26 @@ export class Logarithmic extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Logarithmic.params = {
-  probability : 'Real number in range [0, 1].'  
+  probability : 'Real number in range [0, 1].'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Logarithmic.distName = 'Logarithmic';
+
+/**
+ * Indication that distribution is discrete.
+ * @property discrete
+ * @type Boolean
+ * @static
+ */
+Logarithmic.discrete = true;

@@ -101,15 +101,6 @@ export class Gamma extends DistAbstract {
   }
 
  /**
-  * Returns distribution name.
-  * @method name
-  * @return {String} Distribution name.
-  */
-  name () {
-    return 'Gamma';
-  }
-
- /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -291,3 +282,11 @@ Gamma.params = {
   shape : 'Real number greater than 0.',
   scale : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Gamma.distName = 'Gamma';

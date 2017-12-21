@@ -48,20 +48,11 @@ export class Rayleigh extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.scale * Math.sqrt(2 * Math.log(2));
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Rayleigh';
   }
 
  /**
@@ -74,21 +65,21 @@ export class Rayleigh extends DistAbstract {
     if (x < 0) return 0;
     return (x / Math.pow(this.scale, 2)) * Math.exp(- Math.pow(x, 2) / (2 * Math.pow(this.scale, 2)) );
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: 0
     };
   }
-  
+
  /**
   * Returns sample from distribution.
   * @method sampleValue
@@ -113,10 +104,18 @@ export class Rayleigh extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Rayleigh.params = {
-  scale : 'Real number greater than 0.'  
+  scale : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Rayleigh.distName = 'Rayleigh';

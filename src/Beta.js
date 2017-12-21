@@ -100,20 +100,11 @@ export class Beta extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return regInvIncBeta(0.5, this.alpha, this.beta);
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Beta';
   }
 
  /**
@@ -128,15 +119,15 @@ export class Beta extends DistAbstract {
     const den = (gamma(this.alpha) * gamma(this.beta)) / gamma(this.alpha + this.beta);
     return num / den;
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: 0,
@@ -167,11 +158,19 @@ export class Beta extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Beta.params = {
   alpha : 'Real number greater than 0.',
   beta  : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Beta.distName = 'Beta';

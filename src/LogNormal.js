@@ -38,6 +38,7 @@ export class LogNormal extends DistAbstract {
   */
   cdf (x) {
     if (x <= 0) return 0;
+    if (x < 0.01) x = 0.01;
     return 0.5 + 0.5 * erf( (Math.log(x) - this.m) / (this.se * Math.sqrt(2)) );
   }
 
@@ -52,20 +53,11 @@ export class LogNormal extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return Math.exp(this.m);
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Log-normal';
   }
 
  /**
@@ -76,20 +68,21 @@ export class LogNormal extends DistAbstract {
   */
   pdf (x) {
     if (x <= 0) return 0;
+    if (x < 0.01) x = 0.01;
     return (1 / (x * this.se * Math.sqrt(2 * Math.PI))) * Math.exp(- (Math.pow(Math.log(x) - this.m, 2)) / (2 * Math.pow(this.se, 2)));
   }
 
- /** 
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */    
+  */
   range () {
     return {
-      min: 0.001
+      min: 0
     };
   }
 
@@ -117,11 +110,19 @@ export class LogNormal extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 LogNormal.params = {
   mean : 'Real number.',
   se   : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+LogNormal.distName = 'Log-normal';

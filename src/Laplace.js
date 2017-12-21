@@ -54,20 +54,11 @@ export class Laplace extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.location;
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Laplace';
   }
 
  /**
@@ -79,19 +70,19 @@ export class Laplace extends DistAbstract {
   pdf (x) {
     return (1 / (2*this.scale)) * Math.exp(- (Math.abs(x - this.location) / this.scale));
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {};
   }
-  
+
  /**
   * Generates sample.
   * @method sampleValue
@@ -117,11 +108,19 @@ export class Laplace extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Laplace.params = {
   location : 'Real number.',
   scale    : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Laplace.distName = 'Laplace';

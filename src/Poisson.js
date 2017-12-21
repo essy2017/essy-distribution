@@ -60,15 +60,6 @@ export class Poisson extends DistAbstract {
   }
 
  /**
-  * Returns distribution name.
-  * @method name
-  * @return {String} Distribution name.
-  */
-  name () {
-    return 'Poisson';
-  }
-
- /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -135,3 +126,19 @@ export class Poisson extends DistAbstract {
 Poisson.params = {
   lambda : 'An integer greater than or equal to 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Poisson.distName = 'Poisson';
+
+/**
+ * Indication that distribution is discrete.
+ * @property discrete
+ * @type Boolean
+ * @static
+ */
+Poisson.discrete = true;

@@ -55,22 +55,13 @@ export class Uniform extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return (this.min + this.max) / 2;
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Uniform';
-  }
-  
+
  /**
   * Probability density function.
   * @method pdf
@@ -84,21 +75,21 @@ export class Uniform extends DistAbstract {
     return 0;
   }
 
- /** 
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min : this.min,
       max : this.max
     };
   }
-  
+
  /**
   * Samples distribution.
   * @method sampleValue
@@ -122,11 +113,19 @@ export class Uniform extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Uniform.params = {
   min : 'Real number less than max.',
   max : 'Real number greater than min.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Uniform.distName = 'Uniform';

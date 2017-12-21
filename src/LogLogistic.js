@@ -58,20 +58,11 @@ export class LogLogistic extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.scale;
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Log-logistic';
   }
 
  /**
@@ -86,21 +77,21 @@ export class LogLogistic extends DistAbstract {
     const den = Math.pow(1 + Math.pow(x / this.scale, this.shape), 2);
     return num / den;
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min: 0
     };
   }
-  
+
  /**
   * Samples distribution.
   * @method sampleValue
@@ -126,11 +117,19 @@ export class LogLogistic extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 LogLogistic.params = {
   scale : 'Real number greater than 0.',
   shape : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+LogLogistic.distName = 'Log-logistic';

@@ -72,15 +72,6 @@ export class ChiSquared extends DistAbstract {
   }
 
  /**
-  * Returns distribution name.
-  * @method name
-  * @return {String} Distribution name.
-  */
-  name () {
-    return 'Chi-squared';
-  }
-
- /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -174,3 +165,11 @@ export class ChiSquared extends DistAbstract {
 ChiSquared.params = {
   df : 'Integer greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+ChiSquared.distName = 'Chi-squared';

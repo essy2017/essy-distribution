@@ -59,15 +59,6 @@ export class Erlang extends DistAbstract {
   }
 
  /**
-  * Returns distribution name.
-  * @method name
-  * @return {String} Distribution name.
-  */
-  name () {
-    return 'Erlang';
-  }
-
- /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -131,3 +122,11 @@ Erlang.params = {
   shape : 'Positive integer.',
   rate  : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Erlang.distName = 'Erlang';

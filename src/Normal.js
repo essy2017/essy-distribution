@@ -60,20 +60,11 @@ export class Normal extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.m;
-  }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Normal';
   }
 
  /**
@@ -86,19 +77,19 @@ export class Normal extends DistAbstract {
     return (1 / Math.sqrt(2 * Math.pow(this.se, 2) * Math.PI)) *
            Math.exp(- (Math.pow(x - this.m, 2) / (2 * Math.pow(this.se, 2)) ) );
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {};
   }
-  
+
  /**
   * Returns sample from distribution.
   * @method sampleValue
@@ -132,11 +123,19 @@ export class Normal extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Normal.params = {
   mean : 'Real number.',
   se   : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Normal.distName = 'Normal';

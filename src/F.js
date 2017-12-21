@@ -65,15 +65,6 @@ export class F extends DistAbstract {
   }
 
  /**
-  * Returns distribution name.
-  * @method name
-  * @return {String} Distribution name.
-  */
-  name () {
-    return 'F';
-  }
-
- /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -137,3 +128,11 @@ F.params = {
   df1 : 'Real number greater than 0.',
   df2 : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+F.distName = 'F';

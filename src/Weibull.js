@@ -56,22 +56,13 @@ export class Weibull extends DistAbstract {
 
  /**
   * Returns distribution median.
-  * @method median 
+  * @method median
   * @return {Number}
-  */  
+  */
   median () {
     return this.beta * Math.pow(Math.log(2), 1 / this.alpha);
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Weibull';
-  }
-  
+
  /**
   * Probability density function.
   * @method pdf
@@ -110,11 +101,19 @@ export class Weibull extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Weibull.params = {
   shape : 'Real number greater than 0.',
   scale : 'Real number greater than 0.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Weibull.distName = 'Weibull';

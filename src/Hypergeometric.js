@@ -143,15 +143,6 @@ export class Hypergeometric extends DistAbstract {
   mean () {
     return this.n * (this.M / this.N);
   }
-  
- /** 
-  * Returns distribution name.
-  * @method name 
-  * @return {String} Distribution name.
-  */  
-  name () {
-    return 'Hypergeometric';
-  }
 
  /**
   * Probability density function.
@@ -173,15 +164,15 @@ export class Hypergeometric extends DistAbstract {
 
     return (choose(this.M, x) * choose(this.N - this.M, this.n - x)) / choose(this.N, this.n);
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
     return {
       min      : Math.max(0, this.n + this.M - this.N),
@@ -437,8 +428,8 @@ export class Hypergeometric extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 Hypergeometric.params = {
@@ -446,3 +437,19 @@ Hypergeometric.params = {
   M : 'Integer greater than or equal to 0 and less than or equal to N.',
   n : 'Integer greater than or equal to 0 and less than or equal to N.'
 };
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Hypergeometric.distName = 'Hypergeometric';
+
+/**
+ * Indication that distribution is discrete.
+ * @property discrete
+ * @type Boolean
+ * @static
+ */
+Hypergeometric.discrete = true;
