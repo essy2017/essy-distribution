@@ -70,12 +70,12 @@ export class ChiSquared extends DistAbstract {
   median () {
     return this.df * Math.pow(1 - 2 / (9 * this.df), 3);
   }
-  
- /** 
+
+ /**
   * Returns distribution name.
-  * @method name 
+  * @method name
   * @return {String} Distribution name.
-  */  
+  */
   name () {
     return 'Chi-squared';
   }
@@ -87,22 +87,25 @@ export class ChiSquared extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x === 0 && this.df === 1) x = 0.01;
     return (1 / (Math.pow(2, this.df / 2) * gamma(this.df / 2))) *
       Math.pow(x, this.df / 2 - 1) * Math.exp(-(x / 2));
   }
-  
- /** 
+
+ /**
   * Returns distribution range.
-  * @method range 
+  * @method range
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
   *   min {Number} [optional] Defined if min value.
-  */  
+  */
   range () {
-    return {};
+    return {
+      min: 0
+    };
   }
-  
+
  /**
   * Samples random value from distribution.
   * @method sampleValue
@@ -164,8 +167,8 @@ export class ChiSquared extends DistAbstract {
 
 /**
  * Distribution parameters.
- * @property params 
- * @type Object 
+ * @property params
+ * @type Object
  * @static
  */
 ChiSquared.params = {
