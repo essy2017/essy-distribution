@@ -126,12 +126,16 @@ export class Beta extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
       min: 0,
-      max: 1
+      minInclusive: true,
+      max: 1,
+      maxInclusive: true
     };
   }
 

@@ -82,7 +82,8 @@ export class LogNormal extends DistAbstract {
   */
   range () {
     return {
-      min: 0
+      min          : 0,
+      minInclusive : false
     };
   }
 

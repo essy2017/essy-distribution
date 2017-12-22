@@ -79,11 +79,14 @@ export class Pareto extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
-      min: this.scale
+      min          : this.scale,
+      minInclusive : true
     };
   }
 

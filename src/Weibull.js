@@ -76,6 +76,24 @@ export class Weibull extends DistAbstract {
     return 0;
   }
 
+
+ /**
+  * Returns distribution range.
+  * @method range
+  * @return {Object} With properties:
+  *   discrete {Boolean} [optional] True if only integers.
+  *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
+  *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
+  */
+  range () {
+    return {
+      min          : 0,
+      minInclusive : true
+    };
+  }
+
  /**
   * Samples random value from distribution.
   * @method sampleValue

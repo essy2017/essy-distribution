@@ -81,12 +81,16 @@ export class Uniform extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
-      min : this.min,
-      max : this.max
+      min          : this.min,
+      minInclusive : true,
+      max          : this.max,
+      maxInclusive : true
     };
   }
 

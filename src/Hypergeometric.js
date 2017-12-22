@@ -171,13 +171,17 @@ export class Hypergeometric extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
-      min      : Math.max(0, this.n + this.M - this.N),
-      max      : Math.min(this.n, this.M),
-      discrete : true
+      min          : Math.max(0, this.n + this.M - this.N),
+      minInclusive : true,
+      max          : Math.min(this.n, this.M),
+      maxInclusive : true,
+      discrete     : true
     };
   }
 

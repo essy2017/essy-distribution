@@ -167,13 +167,17 @@ export class Binomial extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
-      min      : 0,
-      max      : this.n,
-      discrete : true
+      min          : 0,
+      minInclusive : true,
+      max          : this.n,
+      maxInclusive : true,
+      discrete     : true
     };
   }
 

@@ -76,12 +76,15 @@ export class Logarithmic extends DistAbstract {
   * @return {Object} With properties:
   *   discrete {Boolean} [optional] True if only integers.
   *   max {Number} [optional] Defined if max value.
+  *   maxInclusive {Boolean} [optional] True if max value is inclusive.
   *   min {Number} [optional] Defined if min value.
+  *   minInclusive {Boolean} [optional] True if min value is inclusive.
   */
   range () {
     return {
-      min      : 1,
-      discrete : true
+      min          : 1,
+      minInclusive : true,
+      discrete     : true
     };
   }
 
