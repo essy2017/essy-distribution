@@ -112,8 +112,9 @@ describe('Distributions', () => {
       // Test against Excel. BINOM.DIST(15, 20, 0.5, true).
       assert.strictEqual(roundIt(bin.cdf(15), 5), 0.99409);
 
-      // Out of bounds.
-      assert.throws(() => { bin.cdf(1.5); }, RangeError);
+      // Test against Excel. BINOM.DIST(9.9, 20, 0.5, true).
+      assert.strictEqual(roundIt(bin.cdf(9.9), 5), 0.4119);
+
     });
     it('Should return mean', () => {
       var bin = new Binomial(5, 0.2);
@@ -129,8 +130,9 @@ describe('Distributions', () => {
       // Test against Excel. BINOM.DIST(15, 20, 0.5, false).
       assert.strictEqual(roundIt(bin.pdf(15), 5), 0.01479);
 
-      // Out of bounds.
-      assert.throws(() => { bin.pdf(-1); }, RangeError);
+      // Test against Excel. BINOM.DIST(9.9, 20, 0.5, false).
+      assert.strictEqual(roundIt(bin.pdf(9.9), 5), 0.16018);
+
     });
     it('Should sample values', () => {
       var bin = new Binomial(5, 0.2);

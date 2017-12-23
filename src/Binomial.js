@@ -116,16 +116,13 @@ export class Binomial extends DistAbstract {
   }
 
  /**
-  * Cumulative density function.
+  * Cumulative density function. Ignores digits to right of decimal.
   * @method cdf
   * @param x {Number}
   * @return {Number}
-  * @throws {RangeError} On invalid x.
   */
   cdf (x) {
-    if (x < 0 || Math.floor(x) !== x) {
-      throw new RangeError('x must be a positive integer.');
-    }
+    x = Math.floor(x);
     return this.n === x ? 1 : regIncBeta(this.n - x, 1 + x, 1 - this.p);
   }
 
@@ -148,16 +145,13 @@ export class Binomial extends DistAbstract {
   }
 
  /**
-  * Probability density function.
+  * Probability density function. Ignores digits to right of decimal.
   * @method pdf
   * @param x {Number}
   * @return {Number}
-  * @throws {RangeError} On invalid x.
   */
   pdf (x) {
-    if (x < 0 || Math.floor(x) !== x) {
-      throw new RangeError('x must be a positive integer.');
-    }
+    x = Math.floor(x);
     return choose(this.n, x) * Math.pow(this.p, x) * Math.pow(1 - this.p, this.n - x);
   }
 
