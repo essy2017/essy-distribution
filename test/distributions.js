@@ -64,6 +64,12 @@ describe('Distributions', () => {
       assert.strictEqual(beta.cdf(-1), 0);
       assert.strictEqual(beta.cdf(1.5), 0);
     });
+    it('Should calculate kurtosis', () => {
+      var b = new Beta(2, 3);
+      var num = 3*(2+3+1)*(2*Math.pow(2+3,2) + 2*3*(2+3-6));
+      var den = 2*3*(2+3+2)*(2+3+3);
+      assert.strictEqual(b.kurtosis(), num / den);
+    });
     it('Should return mean', () => {
       var beta = new Beta(1, 2);
       var mean = beta.mean();
@@ -72,6 +78,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var b = new Beta(2, 2);
       assert.strictEqual(Number(b.median().toFixed(4)), 0.5000);
+    });
+    it('Should return mode', () => {
+      var b = new Beta(2, 3);
+      assert.strictEqual(b.mode(), (2 - 1) / (2 + 3 - 2));
     });
     it('Should calculate pdf', () => {
       var beta = new Beta(2, 5);
@@ -89,6 +99,10 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = beta.sample(4);
       assert.strictEqual(samples.length, 4);
+    });
+    it('Should return skewness', () => {
+      var b = new Beta(2, 3);
+      assert.strictEqual(b.skewness(), (2*(3-2)*Math.sqrt(2+3+1)) / (Math.sqrt(2)*Math.sqrt(3)*(2+3+2)));
     });
     it('Should return variance', () => {
       var beta = new Beta(2, 5);
@@ -116,6 +130,10 @@ describe('Distributions', () => {
       assert.strictEqual(roundIt(bin.cdf(9.9), 5), 0.4119);
 
     });
+    it('Should return kurtosis', () => {
+      var bin = new Binomial(5, 0.3);
+      assert.strictEqual(bin.kurtosis(), (1-6*(1-0.3)*0.3)/(5*(1-0.3)*0.3) + 3);
+    });
     it('Should return mean', () => {
       var bin = new Binomial(5, 0.2);
       assert.strictEqual(bin.mean(), 5 * 0.2);
@@ -140,6 +158,10 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = bin.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var bin = new Binomial(3, 0.2);
+      assert.strictEqual(bin.skewness(), (1-2*0.2)/(Math.sqrt(3*(1-0.2)*0.2)));
     });
     it('Should return variance', () => {
       var bin = new Binomial(10, 0.5);
@@ -203,6 +225,10 @@ describe('Distributions', () => {
       // Test against Excel. CHISQ.DIST(8, 2, true).
       assert.strictEqual(roundIt(c.cdf(8), 5), 0.98168);
     });
+    it('Should return kurtosis', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.kurtosis(), (12/2) + 3);
+    });
     it('Should return mean', () => {
       var c = new ChiSquared(2);
       assert.strictEqual(c.mean(), 2);
@@ -221,6 +247,10 @@ describe('Distributions', () => {
       var c = new ChiSquared(2);
       var samples = c.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var c = new ChiSquared(2);
+      assert.strictEqual(c.skewness(), 2 * Math.sqrt(2) * Math.sqrt(1/2));
     });
     it('Should return variance', () => {
       var c = new ChiSquared(2);
@@ -286,6 +316,10 @@ describe('Distributions', () => {
       assert.ok(true);
       assert.strictEqual(er.cdf(-1), 0);
     });
+    it('Should return kurtosis', () => {
+      var er = new Erlang(5, 2);
+      assert.strictEqual(er.kurtosis(), (6/5) + 3);
+    });
     it('Should return mean', () => {
       var er = new Erlang(4, 0.5);
       assert.strictEqual(er.mean(), 4 / 0.5);
@@ -301,6 +335,10 @@ describe('Distributions', () => {
       assert.ok(typeof samples === 'number');
       samples = er.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var er = new Erlang(5, 2);
+      assert.strictEqual(er.skewness(), 2 / Math.sqrt(5));
     });
     it('Should return variance', () => {
       var er = new Erlang(4, 0.5);
@@ -371,6 +409,12 @@ describe('Distributions', () => {
       // Test against Excel. F.DIST(1, 5, 2, true).
       assert.strictEqual(roundIt(f.cdf(1), 5), 0.43120);
     });
+    it('Should return kurtosis', () => {
+      var f = new F(2, 9);
+      var num = 12 * ((5*9-22)*2*(9+2-2) + (9-4)*Math.pow(9-2,2));
+      var den = (9-8)*(9-6)*2*(9-2-2);
+      assert.strictEqual(f.kurtosis(), num / den + 3);
+    });
     it('Should return mean', () => {
       var f = new F(2, 3);
       assert.strictEqual(f.mean(), 3 / (3 - 2));
@@ -391,6 +435,12 @@ describe('Distributions', () => {
       var f = new F(100, 200);
       var samples = f.sample(3)
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var f = new F(3, 8);
+      var num = 2 * Math.sqrt(2) * Math.sqrt(8-4) * (8+2*3-2);
+      var den = (8-6) * Math.sqrt(3) * Math.sqrt(8+3-2);
+      assert.strictEqual(f.skewness(), num / den);
     });
     it('Should return variance', () => {
       var f = new F(2, 5);
@@ -420,6 +470,10 @@ describe('Distributions', () => {
       // Out of range.
       assert.strictEqual(g.cdf(-1), 0);
     });
+    it('Should return kurtosis', () => {
+      var g = new Gamma(3, 2);
+      assert.strictEqual(g.kurtosis(), 6/3 + 3);
+    });
     it('Should return mean', () => {
       var g = new Gamma(1, 2);
       assert.strictEqual(g.mean(), 1 * 2);
@@ -439,6 +493,10 @@ describe('Distributions', () => {
       assert.strictEqual(typeof samples, 'number');
       samples = g.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var g = new Gamma(3, 2);
+      assert.strictEqual(g.skewness(), 2 / Math.sqrt(3));
     });
     it('Should return variance', () => {
       var g = new Gamma(1, 2);
@@ -460,6 +518,10 @@ describe('Distributions', () => {
       assert.throws(() => { new Hypergeometric(5, 6, 4); }, ParamError);
       assert.throws(() => { new Hypergeometric(5, 3, 6); }, ParamError);
     });
+    it('Should return kurtosis', () => {
+      // @TODO Add actual test.
+      assert.ok(true);
+    });
     it('Should return mean', () => {
       var h = new Hypergeometric(500, 60, 200);
       assert.strictEqual(h.mean(), 200*(60/500));
@@ -474,6 +536,17 @@ describe('Distributions', () => {
       var h = new Hypergeometric(500, 60, 200);
       var samples = h.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      // @TODO: Actually test this.
+      /*var n = 500;
+      var m = 60;
+      var N = 200;
+      var h = new Hypergeometric(n, m, N);
+      var num = Math.sqrt(N-1) * (N-2*m) * (N-2*n);
+      var den = (N-2) * Math.sqrt(m*n*(N-m)*(N-n));
+      assert.strictEqual(h.skewness(), num / den);*/
+      assert.ok(true);
     });
     it('Should return variance', () => {
       var h = new Hypergeometric(500, 60, 200);
@@ -653,6 +726,10 @@ describe('Distributions', () => {
       // Out of range.
       assert.strictEqual(l.cdf(-1), 0);
     });
+    it('Should return kurtosis', () => {
+      var n = new LogNormal(1, 2);
+      assert.strictEqual(n.kurtosis(), 3*Math.exp(2*Math.pow(2,2)) + 2*Math.exp(3*Math.pow(2,2)) + Math.exp(4*Math.pow(2,2)) - 3);
+    });
     it('Should enforce range', () => {
       assert.throws(() => { new LogNormal(1, -1); }, ParamError);
     });
@@ -677,6 +754,10 @@ describe('Distributions', () => {
       var l = new LogNormal(0, 1);
       var samples = l.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+    it('Should return skewness', () => {
+      var n = new LogNormal(1, 2);
+      assert.strictEqual(n.skewness(), Math.sqrt(Math.exp(Math.pow(2,2)) - 1) * (Math.exp(Math.pow(2,2)) + 2) );
     });
     it('Should return variance', () => {
       var l = new LogNormal(1, 2);

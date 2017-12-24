@@ -50,6 +50,15 @@ export class Erlang extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return (6 / this.shape) + 3;
+  }
+
+ /**
   * Returns mean value.
   * @method mean
   * @return {Number} Mean value.
@@ -102,6 +111,15 @@ export class Erlang extends DistAbstract {
       prod *= generator.random();
     }
     return -Math.log(prod)/this.rate;
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 2 / Math.sqrt(this.shape);
   }
 
  /**

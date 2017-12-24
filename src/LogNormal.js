@@ -43,6 +43,17 @@ export class LogNormal extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    const m = this.m;
+    const s = this.se;
+    return 3*Math.exp(2 * Math.pow(s, 2)) + 2*Math.exp(3 * Math.pow(s, 2)) + Math.exp(4 * Math.pow(s, 2)) - 3;
+  }
+
+ /**
   * Returns mean of distribution.
   * @method mean
   * @return {Number} Distribution mean.
@@ -97,6 +108,15 @@ export class LogNormal extends DistAbstract {
     const n = new Normal(0, 1);
     const s = n.sample(generator);
     return Math.exp(this.m + s * this.se);
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return Math.sqrt(Math.exp(Math.pow(this.se, 2)) - 1) * (Math.exp(Math.pow(this.se, 2)) + 2);
   }
 
  /**

@@ -90,6 +90,19 @@ export class Beta extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    const a = this.alpha;
+    const b = this.beta;
+    const num = 3*(a + b + 1)*(2*Math.pow(a + b, 2) + a*b*(a + b - 6));
+    const den = a * b * (a + b + 2) * (a + b + 3);
+    return num / den;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -105,6 +118,18 @@ export class Beta extends DistAbstract {
   */
   median () {
     return regInvIncBeta(0.5, this.alpha, this.beta);
+  }
+
+ /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    if ((this.alpha + this.beta) === 2 ) {
+      return undefined;
+    }
+    return (this.alpha - 1) / (this.alpha + this.beta - 2);
   }
 
  /**
@@ -148,6 +173,17 @@ export class Beta extends DistAbstract {
   sampleValue (generator) {
     const u = randg(this.alpha, generator);
     return u / (u + randg(this.beta, generator));
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const num = 2 * (this.beta - this.alpha) * Math.sqrt(this.alpha + this.beta + 1);
+    const den = Math.sqrt(this.alpha) * Math.sqrt(this.beta) * (this.alpha + this.beta + 2);
+    return num / den;
   }
 
  /**

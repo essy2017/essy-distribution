@@ -39,6 +39,15 @@ export class Logistic extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 4.2;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -88,6 +97,15 @@ export class Logistic extends DistAbstract {
   sampleValue (generator) {
     const x = generator.random();
     return this.m + this.scale * Math.log(x / (1 - x));
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 0;
   }
 
  /**

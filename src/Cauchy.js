@@ -39,6 +39,15 @@ export class Cauchy extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {undefined}
+  */
+  kurtosis () {
+    return undefined;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {undefined}
@@ -86,6 +95,15 @@ export class Cauchy extends DistAbstract {
   */
   sampleValue (generator) {
     return this.location + this.scale * Math.tan(Math.PI * generator.random());
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {undefined}
+  */
+  skewness () {
+    return undefined;
   }
 
  /**

@@ -136,6 +136,23 @@ export class Hypergeometric extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    const n    = this.N;
+    const m    = this.M;
+    const N    = this.n;
+    const num1 = (N - 1) * Math.pow(N, 2);
+    const num2 = (( 3*m * (N-m) * (Math.pow(n, 2) * (-N) + (n-2)*Math.pow(N, 2) + 6*n*(N-n)))) / Math.pow(N, 2);
+    const num3 = 6*n*(N-n) + N*(N+1);
+    const num  = num1 * (num2 - num3);
+    const den  = m * n * (N-3)*(N-2)*(N-m)*(N-n);
+    return num / den;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number}
@@ -216,6 +233,20 @@ export class Hypergeometric extends DistAbstract {
   	else {
   		return (this.M <= Nhalf) ? this.M - K : this.n - this.N + this.M + K;
   	}
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const n   = this.N;
+    const m   = this.M;
+    const N   = this.n;
+    const num = Math.sqrt(N-1) * (N-2*m) * (N-2*n);
+    const den = (N-2) * Math.sqrt(m * n * (N-m) * (N-n));
+    return num / den;
   }
 
  /**

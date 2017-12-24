@@ -44,6 +44,15 @@ export class Laplace extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 6;
+  }
+
+ /**
   * Returns mean value.
   * @method mean
   * @return {Number} Mean value.
@@ -93,6 +102,15 @@ export class Laplace extends DistAbstract {
     const u = generator.random() - 0.5;
     const sgn = u === 0 ? 0 : u > 0 ? 1 : -1;
     return this.location - this.scale * sgn * Math.log(1 - 2*Math.abs(u));
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 0;
   }
 
  /**

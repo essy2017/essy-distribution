@@ -54,6 +54,15 @@ export class ChiSquared extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return (12 / this.df) + 3;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number}
@@ -146,6 +155,15 @@ export class ChiSquared extends DistAbstract {
   			if (2.0 * Math.log(u) < (Math.log(1.0 + z / this.b) * this.b * this.b - zz * 0.5 - z * this.b)) return((z + this.b)*(z + this.b));
   		}
   	}
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 2 * Math.sqrt(2) * Math.sqrt(1 / this.df);
   }
 
  /**

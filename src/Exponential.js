@@ -48,6 +48,15 @@ export class Exponential extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 9;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Mean of distribution.
@@ -101,6 +110,15 @@ export class Exponential extends DistAbstract {
   */
   sampleValue (generator) {
     return -Math.log(generator.random()) / this.lambda;
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 2;
   }
 
  /**

@@ -44,6 +44,22 @@ export class F extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    if (this.df2 > 8) {
+      const n = this.df1;
+      const m = this.df2;
+      const num = 12 * ( (5*m - 22) * n*(m + n - 2) + (m - 4)*Math.pow(m - 2, 2));
+      const den = (m - 8) * (m - 6) * n * (m - n - 2);
+      return num / den + 3;
+    }
+    return undefined;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number}
@@ -105,6 +121,23 @@ export class F extends DistAbstract {
         c2 = new ChiSquared(this.df2);
 
     return (c1.sample(1, generator) / this.df1) / (c2.sample(1, generator) / this.df2);
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const n = this.df1;
+    const m = this.df2;
+
+    if (m > 6) {
+      const num = 2 * Math.sqrt(2) * Math.sqrt(m - 4) * (m + 2*n - 2);
+      const den = (m - 6) * Math.sqrt(n) * Math.sqrt(m + n - 2);
+      return num / den;
+    }
+    return undefined;
   }
 
  /**

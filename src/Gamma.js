@@ -92,6 +92,15 @@ export class Gamma extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return (6 / this.shape) + 3;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -262,6 +271,15 @@ export class Gamma extends DistAbstract {
 			  }
 		  }
 	  }
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 2 / Math.sqrt(this.shape);
   }
 
  /**

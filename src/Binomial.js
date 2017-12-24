@@ -127,6 +127,17 @@ export class Binomial extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    const num = 1 - 6 * (1 - this.p) * this.p;
+    const den = this.n * (1 - this.p) * this.p;
+    return num / den + 3;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -312,6 +323,17 @@ export class Binomial extends DistAbstract {
     		}
     	}
     	return (p>0.5) ? (n-K) : K;
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const num = 1 - 2 * this.p;
+    const den = Math.sqrt(this.n * (1 - this.p) * this.p);
+    return num / den;
   }
 
  /**
