@@ -38,6 +38,15 @@ export class Rayleigh extends DistAbstract {
   }
 
  /**
+  * Returns kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return (32 - 3*Math.pow(Math.PI, 2)) / Math.pow(4 - Math.PI, 2);
+  }
+
+ /**
   * Returns mean.
   * @method mean
   * @return {Number} Mean value.
@@ -91,6 +100,17 @@ export class Rayleigh extends DistAbstract {
   */
   sampleValue (generator) {
     return this.scale * Math.sqrt(-2 * Math.log(1 - generator.random()));
+  }
+
+ /**
+  * Returns skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const num = (Math.PI - 3) * Math.sqrt(Math.PI / 2);
+    const den = Math.pow(2 - Math.PI / 2, 3/2);
+    return num / den;
   }
 
  /**

@@ -820,6 +820,14 @@ describe('Distributions', () => {
       var cdf = p.cdf(3);
       assert.ok(true);
     });
+    it('Should return kurtosis', () => {
+      var k = 2;
+      var a = 5;
+      var p = new Pareto(k, a);
+      var num = 3*(a-2)*(3*Math.pow(a,2)+a+2);
+      var den = (a-4)*(a-3)*a;
+      assert.strictEqual(p.kurtosis(), num / den);
+    });
     it('Should return mean', () => {
       var p = new Pareto(1, 2);
       assert.strictEqual(p.mean(), (1*2)/(2-1));
@@ -839,6 +847,14 @@ describe('Distributions', () => {
       var p = new Pareto(1, 3);
       var samples = p.sample(2);
       assert.strictEqual(samples.length, 2);
+    });
+    it('Should return skewness', () => {
+      var k = 2;
+      var a = 9;
+      var p = new Pareto(k, a);
+      var num = 2 * Math.sqrt((a-2)/a) * (a+1);
+
+      assert.strictEqual(p.skewness(), num / (a - 3));
     });
     it('Should return variance', () => {
       var p = new Pareto(2, 3);
@@ -907,6 +923,10 @@ describe('Distributions', () => {
       assert.ok(true);
       assert.strictEqual(r.cdf(-1), 0);
     });
+    it('Should return kurtosis', () => {
+      var r = new Rayleigh(2);
+      assert.strictEqual(roundIt(r.kurtosis(), 5), 3.24509);
+    });
     it('Should return mean', () => {
       var r = new Rayleigh(2);
       assert.strictEqual(r.mean(), 2 * Math.sqrt(Math.PI / 2));
@@ -925,6 +945,10 @@ describe('Distributions', () => {
       var r = new Rayleigh(2);
       var samples = r.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var r = new Rayleigh(2);
+      assert.strictEqual(roundIt(r.skewness(), 5), 0.63111);
     });
     it('Should return variance', () => {
       var r = new Rayleigh(2);
@@ -1016,6 +1040,15 @@ describe('Distributions', () => {
       var t = new Triangular(1, 2, 3);
       var samples = t.sample(3);
       assert.strictEqual(samples.length, 3);
+    });
+    it('Should return skewness', () => {
+      var a = 1;
+      var b = 8;
+      var c = 4;
+      var t = new Triangular(a, c, b);
+      var num = Math.sqrt(2) * (a+b-2*c) * (2*a-b-c) * (a-2*b+c);
+      var den = 5 * Math.pow(Math.pow(a,2) + Math.pow(b,2) + Math.pow(c,2) -a*b - a*c - b*c, 3/2);
+      assert.strictEqual(t.skewness(), num / den);
     });
     it('Should return variance', () => {
       var t = new Triangular(1, 2, 3);

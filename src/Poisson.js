@@ -42,6 +42,15 @@ export class Poisson extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return (1 / this.lambda) + 3;
+  }
+
+ /**
   * Returns mean.
   * @method mean
   * @return {Number} Mean value.
@@ -106,6 +115,15 @@ export class Poisson extends DistAbstract {
       p *= generator.random();
     }
     return k - 1;
+  }
+
+ /**
+  * Returns skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 1 / Math.sqrt(this.lambda);
   }
 
  /**

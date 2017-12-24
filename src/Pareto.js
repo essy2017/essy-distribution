@@ -43,6 +43,23 @@ export class Pareto extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+
+    const a = this.shape;
+
+    if (a > 4) {
+      const num = 3*(a-2)*(3*Math.pow(a,2) + a + 2);
+      const den = (a-4) * (a-3) * a;
+      return num / den;
+    }
+    return undefined;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number}
@@ -103,6 +120,20 @@ export class Pareto extends DistAbstract {
       s = u.sample(1, generator);
     }
     return this.scale / Math.pow(s, 1 / this.shape);
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const a = this.shape;
+    if (a > 3) {
+      const num = 2 * Math.sqrt((a-2)/a) * (a+1);
+      return num / (a - 3);
+    }
+    return undefined;
   }
 
  /**

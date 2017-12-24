@@ -45,6 +45,15 @@ export class Uniform extends DistAbstract {
   }
 
  /**
+  * Returns kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 1.8;
+  }
+
+ /**
   * Returns distribution mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -102,6 +111,15 @@ export class Uniform extends DistAbstract {
   */
   sampleValue (generator) {
     return this.min + (this.max - this.min) * generator.random();
+  }
+
+ /**
+  * Returns skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 0;
   }
 
  /**

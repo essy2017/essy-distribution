@@ -50,6 +50,15 @@ export class Normal extends DistAbstract {
   }
 
  /**
+  * Returns distribution kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 3;
+  }
+
+ /**
   * Returns mean distribution value.
   * @method mean
   * @return {Number} Mean value.
@@ -108,6 +117,15 @@ export class Normal extends DistAbstract {
 
     z = Math.sqrt(-2 * Math.log(r) / r);
     return this.m + this.se * y * z;
+  }
+
+ /**
+  * Returns distribution skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return 0;
   }
 
  /**

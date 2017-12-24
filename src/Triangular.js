@@ -56,6 +56,15 @@ export class Triangular extends DistAbstract {
   }
 
  /**
+  * Returns kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    return 2.4;
+  }
+
+ /**
   * Returns mean.
   * @method mean
   * @return {Number} Distribution mean.
@@ -139,6 +148,20 @@ export class Triangular extends DistAbstract {
     else {
       return b - Math.sqrt((1-r) * (b-m) * (b-a));
     }
+  }
+
+ /**
+  * Returns skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    const a = this.min;
+    const b = this.max;
+    const c = this.mode;
+    const num = Math.sqrt(2) * (a+b-2*c) * (2*a-b-c) * (a-2*b+c);
+    const den = 5 * Math.pow(Math.pow(a,2) + Math.pow(b,2) + Math.pow(c,2) - a*b - a*c - b*c, 3/2);
+    return num / den;
   }
 
  /**

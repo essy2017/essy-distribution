@@ -43,6 +43,18 @@ export class StudentT extends DistAbstract {
   }
 
  /**
+  * Returns kurtosis.
+  * @method kurtosis
+  * @return {Number}
+  */
+  kurtosis () {
+    if (this.df > 4) {
+      return 6 / (this.df - 4) + 3;
+    }
+    return undefined;
+  }
+
+ /**
   * Returns mean.
   * @method mean
   * @return {Number}
@@ -105,6 +117,15 @@ export class StudentT extends DistAbstract {
     while ((w = u * u + v * v) > 1);
 
     return u * Math.sqrt(this.df * (Math.exp(- 2 / this.df * Math.log(w)) - 1) / w);
+  }
+
+ /**
+  * Returns skewness.
+  * @method skewness
+  * @return {Number}
+  */
+  skewness () {
+    return this.df > 3 ? 0 : undefined;
   }
 
  /**
