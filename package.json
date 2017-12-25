@@ -1,6 +1,6 @@
 {
   "name": "essy-distribution",
-  "version": "1.0.277",
+  "version": "1.0.278",
   "description": "Distributions and random sampling.",
   "main": "dist/bundle.js",
   "scripts": {

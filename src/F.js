@@ -161,8 +161,8 @@ export class F extends DistAbstract {
  * @static
  */
 F.params = {
-  df1 : 'Real number greater than 0.',
-  df2 : 'Real number greater than 0.'
+  n : 'Real number greater than 0.',
+  m : 'Real number greater than 0.'
 };
 
 /**
