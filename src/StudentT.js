@@ -151,7 +151,11 @@ export class StudentT extends DistAbstract {
  * @static
  */
 StudentT.params = {
-  df : 'Real number greater than 0.'
+  df: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

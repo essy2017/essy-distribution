@@ -132,7 +132,11 @@ export class Rayleigh extends DistAbstract {
  * @static
  */
 Rayleigh.params = {
-  scale : 'Real number greater than 0.'
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

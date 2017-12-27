@@ -126,8 +126,14 @@ export class Logistic extends DistAbstract {
  * @static
  */
 Logistic.params = {
-  mean  : 'Real number.',
-  scale : 'Real number greater than 0.'
+  mean: {
+    description: 'Real number.'
+  },
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

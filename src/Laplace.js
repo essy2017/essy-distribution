@@ -131,8 +131,14 @@ export class Laplace extends DistAbstract {
  * @static
  */
 Laplace.params = {
-  location : 'Real number.',
-  scale    : 'Real number greater than 0.'
+  location: {
+    description: 'Real number.'
+  },
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

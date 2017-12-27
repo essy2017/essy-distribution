@@ -468,9 +468,28 @@ export class Hypergeometric extends DistAbstract {
  * @static
  */
 Hypergeometric.params = {
-  N : 'Integer greater than or equal to 0.',
-  M : 'Integer greater than or equal to 0 and less than or equal to N.',
-  n : 'Integer greater than or equal to 0 and less than or equal to N.'
+  N: {
+    description  : 'Integer greater than or equal to 0.',
+    discrete     : true,
+    min          : 0,
+    minInclusive : true
+  },
+  M: {
+    description  : 'Integer greater than or equal to 0 and less than or equal to N.',
+    discrete     : true,
+    min          : 0,
+    minInclusive : true,
+    max          : 'N',
+    maxInclusive : true
+  },
+  n: {
+    description  : 'Integer greater than or equal to 0 and less than or equal to N.',
+    discrete     : true,
+    min          : 0,
+    minInclusive : true,
+    max          : 'N',
+    maxInclusive : true
+  }
 };
 
 /**

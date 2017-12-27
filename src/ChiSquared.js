@@ -184,7 +184,12 @@ export class ChiSquared extends DistAbstract {
  * @static
  */
 ChiSquared.params = {
-  df : 'Integer greater than 0.'
+  df: {
+    description  : 'Integer greater than 0.',
+    min          : 0,
+    minInclusive : false,
+    discrete     : true
+  }
 };
 
 /**

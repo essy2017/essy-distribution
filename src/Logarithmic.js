@@ -154,7 +154,13 @@ export class Logarithmic extends DistAbstract {
  * @static
  */
 Logarithmic.params = {
-  probability : 'Real number in range [0, 1].'
+  probability: {
+    description  : 'Real number in range [0, 1].',
+    min          : 0,
+    minInclusive : true,
+    max          : 1,
+    maxInclusive : true
+  }
 };
 
 /**

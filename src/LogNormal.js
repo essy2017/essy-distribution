@@ -136,8 +136,14 @@ export class LogNormal extends DistAbstract {
  * @static
  */
 LogNormal.params = {
-  mean : 'Real number.',
-  se   : 'Real number greater than 0.'
+  mean: {
+    description: 'Real number.'
+  },
+  se: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

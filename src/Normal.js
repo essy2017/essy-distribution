@@ -146,8 +146,14 @@ export class Normal extends DistAbstract {
  * @static
  */
 Normal.params = {
-  mean : 'Real number.',
-  se   : 'Real number greater than 0.'
+  mean: {
+    description: 'Real number.'
+  },
+  se: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

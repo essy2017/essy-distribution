@@ -140,8 +140,17 @@ export class Erlang extends DistAbstract {
  * @static
  */
 Erlang.params = {
-  shape : 'Positive integer.',
-  rate  : 'Real number greater than 0.'
+  shape: {
+    description  : 'Positive integer.',
+    min          : 0,
+    minInclusive : false,
+    discrete     : true
+  },
+  rate: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

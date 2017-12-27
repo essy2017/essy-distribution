@@ -140,8 +140,16 @@ export class Uniform extends DistAbstract {
  * @static
  */
 Uniform.params = {
-  min : 'Real number less than max.',
-  max : 'Real number greater than min.'
+  min: {
+    description  : 'Real number less than max.',
+    max          : 'max',
+    maxInclusive : false
+  },
+  max: {
+    description  : 'Real number greater than min.',
+    min          : 'min',
+    minInclusive : false
+  }
 };
 
 /**

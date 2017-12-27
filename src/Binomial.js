@@ -354,8 +354,19 @@ export class Binomial extends DistAbstract {
  * @static
  */
 Binomial.params = {
-  n : 'Integer greater than 0.',
-  p : 'Real number in the range [0, 1].'
+  n: {
+    description  : 'Integer greater than 0.',
+    min          : 0,
+    minInclusive : false,
+    discrete     : true
+  },
+  p: {
+    description  : 'Real number in the range [0, 1].',
+    min          : 0,
+    minInclusive : true,
+    max          : 1,
+    maxInclusive : true
+  }
 };
 
 /**

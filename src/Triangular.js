@@ -183,9 +183,23 @@ export class Triangular extends DistAbstract {
  * @static
  */
 Triangular.params = {
-  min  : 'Real number less than or equal to mode.',
-  mode : 'Real number.',
-  max  : 'Real number greater than or equal to mode.'
+  min: {
+    description  : 'Real number less than or equal to mode.',
+    max          : 'mode',
+    maxInclusive : true
+  },
+  mode: {
+    description  : 'Real number.',
+    min          : 'min',
+    minInclusive : true,
+    max          : 'max',
+    maxInclusive : true
+  },
+  max: {
+    description  : 'Real number greater than or equal to mode.',
+    min          : 'mode',
+    minInclusive : true
+  }
 };
 
 /**

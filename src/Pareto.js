@@ -157,8 +157,16 @@ export class Pareto extends DistAbstract {
  * @static
  */
 Pareto.params = {
-  scale : 'Real number greater than 0.',
-  shape : 'Real number greater than 0.'
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  },
+  shape: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

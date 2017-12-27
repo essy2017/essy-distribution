@@ -161,8 +161,16 @@ export class F extends DistAbstract {
  * @static
  */
 F.params = {
-  n : 'Real number greater than 0.',
-  m : 'Real number greater than 0.'
+  n: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  },
+  m: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

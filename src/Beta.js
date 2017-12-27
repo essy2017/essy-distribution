@@ -203,8 +203,16 @@ export class Beta extends DistAbstract {
  * @static
  */
 Beta.params = {
-  alpha : 'Real number greater than 0.',
-  beta  : 'Real number greater than 0.'
+  alpha: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  },
+  beta: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

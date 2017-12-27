@@ -140,7 +140,11 @@ export class Exponential extends DistAbstract {
  * @static
  */
 Exponential.params = {
-  lamba: 'Real number greater than 0.'
+  lamba: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**

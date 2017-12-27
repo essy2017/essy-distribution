@@ -300,8 +300,16 @@ export class Gamma extends DistAbstract {
  * @static
  */
 Gamma.params = {
-  shape : 'Real number greater than 0.',
-  scale : 'Real number greater than 0.'
+  shape: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  },
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
 };
 
 /**
