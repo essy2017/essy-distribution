@@ -29,7 +29,7 @@ export class Triangular extends DistAbstract {
       throw new ParamError(1, 'mode', 'mode parameter must be greater than or equal to min.');
     }
     if (mode > max) {
-      throw new ParamError(1, 'mode', 'mode parameter must be less than or equal to min.');
+      throw new ParamError(1, 'mode', 'mode parameter must be less than or equal to max.');
     }
     this.min = min;
     this.mode = mode;
