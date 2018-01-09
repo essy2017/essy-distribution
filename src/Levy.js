@@ -130,3 +130,28 @@ export class Levy extends DistAbstract {
   }
 
 }
+
+/**
+ * Distribution parameters.
+ * @property params
+ * @type Object
+ * @static
+ */
+Levy.params = {
+  location: {
+    description: 'Real number.'
+  },
+  scale: {
+    description  : 'Real number greater than 0.',
+    min          : 0,
+    minInclusive : false
+  }
+};
+
+/**
+ * Distribution name.
+ * @property distName
+ * @type String
+ * @static
+ */
+Levy.distName = 'Levy';
