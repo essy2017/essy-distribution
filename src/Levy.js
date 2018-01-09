@@ -86,6 +86,9 @@ export class Levy extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
+    if (x <= this.location) {
+      return 0;
+    }
     const a = Math.sqrt(this.scale / (2*Math.PI));
     const b = Math.exp(- (this.scale / (2*(x-this.location))));
     const c = Math.pow(x - this.location, 1.5);
