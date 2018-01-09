@@ -81,6 +81,15 @@ export class F extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return (this.df1 * (this.df2 - 2)) / (this.df2 * (this.df1 + 2));
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

@@ -72,6 +72,15 @@ export class LogNormal extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return Math.exp(this.m - Math.pow(this.se, 2));
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

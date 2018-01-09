@@ -69,6 +69,15 @@ export class Poisson extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return Math.floor(this.lambda);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

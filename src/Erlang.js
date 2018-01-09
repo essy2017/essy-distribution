@@ -68,6 +68,15 @@ export class Erlang extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return (1 / this.rate) * (this.shape - 1);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

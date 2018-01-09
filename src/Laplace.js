@@ -71,6 +71,15 @@ export class Laplace extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.location;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

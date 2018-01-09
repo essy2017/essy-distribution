@@ -156,6 +156,15 @@ export class Binomial extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return Math.floor(this.p * (this.n + 1));
+  }
+
+ /**
   * Probability density function. Ignores digits to right of decimal.
   * @method pdf
   * @param x {Number}

@@ -57,6 +57,15 @@ export class Logarithmic extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return 1;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

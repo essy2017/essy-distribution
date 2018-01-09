@@ -81,6 +81,15 @@ export class Pareto extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.scale;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

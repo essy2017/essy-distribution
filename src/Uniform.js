@@ -72,6 +72,15 @@ export class Uniform extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return undefined;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

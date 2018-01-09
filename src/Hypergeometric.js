@@ -162,6 +162,17 @@ export class Hypergeometric extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    const a = (this.n + 1) * (this.M + 1);
+    const b = this.N + 2;
+    return Math.floor(a / b);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

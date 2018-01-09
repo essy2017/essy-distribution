@@ -71,6 +71,15 @@ export class Levy extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.location === 0 ? this.scale / 3 : undefined;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

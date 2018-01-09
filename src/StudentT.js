@@ -76,6 +76,15 @@ export class StudentT extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return 0;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

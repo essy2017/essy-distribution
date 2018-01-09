@@ -32,7 +32,7 @@ export class Triangular extends DistAbstract {
       throw new ParamError(1, 'mode', 'mode parameter must be less than or equal to max.');
     }
     this.min = min;
-    this.mode = mode;
+    this.modeP = mode;
     this.max = max;
   }
 
@@ -46,11 +46,11 @@ export class Triangular extends DistAbstract {
     if (x < this.min) {
       return 0;
     }
-    if (x <= this.mode) {
-      return Math.pow(x - this.min, 2) / ( (this.max - this.min)*(this.mode - this.min ));
+    if (x <= this.modeP) {
+      return Math.pow(x - this.min, 2) / ( (this.max - this.min)*(this.modeP - this.min ));
     }
     if (x < this.max) {
-      return 1 - Math.pow(this.max - x, 2) / ( (this.max - this.min)*(this.max - this.mode) );
+      return 1 - Math.pow(this.max - x, 2) / ( (this.max - this.min)*(this.max - this.modeP) );
     }
     return 1;
   }
@@ -70,7 +70,7 @@ export class Triangular extends DistAbstract {
   * @return {Number} Distribution mean.
   */
   mean () {
-    return (this.min + this.mode + this.max) / 3;
+    return (this.min + this.modeP + this.max) / 3;
   }
 
  /**
@@ -79,12 +79,21 @@ export class Triangular extends DistAbstract {
   * @return {Number}
   */
   median () {
-    if (this.mode >= ((this.min + this.max) / 2)) {
-      return this.min + Math.sqrt(((this.max - this.min)*(this.mode - this.min)) / 2);
+    if (this.modeP >= ((this.min + this.max) / 2)) {
+      return this.min + Math.sqrt(((this.max - this.min)*(this.modeP - this.min)) / 2);
     }
     else {
-      return this.max - Math.sqrt(((this.max - this.min)*(this.max - this.mode)) / 2);
+      return this.max - Math.sqrt(((this.max - this.min)*(this.max - this.modeP)) / 2);
     }
+  }
+
+ /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.modeP;
   }
 
  /**
@@ -97,14 +106,14 @@ export class Triangular extends DistAbstract {
     if (x < this.min) {
       return 0;
     }
-    if (x < this.mode) {
-      return (2 * (x - this.min)) / ( (this.max - this.min)*(this.mode - this.min) );
+    if (x < this.modeP) {
+      return (2 * (x - this.min)) / ( (this.max - this.min)*(this.modeP - this.min) );
     }
-    if (x === this.mode) {
+    if (x === this.modeP) {
       return 2 / (this.max - this.min);
     }
     if (x <= this.max) {
-      return (2 * (this.max - x)) / ( (this.max - this.min)*(this.max - this.mode) );
+      return (2 * (this.max - x)) / ( (this.max - this.min)*(this.max - this.modeP) );
     }
     return 0;
   }
@@ -138,7 +147,7 @@ export class Triangular extends DistAbstract {
 
     const a = this.min;
     const b = this.max;
-    const m = this.mode;
+    const m = this.modeP;
     const t = (m - a) / (b - a);
     const r = generator.random();
 
@@ -158,7 +167,7 @@ export class Triangular extends DistAbstract {
   skewness () {
     const a = this.min;
     const b = this.max;
-    const c = this.mode;
+    const c = this.modeP;
     const num = Math.sqrt(2) * (a+b-2*c) * (2*a-b-c) * (a-2*b+c);
     const den = 5 * Math.pow(Math.pow(a,2) + Math.pow(b,2) + Math.pow(c,2) - a*b - a*c - b*c, 3/2);
     return num / den;
@@ -170,7 +179,7 @@ export class Triangular extends DistAbstract {
   * @return {Number}
   */
   variance () {
-    return (this.min*this.min + this.mode*this.mode + this.max*this.max - this.min*this.max - this.min*this.mode - this.max*this.mode) / 18;
+    return (this.min*this.min + this.modeP*this.modeP + this.max*this.max - this.min*this.max - this.min*this.modeP - this.max*this.modeP) / 18;
   }
 
 }

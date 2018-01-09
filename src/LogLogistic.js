@@ -66,6 +66,17 @@ export class LogLogistic extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.shape > 1 ?
+      this.scale * Math.pow((this.shape - 1) / (this.shape + 1), 1 / this.shape) :
+      0;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

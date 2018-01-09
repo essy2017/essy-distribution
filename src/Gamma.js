@@ -110,6 +110,18 @@ export class Gamma extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    if (this.shape < 1) {
+      return undefined;
+    }
+    return (this.shape - 1) * this.scale;
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}

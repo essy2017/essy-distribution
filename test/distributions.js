@@ -142,6 +142,10 @@ describe('Distributions', () => {
       var bin = new Binomial(10, 0.3);
       assert.strictEqual(bin.median(), Math.floor(10 * 0.3));
     });
+    it('Should calculate mode', () => {
+      var bin = new Binomial(10, 0.4);
+      assert.strictEqual(bin.mode(), Math.floor(0.4*(10 + 1)));
+    });
     it('Should calculate pdf', () => {
       var bin = new Binomial(20, 0.5);
 
@@ -191,6 +195,10 @@ describe('Distributions', () => {
       var c = new Cauchy(10, 2);
       assert.strictEqual(c.median(), 10);
     });
+    it('Should return mode', () => {
+      var c = new Cauchy(10, 2);
+      assert.strictEqual(c.mode(), 10);
+    });
     it('Should calculate pdf', () => {
       var c = new Cauchy(0, 1);
 
@@ -236,6 +244,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var c = new ChiSquared(2);
       assert.strictEqual(c.median(), 2 * Math.pow(1 - 2/(9*2), 3));
+    });
+    it('Should return mode', () => {
+      var c = new ChiSquared(5);
+      assert.strictEqual(c.mode(), 3);
     });
     it('Should calculate pdf', () => {
       var c = new ChiSquared(2);
@@ -324,6 +336,10 @@ describe('Distributions', () => {
       var er = new Erlang(4, 0.5);
       assert.strictEqual(er.mean(), 4 / 0.5);
     });
+    it('Should return mode', () => {
+      var e = new Erlang(4, 6);
+      assert.strictEqual(e.mode(), (1 / 6)*(4 - 1));
+    });
     it('Should calculate pdf', () => {
       var er = new Erlang(5, 1);
       var pdf = er.pdf(2);
@@ -370,6 +386,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var ex = new Exponential(0.3);
       assert.strictEqual(ex.median(), Math.pow(0.3, -1) * Math.log(2));
+    });
+    it('Should return mode', () => {
+      var ex = new Exponential(4);
+      assert.strictEqual(ex.mode(), 0);
     });
     it('Should calculate pdf', () => {
       var ex = new Exponential(0.5);
@@ -425,6 +445,12 @@ describe('Distributions', () => {
       var f = new F(2, 4);
       assert.strictEqual(f.median(), undefined);
     });
+    it('Should return mode', () => {
+      var n = 3;
+      var m = 4;
+      var f = new F(n, m);
+      assert.strictEqual(f.mode(), (n*(m-2)) / (m*(n+2)));
+    });
     it('Should calculate pdf', () => {
       var f = new F(5, 2);
 
@@ -478,6 +504,12 @@ describe('Distributions', () => {
       var g = new Gamma(1, 2);
       assert.strictEqual(g.mean(), 1 * 2);
     });
+    it('Should return mode', () => {
+      var g = new Gamma(2, 3);
+      assert.strictEqual(g.mode(), (2 - 1)*3);
+      g = new Gamma(0.5, 4);
+      assert.strictEqual(g.mode(), undefined);
+    });
     it('Should calculate pdf', () => {
       var g = new Gamma(5, 1);
 
@@ -525,6 +557,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var h = new Hypergeometric(500, 60, 200);
       assert.strictEqual(h.mean(), 200*(60/500));
+    });
+    it('Should return mode', () => {
+      var h = new Hypergeometric(500, 60, 200);
+      assert.strictEqual(h.mode(), Math.floor(((200+1)*(60+1)) / (500+2)) );
     });
     it('Should calculate pdf', () => {
       var h = new Hypergeometric(500, 60, 200);
@@ -578,6 +614,10 @@ describe('Distributions', () => {
       var l = new Laplace(5, 1);
       assert.strictEqual(l.median(), 5);
     });
+    it('Should return mode', () => {
+      var l = new Laplace(5, 1);
+      assert.strictEqual(l.mode(), 5);
+    });
     it('Should calculate pdf', () => {
       var l = new Laplace(0, 2);
 
@@ -623,6 +663,12 @@ describe('Distributions', () => {
       var m = l.median();
       assert.ok(true);
     });
+    it('Should return mode', () => {
+      var l = new Levy(0, 1);
+      assert.strictEqual(l.mode(), 1/3);
+      l = new Levy(1, 2);
+      assert.strictEqual(l.mode(), undefined);
+    });
     it('Should calculate pdf', () => {
       var l = new Levy(0, 2);
       var pdf = l.pdf(1);
@@ -660,6 +706,10 @@ describe('Distributions', () => {
     it('Should return mean', () => {
       var l = new Logarithmic(0.5);
       assert.strictEqual(l.mean(), (-1 / Math.log(1 - 0.5)) * (0.5 / (1 - 0.5)));
+    });
+    it('Should return mode', () => {
+      var l = new Logarithmic(0.4);
+      assert.strictEqual(l.mode(), 1);
     });
     it('Should calculate pdf', () => {
       var l = new Logarithmic(0.33);
@@ -701,6 +751,10 @@ describe('Distributions', () => {
       var l = new Logistic(10, 0.5);
       assert.strictEqual(l.median(), 10);
     });
+    it('Should return mode', () => {
+      var l = new Logistic(10, 0.5);
+      assert.strictEqual(l.mode(), 10);
+    });
     it('Should calculate pdf', () => {
       var l = new Logistic(5, 2);
 
@@ -741,6 +795,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var l = new LogLogistic(2, 1);
       assert.strictEqual(l.median(), 2);
+    });
+    it('Should return mode', () => {
+      var l = new LogLogistic(2, 4);
+      assert.strictEqual(l.mode(), 2 * Math.pow( (4-1)/(4+1), 1/4));
     });
     it('Should calculate pdf', () => {
       var l = new LogLogistic(1, 1);
@@ -789,6 +847,10 @@ describe('Distributions', () => {
       var l = new LogNormal(0, 1);
       assert.strictEqual(l.median(), Math.exp(0));
     });
+    it('Should return mode', () => {
+      var l = new LogNormal(0, 1);
+      assert.strictEqual(l.mode(), Math.exp(0 - Math.pow(1, 2)));
+    });
     it('Should calculate pdf', () => {
       var l = new LogNormal(0, 0.25);
 
@@ -835,6 +897,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var n = new Normal(10, 2);
       assert.strictEqual(n.median(), 10);
+    });
+    it('Should return mode', () => {
+      var n = new Normal(10, 2);
+      assert.strictEqual(n.mode(), 10);
     });
     it('Should calculate pdf', () => {
       var n = new Normal(0, 1);
@@ -885,6 +951,10 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var p = new Pareto(1, 3);
       assert.strictEqual(p.median(), 1 * Math.pow(2, 1/3));
+    });
+    it('Should return mode', () => {
+      var p = new Pareto(1, 3);
+      assert.strictEqual(p.mode(), 1);
     });
     it('Should calculate pdf', () => {
       var p = new Pareto(1, 3);
@@ -937,6 +1007,12 @@ describe('Distributions', () => {
       var p = new Poisson(2);
       assert.strictEqual(p.median(), Math.floor(2 + 1/3 - 0.02/2));
     });
+    it('Should return mode', () => {
+      var p = new Poisson(2);
+      assert.strictEqual(p.mode(), 2);
+      var p = new Poisson(0.5);
+      assert.strictEqual(p.mode(), 0);
+    });
     it('Should calculate pdf', () => {
       var p = new Poisson(1);
 
@@ -983,6 +1059,10 @@ describe('Distributions', () => {
       var r = new Rayleigh(2);
       assert.strictEqual(r.median(), 2 * Math.sqrt(2 * Math.log(2)));
     });
+    it('Should return mode', () => {
+      var r = new Rayleigh(4);
+      assert.strictEqual(r.mode(), 4);
+    });
     it('Should calculate pdf', () => {
       var r = new Rayleigh(2);
       var pdf = r.pdf(2);
@@ -1026,6 +1106,10 @@ describe('Distributions', () => {
       var s = new StudentT(4);
       assert.strictEqual(s.median(), 0);
     });
+    it('Should return mode', () => {
+      var s = new StudentT(4);
+      assert.strictEqual(s.mode(), 0);
+    });
     it('Should calculate pdf', () => {
       var s = new StudentT(1);
 
@@ -1051,7 +1135,7 @@ describe('Distributions', () => {
     it('Should instantiate', () => {
       var t = new Triangular(1, 2, 3);
       assert.strictEqual(t.min, 1);
-      assert.strictEqual(t.mode, 2);
+      assert.strictEqual(t.modeP, 2);
       assert.strictEqual(t.max, 3);
     });
     it('Should enforce range', () => {
@@ -1075,6 +1159,10 @@ describe('Distributions', () => {
       assert.strictEqual(t.median(), 3 - Math.sqrt(((3-1)*(3-2))/2));
       t = new Triangular(1, 5, 6);
       assert.strictEqual(t.median(), 1 + Math.sqrt(((6-1)*(5-1))/2));
+    });
+    it('Should return mode', () => {
+      var t = new Triangular(1, 2, 3);
+      assert.strictEqual(t.mode(), 2);
     });
     it('Should calculate pdf', () => {
       var t = new Triangular(1, 2, 3);
@@ -1127,6 +1215,10 @@ describe('Distributions', () => {
       var u = new Uniform(10, 15);
       assert.strictEqual(u.median(), (10+15)/2);
     });
+    it('Should return mode', () => {
+      var u = new Uniform(0, 1);
+      assert.strictEqual(u.mode(), undefined);
+    });
     it('Should calculate pdf', () => {
       var u = new Uniform(0, 1);
       assert.strictEqual(u.pdf(-1), 0);
@@ -1167,6 +1259,12 @@ describe('Distributions', () => {
     it('Should return median', () => {
       var w = new Weibull(3, 4);
       assert.strictEqual(w.median(), 4 * Math.pow(Math.log(2), 1 / 3));
+    });
+    it('Should return mode', () => {
+      var w = new Weibull(0.5, 1);
+      assert.strictEqual(w.mode(), 0);
+      w = new Weibull(2, 3);
+      assert.strictEqual(w.mode(), 3 * Math.pow((2-1)/2, 1/2));
     });
     it('Should calculate pdf', () => {
       var w = new Weibull(1, 1);

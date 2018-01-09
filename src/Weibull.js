@@ -64,6 +64,15 @@ export class Weibull extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return this.alpha <= 1 ? 0 : this.beta * Math.pow((this.alpha - 1) / this.alpha, 1 / this.alpha);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
@@ -75,7 +84,6 @@ export class Weibull extends DistAbstract {
     }
     return 0;
   }
-
 
  /**
   * Returns distribution range.

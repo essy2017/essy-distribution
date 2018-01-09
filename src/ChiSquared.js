@@ -81,6 +81,15 @@ export class ChiSquared extends DistAbstract {
   }
 
  /**
+  * Returns distribution mode.
+  * @method mode
+  * @return {Number}
+  */
+  mode () {
+    return Math.max(0, this.df - 2);
+  }
+
+ /**
   * Probability density function.
   * @method pdf
   * @param x {Number}
