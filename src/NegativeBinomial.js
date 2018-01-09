@@ -172,3 +172,11 @@ NegativeBinomial.params = {
  * @static
  */
 NegativeBinomial.distName = 'Negative Binomial';
+
+/**
+ * Set flag as discrete distribution.
+ * @property discrete
+ * @type Boolean
+ * @static
+ */
+NegativeBinomial.discrete = true;
