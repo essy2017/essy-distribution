@@ -14,6 +14,7 @@ import { Logarithmic} from './src/Logarithmic';
 import { Logistic } from './src/Logistic';
 import { LogLogistic } from './src/LogLogistic';
 import { LogNormal } from './src/LogNormal';
+import { NegativeBinomial } from './src/NegativeBinomial';
 import { Normal } from './src/Normal';
 import { Pareto } from './src/Pareto';
 import { Poisson } from './src/Poisson';
@@ -26,30 +27,31 @@ import { Weibull } from './src/Weibull';
 import { ParamError } from './src/ParamError';
 
 export default {
-  Beta            : Beta,
-  Binomial        : Binomial,
-  Cauchy          : Cauchy,
-  ChiSquared      : ChiSquared,
-  Custom          : Custom,
-  Erlang          : Erlang,
-  Exponential     : Exponential,
-  F               : F,
-  Gamma           : Gamma,
-  Hypergeometric  : Hypergeometric,
-  Laplace         : Laplace,
-  Levy            : Levy,
-  Logarithmic     : Logarithmic,
-  Logistic        : Logistic,
-  LogLogistic     : LogLogistic,
-  LogNormal       : LogNormal,
-  Normal          : Normal,
-  Pareto          : Pareto,
-  Poisson         : Poisson,
-  Rayleigh        : Rayleigh,
-  StudentT        : StudentT,
-  Triangular      : Triangular,
-  Uniform         : Uniform,
-  Weibull         : Weibull,
+  Beta              : Beta,
+  Binomial          : Binomial,
+  Cauchy            : Cauchy,
+  ChiSquared        : ChiSquared,
+  Custom            : Custom,
+  Erlang            : Erlang,
+  Exponential       : Exponential,
+  F                 : F,
+  Gamma             : Gamma,
+  Hypergeometric    : Hypergeometric,
+  Laplace           : Laplace,
+  Levy              : Levy,
+  Logarithmic       : Logarithmic,
+  Logistic          : Logistic,
+  LogLogistic       : LogLogistic,
+  LogNormal         : LogNormal,
+  NegativeBinomial  : NegativeBinomial,
+  Normal            : Normal,
+  Pareto            : Pareto,
+  Poisson           : Poisson,
+  Rayleigh          : Rayleigh,
+  StudentT          : StudentT,
+  Triangular        : Triangular,
+  Uniform           : Uniform,
+  Weibull           : Weibull,
 
-  ParamError      : ParamError
+  ParamError        : ParamError
 };

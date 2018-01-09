@@ -2,34 +2,35 @@
 
 'use strict';
 
-var assert          = require('assert');
-var dists           = require('../dist/bundle');
-var Beta            = dists.Beta;
-var Binomial        = dists.Binomial;
-var Cauchy          = dists.Cauchy;
-var ChiSquared      = dists.ChiSquared;
-var Custom          = dists.Custom;
-var Erlang          = dists.Erlang;
-var Exponential     = dists.Exponential;
-var F               = dists.F;
-var Gamma           = dists.Gamma;
-var Hypergeometric  = dists.Hypergeometric;
-var Laplace         = dists.Laplace;
-var Levy            = dists.Levy;
-var Logarithmic     = dists.Logarithmic;
-var Logistic        = dists.Logistic;
-var LogLogistic     = dists.LogLogistic;
-var LogNormal       = dists.LogNormal;
-var Normal          = dists.Normal;
-var Pareto          = dists.Pareto;
-var Poisson         = dists.Poisson;
-var Rayleigh        = dists.Rayleigh;
-var StudentT        = dists.StudentT;
-var Triangular      = dists.Triangular;
-var Uniform         = dists.Uniform;
-var Weibull         = dists.Weibull;
+var assert           = require('assert');
+var dists            = require('../dist/bundle');
+var Beta             = dists.Beta;
+var Binomial         = dists.Binomial;
+var Cauchy           = dists.Cauchy;
+var ChiSquared       = dists.ChiSquared;
+var Custom           = dists.Custom;
+var Erlang           = dists.Erlang;
+var Exponential      = dists.Exponential;
+var F                = dists.F;
+var Gamma            = dists.Gamma;
+var Hypergeometric   = dists.Hypergeometric;
+var Laplace          = dists.Laplace;
+var Levy             = dists.Levy;
+var Logarithmic      = dists.Logarithmic;
+var Logistic         = dists.Logistic;
+var LogLogistic      = dists.LogLogistic;
+var LogNormal        = dists.LogNormal;
+var NegativeBinomial = dists.NegativeBinomial;
+var Normal           = dists.Normal;
+var Pareto           = dists.Pareto;
+var Poisson          = dists.Poisson;
+var Rayleigh         = dists.Rayleigh;
+var StudentT         = dists.StudentT;
+var Triangular       = dists.Triangular;
+var Uniform          = dists.Uniform;
+var Weibull          = dists.Weibull;
 
-var ParamError      = dists.ParamError;
+var ParamError       = dists.ParamError;
 
 var Twister     = require('mersenne-twister');
 var Rando       = { random: Math.random };
@@ -872,6 +873,58 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var l = new LogNormal(1, 2);
       assert.strictEqual(l.variance(), (Math.exp(2*2) - 1)*Math.exp(2*1*1 + 2*2));
+    });
+  });
+
+  describe('NegativeBinomial', () => {
+    it('Should instantiate', () => {
+      var b = new NegativeBinomial(10, 0.4);
+      assert.strictEqual(b.r, 10);
+      assert.strictEqual(b.p, 0.4);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new NegativeBinomial(1.2, 0.5); }, ParamError);
+      assert.throws(() => { new NegativeBinomial(0, 0.5); }, ParamError);
+      assert.throws(() => { new NegativeBinomial(2, -0.5); }, ParamError);
+    });
+    it('Should calculate cdf', () => {
+      var b = new NegativeBinomial(4, 0.3);
+
+      // Test against Excel. NEGBIN.DIST(10, 4, 0.3, true).
+      assert.strictEqual(roundIt(b.cdf(10), 5), 0.64483);
+    });
+    it('Should return kurtosis', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      assert.strictEqual(b.kurtosis(), 6/4 + Math.pow(1-0.3, 2)/(4*0.3));
+    });
+    it('Should return mean', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      assert.strictEqual(b.mean(), (4*0.3)/(1-0.3));
+    });
+    it('Should return median', () => {
+      var b = new NegativeBinomial(5, 0.4);
+      assert.strictEqual(b.median(), undefined);
+    });
+    it('Should return mode', () => {
+      var b = new NegativeBinomial(5, 0.4);
+      assert.strictEqual(b.mode(), Math.floor( (0.4*(5-1)) / (1-0.4) ));
+    });
+    it('Should calculate pdf', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      assert.strictEqual(roundIt(b.pdf(10), 5), 0.06544);
+    });
+    it('Should sample values', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      var s = b.sample(5);
+      assert.strictEqual(s.length, 5);
+    });
+    it('Should return skewness', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      assert.strictEqual(b.skewness(), (1+0.3)/Math.sqrt(4*0.3));
+    });
+    it('Should calculate variance', () => {
+      var b = new NegativeBinomial(4, 0.3);
+      assert.strictEqual(b.variance(), (4*0.3) / Math.pow(1-0.3, 2));
     });
   });
 
