@@ -9,6 +9,7 @@ import { F } from './src/F';
 import { Gamma } from './src/Gamma';
 import { Hypergeometric } from './src/Hypergeometric';
 import { Laplace } from './src/Laplace';
+import { Levy } from './src/Levy';
 import { Logarithmic} from './src/Logarithmic';
 import { Logistic } from './src/Logistic';
 import { LogLogistic } from './src/LogLogistic';
@@ -36,6 +37,7 @@ export default {
   Gamma           : Gamma,
   Hypergeometric  : Hypergeometric,
   Laplace         : Laplace,
+  Levy            : Levy,
   Logarithmic     : Logarithmic,
   Logistic        : Logistic,
   LogLogistic     : LogLogistic,

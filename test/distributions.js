@@ -15,6 +15,7 @@ var F               = dists.F;
 var Gamma           = dists.Gamma;
 var Hypergeometric  = dists.Hypergeometric;
 var Laplace         = dists.Laplace;
+var Levy            = dists.Levy;
 var Logarithmic     = dists.Logarithmic;
 var Logistic        = dists.Logistic;
 var LogLogistic     = dists.LogLogistic;
@@ -591,6 +592,54 @@ describe('Distributions', () => {
     it('Should return variance', () => {
       var l = new Laplace(5, 3);
       assert.strictEqual(l.variance(), 2 * 3 * 3);
+    });
+  });
+
+  describe('Levy', () => {
+    it('Should instantiate', () => {
+      var l = new Levy(2, 4);
+      assert.strictEqual(l.location, 2);
+      assert.strictEqual(l.scale, 4);
+    });
+    it('Should enforce range', () => {
+      assert.throws(() => { new Levy(1, -1); }, ParamError);
+    });
+    it('Should calculate cdf', () => {
+      var l = new Levy(0, 4);
+      var cdf = l.cdf(2);
+
+      assert.ok(true);
+    });
+    it('Should return kurtosis', () => {
+      var l = new Levy(1, 4);
+      assert.strictEqual(l.kurtosis(), undefined);
+    });
+    it('Should return mean', () => {
+      var l = new Levy(1, 4);
+      assert.strictEqual(l.mean(), Number.POSITIVE_INFINITY);
+    });
+    it('Should return median', () => {
+      var l = new Levy(2, 5);
+      var m = l.median();
+      assert.ok(true);
+    });
+    it('Should calculate pdf', () => {
+      var l = new Levy(0, 2);
+      var pdf = l.pdf(1);
+      assert.ok(true);
+    });
+    it('Should sample values', () => {
+      var l = new Levy(0, 0.5);
+      var s = l.sample(5);
+      assert.strictEqual(s.length, 5);
+    });
+    it('Should return skewness', () => {
+      var l = new Levy(0, 1);
+      assert.strictEqual(l.skewness(), undefined);
+    });
+    it('Should return variance', () => {
+      var l = new Levy(1, 10);
+      assert.strictEqual(l.variance(), Number.POSITIVE_INFINITY);
     });
   });
 

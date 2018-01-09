@@ -85,7 +85,7 @@ See [article](https://en.wikipedia.org/wiki/Chi-squared_distribution).
 A custom distribution. The `values` argument should be an array of numbers.
 
 #### Erlang(shape, rate)
-See [documentation](https://essytree.com/docs#dist-erlang). Does not define `median()`.
+See [documentation](https://essytree.com/docs#dist-erlang).
 
 #### Exponential(lambda)
 See [documentation](https://essytree.com/docs#dist-exponential).
@@ -94,7 +94,7 @@ See [documentation](https://essytree.com/docs#dist-exponential).
 See [article](https://en.wikipedia.org/wiki/F-distribution).
 
 #### Gamma(shape, scale)
-See [documentation](https://essytree.com/docs#dist-gamma). Does not define `median()`.
+See [documentation](https://essytree.com/docs#dist-gamma).
 
 #### Hypergeometric(N, K, n)
 See [article](https://en.wikipedia.org/wiki/Hypergeometric_distribution).
@@ -102,8 +102,11 @@ See [article](https://en.wikipedia.org/wiki/Hypergeometric_distribution).
 #### Laplace(location, scale)
 See [documentation](https://essytree.com/docs#dist-laplace).
 
+#### Levy(location, scale)
+See [article](https://en.wikipedia.org/wiki/L%C3%A9vy_distribution).
+
 #### Logarithmic(probability)
-See [documentation](https://essytree.com/docs#dist-logarithmic). Does not define `median()`.
+See [documentation](https://essytree.com/docs#dist-logarithmic).
 
 #### Logistic(mean, scale)
 See [documentation](https://essytree.com/docs#dist-logistic).
