@@ -55,7 +55,6 @@ export class NegativeBinomial extends DistAbstract {
   */
   kurtosis () {
     return (Math.pow(this.p, 2) - 6*this.p + 6) / (this.r * (1 - this.p));
-    //return 6 / this.r + Math.pow(1 - this.p, 2) / (this.r * this.p);
   }
 
  /**
@@ -65,7 +64,6 @@ export class NegativeBinomial extends DistAbstract {
   */
   mean () {
     return (this.r * (1 - this.p)) / this.p;
-    //return (this.r * this.p) / (1 - this.p);
   }
 
  /**
@@ -83,7 +81,7 @@ export class NegativeBinomial extends DistAbstract {
   * @return {Number}
   */
   mode () {
-    return this.r === 1 ? 0 : Math.floor( (this.p*(this.r - 1)) / (1 - this.p) );
+    return 1 + Math.floor((this.r - 1) / this.p);
   }
 
  /**
@@ -93,7 +91,6 @@ export class NegativeBinomial extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
-    //return binomial(x - 1, this.r - 1) * Math.pow(this.p, this.r) * Math.pow(1 - this.p, x - this.r);
     return binomial(x + this.r - 1, this.r - 1) * Math.pow(1 - this.p, x) * Math.pow(this.p, this.r);
   }
 
@@ -120,8 +117,7 @@ export class NegativeBinomial extends DistAbstract {
   * @return {Number} Sampled value.
   */
   sampleValue (generator) {
-    const x = this.p / (1 - this.p);
-    const y = /*x * */this.gamma.sampleValue(generator);
+    const y = this.gamma.sampleValue(generator);
     const p = new Poisson(y);
     return p.sampleValue(generator);
   }
@@ -133,7 +129,6 @@ export class NegativeBinomial extends DistAbstract {
   */
   skewness () {
     return (2 - this.p) / Math.sqrt(this.r * (1 - this.p));
-    //return (1 + this.p) / Math.sqrt(this.p * this.r);
   }
 
  /**
@@ -143,7 +138,6 @@ export class NegativeBinomial extends DistAbstract {
   */
   variance () {
     return (this.r * (1 - this.p)) / Math.pow(this.p, 2);
-    //return (this.r * this.p) / Math.pow(1 - this.p, 2);
   }
 }
 

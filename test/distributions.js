@@ -895,11 +895,11 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var b = new NegativeBinomial(4, 0.3);
-      assert.strictEqual(b.kurtosis(), 6/4 + Math.pow(1-0.3, 2)/(4*0.3));
+      assert.strictEqual(b.kurtosis(), (Math.pow(0.3, 2) - 6*0.3 + 6) / (4*(1-0.3)) );
     });
     it('Should return mean', () => {
       var b = new NegativeBinomial(4, 0.3);
-      assert.strictEqual(b.mean(), (4*0.3)/(1-0.3));
+      assert.strictEqual(b.mean(), (4*(1-0.3))/0.3);
     });
     it('Should return median', () => {
       var b = new NegativeBinomial(5, 0.4);
@@ -907,7 +907,7 @@ describe('Distributions', () => {
     });
     it('Should return mode', () => {
       var b = new NegativeBinomial(5, 0.4);
-      assert.strictEqual(b.mode(), Math.floor( (0.4*(5-1)) / (1-0.4) ));
+      assert.strictEqual(b.mode(), 1 + Math.floor((5-1)/0.4));
     });
     it('Should calculate pdf', () => {
       var b = new NegativeBinomial(4, 0.3);
@@ -920,11 +920,11 @@ describe('Distributions', () => {
     });
     it('Should return skewness', () => {
       var b = new NegativeBinomial(4, 0.3);
-      assert.strictEqual(b.skewness(), (1+0.3)/Math.sqrt(4*0.3));
+      assert.strictEqual(b.skewness(), (2-0.3)/Math.sqrt(4*(1-0.3)));
     });
     it('Should calculate variance', () => {
       var b = new NegativeBinomial(4, 0.3);
-      assert.strictEqual(b.variance(), (4*0.3) / Math.pow(1-0.3, 2));
+      assert.strictEqual(b.variance(), (4*(1-0.3)) / Math.pow(0.3, 2));
     });
   });
 
