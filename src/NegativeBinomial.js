@@ -32,7 +32,7 @@ export class NegativeBinomial extends DistAbstract {
     }
     this.r = r;
     this.p = p;
-    this.gamma = new Gamma(this.r, 1);
+    this.gamma = new Gamma(this.r, this.p / (1 - this.p));//1);
   }
 
  /**
@@ -121,7 +121,7 @@ export class NegativeBinomial extends DistAbstract {
   */
   sampleValue (generator) {
     const x = this.p / (1 - this.p);
-    const y = x * this.gamma.sampleValue(generator);
+    const y = /*x * */this.gamma.sampleValue(generator);
     const p = new Poisson(y);
     return p.sampleValue(generator);
   }
