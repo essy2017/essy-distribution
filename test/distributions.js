@@ -914,7 +914,7 @@ describe('Distributions', () => {
       assert.strictEqual(roundIt(b.pdf(10), 5), 0.06544);
     });
     it('Should sample values', () => {
-      var b = new NegativeBinomial(4, 0.3);
+      var b = new NegativeBinomial(5, 0.3);
       var s = b.sample(5);
       assert.strictEqual(s.length, 5);
     });
