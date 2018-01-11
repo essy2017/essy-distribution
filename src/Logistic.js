@@ -44,7 +44,7 @@ export class Logistic extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return 4.2;
+    return 1.2;
   }
 
  /**

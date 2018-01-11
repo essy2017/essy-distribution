@@ -124,7 +124,12 @@ export class LogLogistic extends DistAbstract {
   * @return {Number}
   */
   variance () {
-    return Math.pow(this.scale, 2) * ((2*this.shape / Math.sin(2*this.shape)) - (Math.pow(this.shape, 2) / Math.pow(Math.sin(this.shape), 2)));
+    if (this.shape <= 2) {
+      return undefined;
+    }
+    const a = this.scale;
+    const b = Math.PI / this.shape;
+    return Math.pow(a, 2) * ( (2*b)/Math.sin(2*b) - Math.pow(b, 2)/Math.pow(Math.sin(b), 2) );
   }
 
 }

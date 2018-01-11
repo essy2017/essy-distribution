@@ -814,7 +814,9 @@ describe('Distributions', () => {
     });
     it('Should return variance', () => {
       var l = new LogLogistic(1, 3);
-      assert.strictEqual(l.variance(), 1*1*((2*3/Math.sin(2*3)) - 3*3/Math.pow(Math.sin(3), 2)));
+      var a = 1;
+      var b = Math.PI / 3;
+      assert.strictEqual(l.variance(), Math.pow(a, 2) * ( (2*b)/Math.sin(2*b) - Math.pow(b, 2)/Math.pow(Math.sin(b), 2)) );
     });
   });
 
