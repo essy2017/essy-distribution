@@ -115,7 +115,7 @@ export class LogNormal extends DistAbstract {
   */
   sampleValue (generator) {
     const n = new Normal(0, 1);
-    const s = n.sample(generator);
+    const s = n.sampleValue(generator);
     return Math.exp(this.m + s * this.se);
   }
 
