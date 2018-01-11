@@ -99,7 +99,7 @@ export class Beta extends DistAbstract {
     const b = this.beta;
     const num = 3*(a + b + 1)*(2*Math.pow(a + b, 2) + a*b*(a + b - 6));
     const den = a * b * (a + b + 2) * (a + b + 3);
-    return num / den;
+    return num / den - 3;
   }
 
  /**

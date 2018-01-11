@@ -134,7 +134,7 @@ export class Binomial extends DistAbstract {
   kurtosis () {
     const num = 1 - 6 * (1 - this.p) * this.p;
     const den = this.n * (1 - this.p) * this.p;
-    return num / den + 3;
+    return num / den;
   }
 
  /**

@@ -53,7 +53,7 @@ export class Exponential extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return 9;
+    return 6;
   }
 
  /**

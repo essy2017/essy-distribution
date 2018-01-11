@@ -55,7 +55,7 @@ export class Erlang extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return (6 / this.shape) + 3;
+    return 6 / this.shape;
   }
 
  /**

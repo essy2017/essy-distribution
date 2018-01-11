@@ -54,7 +54,7 @@ export class F extends DistAbstract {
       const m = this.df2;
       const num = 12 * ( (5*m - 22) * n*(m + n - 2) + (m - 4)*Math.pow(m - 2, 2));
       const den = (m - 8) * (m - 6) * n * (m - n - 2);
-      return num / den + 3;
+      return num / den;
     }
     return undefined;
   }

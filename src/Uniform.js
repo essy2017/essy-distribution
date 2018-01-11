@@ -50,7 +50,7 @@ export class Uniform extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return 1.8;
+    return -1.2;
   }
 
  /**

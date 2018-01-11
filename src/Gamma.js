@@ -97,7 +97,7 @@ export class Gamma extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return (6 / this.shape) + 3;
+    return 6 / this.shape;
   }
 
  /**

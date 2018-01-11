@@ -69,7 +69,7 @@ describe('Distributions', () => {
       var b = new Beta(2, 3);
       var num = 3*(2+3+1)*(2*Math.pow(2+3,2) + 2*3*(2+3-6));
       var den = 2*3*(2+3+2)*(2+3+3);
-      assert.strictEqual(b.kurtosis(), num / den);
+      assert.strictEqual(b.kurtosis(), (num / den) - 3);
     });
     it('Should return mean', () => {
       var beta = new Beta(1, 2);
@@ -133,7 +133,7 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var bin = new Binomial(5, 0.3);
-      assert.strictEqual(bin.kurtosis(), (1-6*(1-0.3)*0.3)/(5*(1-0.3)*0.3) + 3);
+      assert.strictEqual(bin.kurtosis(), (1-6*(1-0.3)*0.3)/(5*(1-0.3)*0.3));
     });
     it('Should return mean', () => {
       var bin = new Binomial(5, 0.2);
@@ -236,7 +236,7 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var c = new ChiSquared(2);
-      assert.strictEqual(c.kurtosis(), (12/2) + 3);
+      assert.strictEqual(c.kurtosis(), 12/2);
     });
     it('Should return mean', () => {
       var c = new ChiSquared(2);
@@ -331,7 +331,7 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var er = new Erlang(5, 2);
-      assert.strictEqual(er.kurtosis(), (6/5) + 3);
+      assert.strictEqual(er.kurtosis(), 6/5);
     });
     it('Should return mean', () => {
       var er = new Erlang(4, 0.5);
@@ -434,7 +434,7 @@ describe('Distributions', () => {
       var f = new F(2, 9);
       var num = 12 * ((5*9-22)*2*(9+2-2) + (9-4)*Math.pow(9-2,2));
       var den = (9-8)*(9-6)*2*(9-2-2);
-      assert.strictEqual(f.kurtosis(), num / den + 3);
+      assert.strictEqual(f.kurtosis(), num / den);
     });
     it('Should return mean', () => {
       var f = new F(2, 3);
@@ -499,7 +499,7 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var g = new Gamma(3, 2);
-      assert.strictEqual(g.kurtosis(), 6/3 + 3);
+      assert.strictEqual(g.kurtosis(), 6/3);
     });
     it('Should return mean', () => {
       var g = new Gamma(1, 2);
@@ -1102,7 +1102,7 @@ describe('Distributions', () => {
     });
     it('Should return kurtosis', () => {
       var r = new Rayleigh(2);
-      assert.strictEqual(roundIt(r.kurtosis(), 5), 3.24509);
+      assert.strictEqual(roundIt(r.kurtosis(), 5), 0.24509);
     });
     it('Should return mean', () => {
       var r = new Rayleigh(2);

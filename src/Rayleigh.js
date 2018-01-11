@@ -43,7 +43,7 @@ export class Rayleigh extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return (32 - 3*Math.pow(Math.PI, 2)) / Math.pow(4 - Math.PI, 2);
+    return (32 - 3*Math.pow(Math.PI, 2)) / Math.pow(4 - Math.PI, 2) - 3;
   }
 
  /**

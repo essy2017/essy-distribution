@@ -55,7 +55,7 @@ export class Normal extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return 3;
+    return 0;
   }
 
  /**

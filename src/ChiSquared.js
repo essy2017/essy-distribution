@@ -59,7 +59,7 @@ export class ChiSquared extends DistAbstract {
   * @return {Number}
   */
   kurtosis () {
-    return (12 / this.df) + 3;
+    return 12 / this.df;
   }
 
  /**
