@@ -31,7 +31,7 @@ export class Logarithmic extends DistAbstract {
   */
   constructor (prob) {
     super();
-    if (prob < 0 || prob > 1) {
+    if (prob <= 0 || prob >= 1) {
       throw new ParamError(0, 'probability', 'probability parameter must be in range [0, 1].');
     }
     this.prob = prob;
@@ -44,6 +44,9 @@ export class Logarithmic extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
+    if (x < 1) {
+      return 0;
+    }
     return 1 + incBeta(x + 1, 0.0000000000000000001, this.prob) / Math.log(1 - this.prob);
   }
 
@@ -70,11 +73,10 @@ export class Logarithmic extends DistAbstract {
   * @method pdf
   * @param x {Number}
   * @return {Number}
-  * @throws {RangeError} If x is not a positive integer.
   */
   pdf (x) {
-    if (x < 1 || Math.floor(x) !== x) {
-      throw new RangeError('x must be a positive integer.');
+    if (x < 1) {
+      return 0;
     }
     return (-1 / Math.log(1 - this.prob)) * (Math.pow(this.prob, x) / x);
   }
@@ -164,11 +166,11 @@ export class Logarithmic extends DistAbstract {
  */
 Logarithmic.params = {
   probability: {
-    description  : 'Real number in range [0, 1].',
+    description  : 'Real number in range (0, 1).',
     min          : 0,
-    minInclusive : true,
+    minInclusive : false,
     max          : 1,
-    maxInclusive : true
+    maxInclusive : false
   }
 };
 
