@@ -1050,6 +1050,11 @@ describe('Distributions', () => {
 
       // Test against Excel. POISSON.DIST(0, 1, true).
       assert.strictEqual(roundIt(p.cdf(0), 5), 0.36788);
+
+      // POISSON.DIST(5, 10, true).
+      p = new Poisson(10);
+      assert.strictEqual(roundIt(p.cdf(5), 5), 0.06709);
+      assert.strictEqual(roundIt(p.cdf(9), 5), 0.45793);
     });
     it('Should return mean', () => {
       var p = new Poisson(1);

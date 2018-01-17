@@ -2,7 +2,7 @@
 
 import { DistAbstract  } from './util';
 import ParamError from './ParamError';
-import { factorial, upperIncGamma } from 'essy-stats';
+import { factorial } from 'essy-stats';
 
 /*******************************************************************************
  *
@@ -42,7 +42,13 @@ export class Poisson extends DistAbstract {
     if (x > 170) {
       return 1;
     }
-    return upperIncGamma(x + 1, this.lambda) / factorial(x);
+
+    let c = 0;
+    x = Math.floor(x);
+    for (let i = 0; i <= x; i++) {
+      c += (Math.exp(-this.lambda) * Math.pow(this.lambda, i)) / factorial(i);
+    }
+    return c;
   }
 
  /**
