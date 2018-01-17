@@ -1,17 +1,6 @@
 var MersenneTwister = require('mersenne-twister');
 
 /**
- * Factorial function.
- * @method factorial
- * @param x {Number}
- * @return {Number}
- */
-export function factorial (x) {
-  if (x === 0) return 1;
-  return x * factorial(x - 1);
-}
-
-/**
  * Abstract superclass for distributions.
  * @class DistAbstract
  */

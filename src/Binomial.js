@@ -1,8 +1,8 @@
 'use strict';
 
-import { DistAbstract, factorial } from './util';
+import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { regIncBeta } from 'essy-stats';
+import { factorial, regIncBeta } from 'essy-stats';
 
 /*
 Copyright  1999 CERN - European Organization for Nuclear Research.

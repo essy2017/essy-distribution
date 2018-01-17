@@ -1050,9 +1050,6 @@ describe('Distributions', () => {
 
       // Test against Excel. POISSON.DIST(0, 1, true).
       assert.strictEqual(roundIt(p.cdf(0), 5), 0.36788);
-
-      // Out of range.
-      assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should return mean', () => {
       var p = new Poisson(1);
@@ -1073,9 +1070,6 @@ describe('Distributions', () => {
 
       // Test against Excel. POISSON.DIST(0, 1, false).
       assert.strictEqual(roundIt(p.pdf(0), 5), 0.36788);
-
-      // Out of range.
-      assert.throws(() => { p.cdf(0.5); }, RangeError);
     });
     it('Should sample values', () => {
       var p = new Poisson(1);

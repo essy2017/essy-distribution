@@ -1,6 +1,6 @@
 {
   "name": "essy-distribution",
-  "version": "1.1.19",
+  "version": "1.1.20",
   "description": "Distributions and random sampling.",
   "main": "dist/bundle.js",
   "scripts": {
@@ -29,7 +29,7 @@
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
-    "essy-stats": "^1.0.29",
+    "essy-stats": "^1.0.30",
     "mersenne-twister": "^1.1.0"
   },
   "repository": {

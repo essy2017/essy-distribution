@@ -1,8 +1,8 @@
 'use strict';
 
-import { DistAbstract, factorial } from './util';
+import { DistAbstract } from './util';
 import ParamError from './ParamError';
-import { lowerIncGamma } from 'essy-stats';
+import { factorial, lowerIncGamma } from 'essy-stats';
 
 
 /*******************************************************************************
