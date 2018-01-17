@@ -35,7 +35,7 @@ export class Logistic extends DistAbstract {
   * @return {Number}
   */
   cdf (x) {
-    return 1 / (1 + Math.exp(-((x - this.m) / this.scale)));
+    return 1 / (1 + Math.exp(- ((x - this.m) / this.scale)) );
   }
 
  /**
