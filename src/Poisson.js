@@ -37,6 +37,11 @@ export class Poisson extends DistAbstract {
     if (x < 0) {
       return 0;
     }
+
+    // 170 is the threshold for factorial(x).
+    if (x > 170) {
+      return 1;
+    }
     return upperIncGamma(x + 1, this.lambda) / factorial(x);
   }
 
@@ -83,7 +88,8 @@ export class Poisson extends DistAbstract {
   * @return {Number}
   */
   pdf (x) {
-    if (x < 0) {
+    // 170 is the threshold for factorial(x).
+    if (x < 0 || x > 170) {
       return 0;
     }
     return (Math.pow(this.lambda, x) * Math.exp(-this.lambda)) / factorial(x);
