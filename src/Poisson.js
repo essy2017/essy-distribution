@@ -166,7 +166,6 @@ export class Poisson extends DistAbstract {
 Poisson.params = {
   lambda: {
     description  : 'A number greater than or equal to 0.',
-    discrete     : false,
     min          : 0,
     minInclusive : true
   }
