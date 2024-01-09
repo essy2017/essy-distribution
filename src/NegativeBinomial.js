@@ -155,11 +155,11 @@ NegativeBinomial.params = {
     discrete     : true
   },
   p: {
-    description  : 'Real number in the range (0, 1)',
+    description  : 'Real number in the range [0, 1]',
     min          : 0,
-    minInclusive : false,
+    minInclusive : true,
     max          : 1,
-    maxInclusive : false
+    maxInclusive : true
   }
 };
 
