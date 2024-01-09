@@ -32,6 +32,12 @@ export class NegativeBinomial extends DistAbstract {
     }
     this.r = r;
     this.p = p;
+
+    // Fudge. Gamma doesn't allow 0 value.
+    if (this.p === 0) {
+      this.p = 0.001;
+    }
+
     this.gamma = new Gamma(this.r, this.p / (1 - this.p));//1);
   }
 
