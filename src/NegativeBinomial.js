@@ -27,7 +27,7 @@ export class NegativeBinomial extends DistAbstract {
     if (r !== Math.floor(r) || r < 1) {
       throw new ParamError(0, 'r', 'r parameter must be integer greater than 0.');
     }
-    if (p <= 0 || p >= 1) {
+    if (p < 0 || p > 1) {
       throw new ParamError(1, 'p', 'p parameter must be in the range (0, 1).');
     }
     this.r = r;
